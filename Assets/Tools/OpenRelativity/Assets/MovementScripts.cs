@@ -5,7 +5,7 @@ public class MovementScripts: MonoBehaviour
 {
     //Consts 
     private const float SLOW_DOWN_RATE = 2f;
-    private const float ACCEL_RATE = 20f;
+    public float ACCEL_RATE = 20f;
     private const int INIT_FRAME_WAIT = 5;
     private const float DEGREE_TO_RADIAN_CONST = 57.2957795f;
     
@@ -35,6 +35,7 @@ public class MovementScripts: MonoBehaviour
     public float viwMax = 3;
     //Gamestate reference for quick access
     GameState state;
+    private bool bounce = false;
 
 	public float speedOfLightIncrement = 1.0f;    
 	public Collider parentCollider = null;
@@ -107,19 +108,6 @@ public class MovementScripts: MonoBehaviour
 				//Get our angle between the velocity and the X axis. Get the angle in degrees (radians suck)
 				float rotationAroundX = DEGREE_TO_RADIAN_CONST * Mathf.Acos(Vector3.Dot(playerVelocityVector, Vector3.right) / playerVelocityVector.magnitude);
 				
-				// Reset player velocity if player is not moving
-				/*if (transform.position.x == state.SuperOldPosition.x) {
-					playerVelocityVector.x = 0;	
-				}
-				if (transform.position.y == state.SuperOldPosition.y) {
-					playerVelocityVector.y = 0;
-				}
-				if (transform.position.z == state.SuperOldPosition.z) {
-					playerVelocityVector.z = 0;	
-				}*/
-				
-				
-
 				//Make a Quaternion from the angle, one to rotate, one to rotate back. 
 				Quaternion rotateX = Quaternion.AngleAxis(rotationAroundX, Vector3.Cross(playerVelocityVector, Vector3.right).normalized);
 				Quaternion unRotateX = Quaternion.AngleAxis(rotationAroundX, Vector3.Cross(Vector3.right,playerVelocityVector).normalized);
@@ -165,24 +153,30 @@ public class MovementScripts: MonoBehaviour
 				addedVelocity = cameraRotation * addedVelocity;
 				
 				// Simple collision detection to reset velocity when hitting a wall
-				/*RaycastHit hit;
+				RaycastHit hit;
 		        Vector3 p1 = transform.position;
+			
 				if (Physics.Raycast(transform.position, transform.forward, parentCollider.bounds.extents.z) && Vector3.Dot(transform.forward, addedVelocity) < 0)
 				{
-					playerVelocityVector = Vector3.zero;
+					playerVelocityVector *= -0.75f;//Vector3.zero;
 				}
 				if (Physics.Raycast(transform.position, -transform.forward, parentCollider.bounds.extents.z) && Vector3.Dot(transform.forward, addedVelocity) > 0)
 				{
-					playerVelocityVector = Vector3.zero;
+					playerVelocityVector *= -0.75f;//Vector3.zero;
 				}
 				if (Physics.Raycast(transform.position, -transform.right, parentCollider.bounds.extents.x) && Vector3.Dot(transform.forward, addedVelocity) < 0)
 				{
-					playerVelocityVector = Vector3.zero;
+					playerVelocityVector *= -0.75f;//Vector3.zero;
 				}
 				if (Physics.Raycast(transform.position, transform.right, parentCollider.bounds.extents.x) && Vector3.Dot(transform.forward, addedVelocity) > 0)
 				{
-					playerVelocityVector = Vector3.zero;
-				}*/
+					playerVelocityVector *= -0.75f;//Vector3.zero;
+				}
+			
+			/*if (bounce) {
+				playerVelocityVector *= 0.75f;
+				bounce = false;
+			}*/
 
 				//AUTO SLOW DOWN CODE BLOCK
 
@@ -363,5 +357,10 @@ public class MovementScripts: MonoBehaviour
 		}
 		state.SpeedOfLight = (isRelativistic ? relativisticC : nonrelativisticC);
 		speedOfLightTarget = (float)state.SpeedOfLight;
+	}
+
+	public void HandleCollision()
+	{
+		bounce = true;
 	}
 }
