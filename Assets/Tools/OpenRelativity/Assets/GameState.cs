@@ -58,6 +58,13 @@ public class GameState : MonoBehaviour
     public bool menuKeyDown = false;
 	//Did we hit the shader key?
     public bool shaderKeyDown = false;
+	
+	// Previous position of player 
+	private Vector3 oldPosition = Vector3.zero;
+	private Vector3 superOldPosition = Vector3.zero;
+	public Vector3 SuperOldPosition {
+		get	{	return superOldPosition;	}
+	}
 
 
 	//This is a value that gets used in many calculations, so we calculate it each frame
@@ -110,7 +117,6 @@ public class GameState : MonoBehaviour
         playerVelocityVector = Vector3.zero;
         playerVelocity = 0;
 		//Set our constants
-		maxPlayerSpeed = totalC * finalMaxSpeed;
 		MaxSpeed = maxPlayerSpeed;
         pctOfSpdUsing = NORM_PERCENT_SPEED;
 		
@@ -128,6 +134,7 @@ public class GameState : MonoBehaviour
         playerRotation.z = 0;
         pctOfSpdUsing = 0;
     }
+	
    	//Call this function to pause and unpause the game
     public void ChangeState()
     {
@@ -266,9 +273,10 @@ public class GameState : MonoBehaviour
 
             //Add up our rotation so that we know where the character (NOT CAMERA) should be facing 
             playerRotation += deltaRotation;
-
-        
-    }
+			
+			superOldPosition = oldPosition;
+       		oldPosition = transform.position;
+    	}
 	}
     #region Matrix/Quat math
     //They are functions that XNA had but Unity doesn't, so I had to make them myself

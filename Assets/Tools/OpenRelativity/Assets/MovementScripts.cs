@@ -29,6 +29,8 @@ public class MovementScripts: MonoBehaviour
     public float viwMax = 3;
     //Gamestate reference for quick access
     GameState state;
+	
+	public Collider parentCollider = null;
 
     void Start()
     {
@@ -36,7 +38,7 @@ public class MovementScripts: MonoBehaviour
         state = GetComponent<GameState>();
         //Lock and hide cursor
         //Screen.lockCursor = true;
-        //Screen.showCursor = false;
+        Screen.showCursor = false;
 		//Set the speed of light to the starting speed of light in GameState
 		speedOfLightTarget = (int)state.SpeedOfLight;
         //Inverted, at first
@@ -90,7 +92,18 @@ public class MovementScripts: MonoBehaviour
 				//Get our angle between the velocity and the X axis. Get the angle in degrees (radians suck)
 				float rotationAroundX = DEGREE_TO_RADIAN_CONST * Mathf.Acos(Vector3.Dot(playerVelocityVector, Vector3.right) / playerVelocityVector.magnitude);
 				
-
+				// Reset player velocity if player is not moving
+				/*if (transform.position.x == state.SuperOldPosition.x) {
+					playerVelocityVector.x = 0;	
+				}
+				if (transform.position.y == state.SuperOldPosition.y) {
+					playerVelocityVector.y = 0;
+				}
+				if (transform.position.z == state.SuperOldPosition.z) {
+					playerVelocityVector.z = 0;	
+				}*/
+				
+				
 
 				//Make a Quaternion from the angle, one to rotate, one to rotate back. 
 				Quaternion rotateX = Quaternion.AngleAxis(rotationAroundX, Vector3.Cross(playerVelocityVector, Vector3.right).normalized);
@@ -111,11 +124,11 @@ public class MovementScripts: MonoBehaviour
 				//Turn our camera rotation into a Quaternion. This allows us to make where we're pointing the direction of our added velocity.
 				//If you want to constrain the player to just x/z movement, with no Y direction movement, comment out the next two lines
 				//and uncomment the line below that is marked
-				float cameraRotationAngle = -DEGREE_TO_RADIAN_CONST * Mathf.Acos(Vector3.Dot(camTransform.forward, Vector3.forward));
-				Quaternion cameraRotation = Quaternion.AngleAxis(cameraRotationAngle, Vector3.Cross(camTransform.forward, Vector3.forward).normalized);
+				//float cameraRotationAngle = -DEGREE_TO_RADIAN_CONST * Mathf.Acos(Vector3.Dot(camTransform.forward, Vector3.forward));
+				//Quaternion cameraRotation = Quaternion.AngleAxis(cameraRotationAngle, Vector3.Cross(camTransform.forward, Vector3.forward).normalized);
 				
 				//UNCOMMENT THIS LINE if you would like to constrain the player to just x/z movement.
-				//Quaternion cameraRotation = Quaternion.AngleAxis(camTransform.eulerAngles.y, Vector3.up);
+				Quaternion cameraRotation = Quaternion.AngleAxis(camTransform.eulerAngles.y, Vector3.up);
 
 
 				float temp;
@@ -135,6 +148,26 @@ public class MovementScripts: MonoBehaviour
 				//And rotate our added velocity by camera angle
 
 				addedVelocity = cameraRotation * addedVelocity;
+				
+				// Simple collision detection to reset velocity when hitting a wall
+				/*RaycastHit hit;
+		        Vector3 p1 = transform.position;
+				if (Physics.Raycast(transform.position, transform.forward, parentCollider.bounds.extents.z) && Vector3.Dot(transform.forward, addedVelocity) < 0)
+				{
+					playerVelocityVector = Vector3.zero;
+				}
+				if (Physics.Raycast(transform.position, -transform.forward, parentCollider.bounds.extents.z) && Vector3.Dot(transform.forward, addedVelocity) > 0)
+				{
+					playerVelocityVector = Vector3.zero;
+				}
+				if (Physics.Raycast(transform.position, -transform.right, parentCollider.bounds.extents.x) && Vector3.Dot(transform.forward, addedVelocity) < 0)
+				{
+					playerVelocityVector = Vector3.zero;
+				}
+				if (Physics.Raycast(transform.position, transform.right, parentCollider.bounds.extents.x) && Vector3.Dot(transform.forward, addedVelocity) > 0)
+				{
+					playerVelocityVector = Vector3.zero;
+				}*/
 
 				//AUTO SLOW DOWN CODE BLOCK
 
