@@ -110,7 +110,8 @@ public class GameState : MonoBehaviour
         playerVelocityVector = Vector3.zero;
         playerVelocity = 0;
 		//Set our constants
-		MaxSpeed = MAX_SPEED;
+		maxPlayerSpeed = totalC * finalMaxSpeed;
+		MaxSpeed = maxPlayerSpeed;
         pctOfSpdUsing = NORM_PERCENT_SPEED;
 		
 		c = totalC;
