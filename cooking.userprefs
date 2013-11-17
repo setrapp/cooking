@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Custom_Cooking_Nick\Custom_Cooking_Scripts\ObjectInteraction.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\InteractionScript.cs">
     <Files>
-      <File FileName="Assets\Custom_Cooking_Nick\Custom_Cooking_Scripts\ObjectInteraction.cs" Line="22" Column="5" />
+      <File FileName="Assets\Scripts\InteractionScript.cs" Line="4" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
