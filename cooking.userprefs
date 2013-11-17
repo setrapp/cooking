@@ -1,10 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="\\banner.main.ad.rit.edu\students\set9069\IGMProfile\Documents\classes\gameplay_and_prototyping\cooking\Assets\Tools\OpenRelativity\Assets\GameState.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Temp\Compiled-Normal-Diffuse.shader">
     <Files>
-      <File FileName="\\banner.main.ad.rit.edu\students\set9069\IGMProfile\Documents\classes\gameplay_and_prototyping\cooking\Assets\Tools\OpenRelativity\Assets\MovementScripts.cs" Line="190" Column="49" />
-      <File FileName="\\banner.main.ad.rit.edu\students\set9069\IGMProfile\Documents\classes\gameplay_and_prototyping\cooking\Assets\Tools\OpenRelativity\Assets\GameState.cs" Line="108" Column="6" />
-      <File FileName="Assets\InteractionScript.cs" Line="11" Column="36" />
+      <File FileName="Temp\Compiled-Normal-Diffuse.shader" Line="3" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
