@@ -1,9 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Tools\OpenRelativity\Assets\MovementScripts.cs">
     <Files>
       <File FileName="Assets\Tools\OpenRelativity\Assets\MovementScripts.cs" Line="23" Column="35" />
       <File FileName="Assets\Tools\OpenRelativity\Assets\GameState.cs" Line="240" Column="1" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Temp\Compiled-Normal-Diffuse.shader">
+    <Files>
+      <File FileName="Temp\Compiled-Normal-Diffuse.shader" Line="3" Column="16" />
+>>>>>>> b6074df493c36da70fc901583c6824829d1cf145
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
