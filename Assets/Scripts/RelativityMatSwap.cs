@@ -16,14 +16,6 @@ public class RelativityMatSwap : MonoBehaviour {
 
 	void Update () {
 		if (mover != null && relativisticMat != null) {
-		/*	if (mover.IsRelativistic && curMatIndex != relMatIndex) {
-				renderer.material = renderer.materials[relMatIndex];
-				curMatIndex = relMatIndex;
-			} else if (!mover.IsRelativistic && curMatIndex != nonrelMatIndex) {
-				renderer.material = renderer.materials[nonrelMatIndex];
-				curMatIndex = nonrelMatIndex;
-			}
-		*/
 			if (mover.IsRelativistic && !isRelativistic) {
 				renderer.material = relativisticMat;
 				isRelativistic = true;
