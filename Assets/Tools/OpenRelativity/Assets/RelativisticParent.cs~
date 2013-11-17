@@ -37,7 +37,6 @@ public class RelativisticParent : MonoBehaviour {
     void Start()
     { 
         state = GameObject.FindGameObjectWithTag("Player").GetComponent<GameState>();
-
         if (GetComponent<ObjectMeshDensity>())
         {
             GetComponent<ObjectMeshDensity>().enabled = false;

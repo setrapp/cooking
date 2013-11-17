@@ -143,7 +143,7 @@ public class MovementScripts: MonoBehaviour
 				//Quaternion cameraRotation = Quaternion.AngleAxis(cameraRotationAngle, Vector3.Cross(camTransform.forward, Vector3.forward).normalized);
 				
 				//UNCOMMENT THIS LINE if you would like to constrain the player to just x/z movement.
-				Quaternion cameraRotation = Quaternion.AngleAxis(camTransform.eulerAngles.y, Vector3.up);
+				//Quaternion cameraRotation = Quaternion.AngleAxis(camTransform.eulerAngles.y, Vector3.up);
 
 
 				float temp;
