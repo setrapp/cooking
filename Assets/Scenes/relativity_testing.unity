@@ -388,6 +388,7 @@ GameObject:
   - 23: {fileID: 143745761}
   - 114: {fileID: 143745765}
   - 114: {fileID: 143745766}
+  - 54: {fileID: 143745767}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -461,12 +462,27 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 143745760}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fed80f06f083fad4abc68c7de5d73215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   viw: {x: 0, y: 0, z: 0}
+--- !u!54 &143745767
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 143745760}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: Infinity
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &159992579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,18 +2955,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 100
-  curTime: 100
+  curTime: 0
   timeBarLength: 0
-  GUIWidth: 100
   background: {fileID: 2800000, guid: ec001dfafb93de3419ba484ba6fac082, type: 3}
   foreground: {fileID: 2800000, guid: 1b201ce24caa0384e91961adbd8d5741, type: 3}
   lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
-  pivot:
-    serializedVersion: 2
-    x: 50
-    y: 10
-    width: 2
-    height: 20
+  pivotTime: 80
+  step: 1
+  offsetY: 0
 --- !u!1 &1078723493
 GameObject:
   m_ObjectHideFlags: 0
