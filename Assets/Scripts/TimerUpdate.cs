@@ -69,7 +69,6 @@ private MovementScripts movement = null;
 	if (movement.IsRelativistic) {
 		adj *= 1 - (float)(gameState.PlayerVelocity / gameState.totalC);
 		adj /= 5.0f;
-		Debug.Log(adj);
 	}
 
         curTime += adj;

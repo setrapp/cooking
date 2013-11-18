@@ -36,6 +36,7 @@ public class MovementScripts: MonoBehaviour
     //Gamestate reference for quick access
     GameState state;
     private bool bounce = false;
+	private bool jumpedOutRel = false;
 
 	public float speedOfLightIncrement = 1.0f;    
 	public Collider parentCollider = null;
@@ -231,8 +232,22 @@ public class MovementScripts: MonoBehaviour
 					rotatedVelocity = unRotateX * rotatedVelocity;
 					
 					// Clip veclocity to zero if it is low enough
-					if (slowingDown && rotatedVelocity.sqrMagnitude < 1.0f) {
+					float minSpeed = 1.0f;
+					if (slowingDown && rotatedVelocity.sqrMagnitude < minSpeed * minSpeed) {
 						rotatedVelocity = Vector3.zero;
+					}
+					
+					// Jump to non-relativistic rendering when moving slowly
+					float minRelativisticSpeed = 2.0f;
+					if (rotatedVelocity.sqrMagnitude < minRelativisticSpeed * minRelativisticSpeed && isRelativistic) {
+						ToggleSpecialRelativity(true, false);
+						jumpedOutRel = true;
+					}
+					// Jump back to relativistic rendering if we jumped out but are not moving fast enough
+					if (rotatedVelocity.sqrMagnitude >= minRelativisticSpeed && !isRelativistic && jumpedOutRel)
+					{
+						ToggleSpecialRelativity(true, true);
+						jumpedOutRel = 	false;
 					}
 					
 					//Set it
@@ -364,7 +379,7 @@ public class MovementScripts: MonoBehaviour
 
 	public void ToggleSpecialRelativity(bool forceToggle = false, bool forceTo = false) {
 		if (state.PlayerVelocityVector.sqrMagnitude > 0.5f) {
-			return;
+			state.PlayerVelocityVector = state.PlayerVelocityVector *0.5f;
 		}
 		
 		if (forceToggle) {

@@ -19,7 +19,7 @@ RenderSettings:
   m_FogDensity: .00999999978
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientLight: {r: .0882353187, g: .0882353187, b: .0882353187, a: 1}
+  m_AmbientLight: {r: .356862754, g: .356862754, b: .356862754, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: .5
   m_FlareStrength: 1
@@ -2111,7 +2111,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 397922270}
   m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381661, w: .875426114}
-  m_LocalPosition: {x: 2.01872158, y: 10.7435379, z: -2.5154109}
+  m_LocalPosition: {x: 5.25297165, y: 18.4523964, z: -8.11729431}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8175,7 +8175,7 @@ MonoBehaviour:
   speedOfLightIncrement: .0500000007
   parentCollider: {fileID: 1078473433}
   nonrelativisticC: 1e+08
-  relativisticC: 20
+  relativisticC: 30
 --- !u!114 &1536914336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8190,8 +8190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1078473435}
   playerVelocity: 0
-  totalC: 20
-  maxPlayerSpeed: 5
+  totalC: 30
+  maxPlayerSpeed: 10
   menuKeyDown: 0
   shaderKeyDown: 0
   playerRotation: {x: 0, y: 0, z: 0}
@@ -9208,7 +9208,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 3bd09911bbdd77c44b01be3077fd6d81, type: 2}
       propertyPath: totalC
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 3bd09911bbdd77c44b01be3077fd6d81, type: 2}
       propertyPath: finalMaxSpeed
@@ -9232,7 +9232,7 @@ Prefab:
       objectReference: {fileID: 1078473435}
     - target: {fileID: 11400000, guid: 3bd09911bbdd77c44b01be3077fd6d81, type: 2}
       propertyPath: maxPlayerSpeed
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 3bd09911bbdd77c44b01be3077fd6d81, type: 2}
       propertyPath: m_IsActive
@@ -9297,6 +9297,10 @@ Prefab:
     - target: {fileID: 5400000, guid: 3bd09911bbdd77c44b01be3077fd6d81, type: 2}
       propertyPath: m_Constraints
       value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 3bd09911bbdd77c44b01be3077fd6d81, type: 2}
+      propertyPath: relativisticC
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 13500000, guid: 3bd09911bbdd77c44b01be3077fd6d81, type: 2}
