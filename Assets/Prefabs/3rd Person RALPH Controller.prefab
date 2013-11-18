@@ -135,9 +135,6 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortingLayerID: 0
 --- !u!23 &2300002
 Renderer:
   m_ObjectHideFlags: 1
@@ -156,9 +153,6 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortingLayerID: 0
 --- !u!33 &3300000
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -175,7 +169,6 @@ MeshFilter:
   m_Mesh: {fileID: 4300002, guid: a3e359d596a6987498f1f11be09d5609, type: 3}
 --- !u!95 &9500000
 Animator:
-  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -186,7 +179,6 @@ Animator:
   m_CullingMode: 1
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
-  m_HasTransformHierarchy: 1
 --- !u!111 &11100000
 Animation:
   m_ObjectHideFlags: 1
@@ -209,6 +201,9 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
+  m_UserAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,6 +214,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12314c15fe2762c47aeb9799b72f55af, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}
   distance: 3
@@ -240,6 +236,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f33fb1552d9986b4ab1e350c46fd9a8c, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
   idleAnimation: {fileID: 7400002, guid: 449b48f7eb5d87a4baaa5fb73f875a59, type: 3}
   walkAnimation: {fileID: 7400008, guid: 449b48f7eb5d87a4baaa5fb73f875a59, type: 3}

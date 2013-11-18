@@ -9,7 +9,6 @@ Material:
   m_Name: Skybox
   m_Shader: {fileID: 4800000, guid: a8b469e68b8081c4b8475b25057170bd, type: 3}
   m_ShaderKeywords: []
-  m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
