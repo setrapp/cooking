@@ -4,7 +4,7 @@ using System.Collections;
 public class MovementScripts: MonoBehaviour
 {
     //Consts 
-    private const float SLOW_DOWN_RATE = 2f;
+    private const float SLOW_DOWN_RATE = 0.95f;
     public float ACCEL_RATE = 20f;
     private const int INIT_FRAME_WAIT = 5;
     private const float DEGREE_TO_RADIAN_CONST = 57.2957795f;
@@ -181,7 +181,7 @@ public class MovementScripts: MonoBehaviour
 				//AUTO SLOW DOWN CODE BLOCK
 
 				//If we are not adding velocity this round to our x direction, slow down
-				if (addedVelocity.x == 0)
+				/*if (addedVelocity.x == 0)
 				{
 					//find our current direction of movement and oppose it
 					addedVelocity += new Vector3(-1*SLOW_DOWN_RATE*playerVelocityVector.x * (float)Time.deltaTime, 0, 0);
@@ -195,7 +195,16 @@ public class MovementScripts: MonoBehaviour
 				if (addedVelocity.y == 0)
 				{
 					addedVelocity += new Vector3(0, -1*SLOW_DOWN_RATE*playerVelocityVector.y * (float)Time.deltaTime,0);
+				}*/
+				
+				// Fake-it Friction!!!
+				bool slowingDown = false;
+				if (addedVelocity.sqrMagnitude == 0){
+					addedVelocity = playerVelocityVector  - (playerVelocityVector / SLOW_DOWN_RATE);
+					slowingDown = true;
 				}
+				
+				//
 				/*
 				 * IF you turn on this bit of code, you'll get head bob. It's a fun little effect, but if you make the magnitude of the cosine too large it gets sickening.
 				if (!double.IsNaN((float)(0.2 * Mathf.Cos((float)GetComponent<GameState>().TotalTimePlayer) * Time.deltaTime)) && frames > 2)
@@ -220,9 +229,14 @@ public class MovementScripts: MonoBehaviour
 
 					//Unrotate our new total velocity
 					rotatedVelocity = unRotateX * rotatedVelocity;
-					//Set it
-					state.PlayerVelocityVector = rotatedVelocity;
 					
+					// Clip veclocity to zero if it is low enough
+					if (slowingDown && rotatedVelocity.sqrMagnitude < 1.0f) {
+						rotatedVelocity = Vector3.zero;
+					}
+					
+					//Set it
+					state.PlayerVelocityVector = rotatedVelocity;					
 				}
 				//CHANGE the speed of light
 				
@@ -349,6 +363,10 @@ public class MovementScripts: MonoBehaviour
     }
 
 	public void ToggleSpecialRelativity(bool forceToggle = false, bool forceTo = false) {
+		if (state.PlayerVelocityVector.sqrMagnitude > 0.5f) {
+			return;
+		}
+		
 		if (forceToggle) {
 			isRelativistic = forceTo;
 		}
