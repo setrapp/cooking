@@ -52,7 +52,7 @@ public class MovementScripts: MonoBehaviour
         state = GetComponent<GameState>();
         //Lock and hide cursor
         //Screen.lockCursor = true;
-        Screen.showCursor = false;
+        //Screen.showCursor = false;
 		//Set the speed of light to the starting speed of light in GameState
 		speedOfLightTarget = (int)state.SpeedOfLight;
         //Inverted, at first
