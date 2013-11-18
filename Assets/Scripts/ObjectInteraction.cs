@@ -10,8 +10,8 @@ public class ObjectInteraction : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(GameObject.FindGameObjectWithTag("Player").transform.position.x <= this.transform.position.x + 5 && 
-			GameObject.FindGameObjectWithTag("Player").transform.position.z <= this.transform.position.z + 5)
+		if(GameObject.FindGameObjectWithTag("Playermesh").transform.position.x <= this.transform.position.x + 5 && 
+			GameObject.FindGameObjectWithTag("Playermesh").transform.position.z <= this.transform.position.z + 5)
 		{
 			if (Input.GetKey (KeyCode.E)){
 				if(GameObject.FindGameObjectWithTag("FloatingBox").renderer.enabled == false){
