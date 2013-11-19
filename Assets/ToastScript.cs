@@ -5,7 +5,7 @@ using System.Linq;
 public class ToastScript : MonoBehaviour {
 	public bool breadAcquired = false;
 	private List<GameObject> breads = new List<GameObject>();
-	TimerUpdate toastTimer = null;
+	private TimerUpdate toastTimer = null;
 	TimerManager timerManager = null;
 	GameObject player = null;
 	
@@ -16,6 +16,7 @@ public class ToastScript : MonoBehaviour {
 		timerManager = GameObject.FindGameObjectWithTag("Globals").GetComponent<TimerManager>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		//toastTimer = GameObject.Find("Toaster").GetComponent<TimerUpdate>();
+		//toastTimer.AddTimee(this);
 	}
 	
 	// Update is called once per frame
@@ -38,7 +39,6 @@ public class ToastScript : MonoBehaviour {
                         bread.renderer.enabled = false;
                         breadAcquired = true;
                         Destroy(bread);
-                        Debug.Log(breadAcquired);
                         break;
                     }
                 }
@@ -52,7 +52,9 @@ public class ToastScript : MonoBehaviour {
                 {
                     if (Input.GetKeyDown(KeyCode.F))
                     {
-                        toastTimer.AttemptCompleteTimer();
+                        if (toastTimer.AttemptCompleteTimer()) {
+							MainGameEventScheduler.switchTask();
+						}
                     }
                 }
                 return;
@@ -66,7 +68,7 @@ public class ToastScript : MonoBehaviour {
                         {
                             if (breadAcquired)
                             {
-								timerManager.StartTimer("Toaster");
+								toastTimer.StartTimer();
                                 GUIManager.message = "Shut the toaster before the bread burns. Press 'f' to shut the toster. Make sure you shut it at the right time, else the bread wont toast well";
                                 return;
                             }

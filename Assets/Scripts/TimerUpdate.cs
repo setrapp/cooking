@@ -17,6 +17,7 @@ public class TimerUpdate : MonoBehaviour {
 	Rect backgroundRect;
 	Rect timeRec;
 	public float step = 0f;
+	public float backstep = 0f;
 	public float offsetY = 0f;
 	public int perfectTimeWindow = 0;
 	public float padding;       //Under Development for the GUI width to be independent of the timebar. 
@@ -29,6 +30,7 @@ public class TimerUpdate : MonoBehaviour {
 		get { return isActive; }
 	}
 	private float dt = 0;
+	private bool inverted = false;
 	
     void Start () 
     {
@@ -50,7 +52,12 @@ public class TimerUpdate : MonoBehaviour {
     {
 		if(isActive)
 		{
-	        AddjustCurrentTime(step);        //This can allow you to have differernt time steps for the change. 
+			if (!inverted) {
+	     	   AddjustCurrentTime(step);        //This can allow you to have differernt time steps for the change. 
+			}
+			else {
+				AddjustCurrentTime(-backstep);
+			}
 	        //if(Input.GetKeyDown(KeyCode.F))
 	            //Debug.Log(Check().ToString());
 		}
@@ -73,6 +80,7 @@ public class TimerUpdate : MonoBehaviour {
     {
 		if(isActive)
 		{
+			textRec = new Rect(Screen.width - GUIWidth - 25, 10 + offsetY, 100, 20);
 	        timeRec = new Rect(Screen.width - GUIWidth - 25, 10 + offsetY, timeBarLength , 20);
 	        pivot = new Rect(Screen.width - GUIWidth + pivotTime - 25, 10 + offsetY, perfectTimeWindow, 20);
 	        backgroundRect = new Rect(Screen.width - GUIWidth - 25, 10 + offsetY, GUIWidth, 20);
@@ -81,6 +89,9 @@ public class TimerUpdate : MonoBehaviour {
 			boxRect.width += padding;
 			boxRect.y -= padding / 2;
 			boxRect.height += padding;
+
+			GUI.Label(textRec, 
+
 	        GUI.DrawTexture(backgroundRect, background);
 	        GUI.DrawTexture(timeRec, foreground, ScaleMode.StretchToFill, false);
 	        GUI.DrawTexture(pivot, lion);
@@ -106,10 +117,12 @@ public class TimerUpdate : MonoBehaviour {
             maxTime = 1;
         timeBarLength = GUIWidth * (curTime / ((float)maxTime)); 
 		UpdateTimer(adj);
-		if (curTime >= maxTime) {
+		if (!inverted && curTime >= maxTime || inverted && curTime <= 0) {
 			AttemptCompleteTimer();
 		}
     }
+
+
 
 	public override string ToString ()
 	{
@@ -130,15 +143,19 @@ public class TimerUpdate : MonoBehaviour {
 	
 	private void UpdateTimer(float dt) {
 		foreach(MonoBehaviour timee in timees) {
-			timee.gameObject.SendMessage("TimerUpdate", new TimerStep(name, dt));	
+			timee.gameObject.SendMessage("TimerUpdate", new TimerStep(name, dt), SendMessageOptions.DontRequireReceiver);	
 		}
     }
 	
 	public void EndTimer() {
 		isActive = false;
 		foreach(MonoBehaviour timee in timees) {
-			timee.gameObject.SendMessage("TimerEnd", name);	
+			timee.gameObject.SendMessage("TimerEnd", name, SendMessageOptions.DontRequireReceiver);	
 		}
+	}
+
+	public void InvertTimer() {
+		inverted = !inverted;
 	}
 	
 	public bool AttemptCompleteTimer() {

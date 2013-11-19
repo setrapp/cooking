@@ -1,19 +1,24 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TimerUpdate.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\EggScript.cs">
     <Files>
-      <File FileName="Assets\ToastScript.cs" Line="94" Column="21" />
-      <File FileName="Assets\Scripts\TimerUpdate.cs" Line="119" Column="15" />
+      <File FileName="Assets\ToastScript.cs" Line="19" Column="5" />
+      <File FileName="Assets\Scripts\TimerUpdate.cs" Line="67" Column="6" />
       <File FileName="Assets\Tools\OpenRelativity\Assets\MovementScripts.cs" Line="1" Column="1" />
       <File FileName="Assets\Tools\OpenRelativity\Assets\GameState.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\RelativityMatSwap.cs" Line="1" Column="1" />
       <File FileName="Assets\Tools\OpenRelativity\Assets\RelativisticObject.cs" Line="1" Column="1" />
       <File FileName="Assets\Tools\OpenRelativity\Assets\RelativisticParent.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TimerManager.cs" Line="9" Column="16" />
+      <File FileName="Assets\Scripts\TimerManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\MainGameEventScheduler.cs" Line="14" Column="6" />
+      <File FileName="Assets\EggScript.cs" Line="94" Column="41" />
+      <File FileName="Assets\GUIManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\sam\Desktop\cooking\Assets\MainGameEventScheduler.cs" line="27" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
