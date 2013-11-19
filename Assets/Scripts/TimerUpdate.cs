@@ -82,7 +82,11 @@ public class TimerUpdate : MonoBehaviour {
     }
 
     public void AddjustCurrentTime(float adj)
-    { 
+    {
+	if (movement.IsRelativistic) {
+		adj *= 1 - (float)(gameState.PlayerVelocity / gameState.totalC);
+		adj /= 5.0f;
+	}
         curTime += adj;
         if (curTime < 0)
 		{
