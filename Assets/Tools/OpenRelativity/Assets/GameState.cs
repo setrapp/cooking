@@ -170,7 +170,7 @@ public class GameState : MonoBehaviour
             menuKeyDown = false;
         }
 		//Set our button code for the shader on/off button
-		if (Input.GetAxis("Shader") > 0 && !shaderKeyDown)
+		/*if (Input.GetAxis("Shader") > 0 && !shaderKeyDown)
         {
 			if(shaderOff)
 	            shaderOff = false;
@@ -183,7 +183,7 @@ public class GameState : MonoBehaviour
         else if (!(Input.GetAxis("Shader") > 0))
         {
             shaderKeyDown = false;
-        }
+        }*/
 		
         //If we're not paused, update everything
         if (!movementFrozen)
