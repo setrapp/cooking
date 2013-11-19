@@ -8,6 +8,7 @@ public class ToastScript : MonoBehaviour {
 	private TimerUpdate toastTimer = null;
 	TimerManager timerManager = null;
 	GameObject player = null;
+	GameObject toaster = null;
 	
 	public static bool isActive = false;
 	// Use this for initialization
@@ -15,6 +16,7 @@ public class ToastScript : MonoBehaviour {
 		
 		timerManager = GameObject.FindGameObjectWithTag("Globals").GetComponent<TimerManager>();
 		player = GameObject.FindGameObjectWithTag("Player");
+		toaster = GameObject.FindGameObjectWithTag("Toaster");
 		//toastTimer = GameObject.Find("Toaster").GetComponent<TimerUpdate>();
 		//toastTimer.AddTimee(this);
 	}
@@ -48,7 +50,7 @@ public class ToastScript : MonoBehaviour {
 
             if (toastTimer.IsActive)
             {
-                if (Vector3.Distance(this.transform.position, player.transform.position) < 5)
+                if (Vector3.Distance(toaster.transform.position, player.transform.position) < 5)
                 {
                     if (Input.GetKeyDown(KeyCode.F))
                     {
@@ -60,7 +62,7 @@ public class ToastScript : MonoBehaviour {
                 return;
             }
             else
-                if (Vector3.Distance(this.transform.position, player.transform.position) < 5)
+                if (Vector3.Distance(toaster.transform.position, player.transform.position) < 5)
                 {
                     if (Input.GetKeyDown(KeyCode.F))
                     {

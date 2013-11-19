@@ -77,7 +77,6 @@ public class EggScript : MonoBehaviour {
 								egg.renderer.enabled = false;
 								eggAcquired = true;
 								Destroy(egg);
-								Debug.Log(eggAcquired);
 								break;
 							}
 						}
@@ -90,6 +89,9 @@ public class EggScript : MonoBehaviour {
 								boilTimer.StartTimer();
 								boiling = true;
 							}
+							else {
+								heatTimer.EndTimer();
+							}
 						}
 					}
 				}
@@ -97,6 +99,7 @@ public class EggScript : MonoBehaviour {
 					if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
 						boilTimer.AttemptCompleteTimer();
 					}
+					heatTimer.EndTimer();
 				}
 			}
 			

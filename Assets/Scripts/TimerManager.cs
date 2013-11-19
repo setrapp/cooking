@@ -9,6 +9,12 @@ public class TimerManager : MonoBehaviour
 	void Start() {
 	}
 	
+	void OnGUI() {
+		if (GUI.Button(new Rect(10, Screen.height - 40, 150, 30), "Perfect!!!")) {
+			DebugJumpToPerfect(true);
+		}
+	}
+	
 	public void AddTimer(TimerUpdate timer) {
 		timers.Add(timer);
 	}
@@ -35,5 +41,13 @@ public class TimerManager : MonoBehaviour
 		TimerUpdate timer = FindTimer(name);
 		timer.StartTimer();
 	}
+	
+	public void DebugJumpToPerfect(bool pause = true) {
+		foreach (TimerUpdate timer in timers) {
+			timer.DebugJumpToPerfect(pause);
+		}
+	}
+	
+	
 }
 

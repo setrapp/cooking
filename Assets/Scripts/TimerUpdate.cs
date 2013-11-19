@@ -27,6 +27,7 @@ public class TimerUpdate : MonoBehaviour {
 	private GameState gameState = null;
 	private MovementScripts movement = null;
     private bool isActive = false;
+	private bool paused = false;
 	public bool IsActive {
 		get { return isActive; }
 	}
@@ -102,10 +103,13 @@ public class TimerUpdate : MonoBehaviour {
 
     public void AddjustCurrentTime(float adj)
     {
-	if (movement.IsRelativistic) {
-		adj *= 1 - (float)(gameState.PlayerVelocity / gameState.totalC);
-		adj /= 5.0f;
-	}
+		if (paused) {
+			return;
+		}
+		if (movement.IsRelativistic) {
+			adj *= 1 - (float)(gameState.PlayerVelocity / gameState.totalC);
+			adj /= 5.0f;
+		}
 		adj *= Time.deltaTime;
         curTime += adj;
         if (curTime < 0)
@@ -140,6 +144,7 @@ public class TimerUpdate : MonoBehaviour {
  
 	public void StartTimer() {
 		isActive = true;
+		paused = false;
 	}
 	
 	private void UpdateTimer(float dt) {
@@ -159,6 +164,14 @@ public class TimerUpdate : MonoBehaviour {
 		inverted = !inverted;
 	}
 	
+	public void PauseTimer() {
+		paused = true;	
+	}
+	
+	public void ResumeTimer() {
+		paused = false;
+	}
+	
 	public bool AttemptCompleteTimer() {
 		bool success;
 		if (Check() == TimerUpdate.ResponseType.perfect)
@@ -173,6 +186,15 @@ public class TimerUpdate : MonoBehaviour {
         }
 		EndTimer();
 		return success;
+	}
+	
+	public void DebugJumpToPerfect(bool pause = true)
+	{
+		curTime = pivotTime;
+		AddjustCurrentTime(0);
+		if(pause) {
+			PauseTimer();
+		}
 	}
 }
 
