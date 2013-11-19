@@ -69,6 +69,8 @@ public class MovementScripts: MonoBehaviour
 	//Again, use LateUpdate to solve some collision issues.
     void LateUpdate()
     {
+	
+		
 		if(true)
 		{
 			float viewRotX = 0;

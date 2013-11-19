@@ -7,12 +7,11 @@ public class TimerManager : MonoBehaviour
 	List<TimerUpdate> timers = null;
 	
 	void Start() {
-		
+		AddTimer(gameObject.GetComponent<TimerUpdate>());
 	}
 	
 	public void AddTimer(TimerUpdate timer) {
 		timers.Add(timer);
-		//gameObject.AddComponent(Timer
 	}
 	
 	public void RemoveTimer(TimerUpdate timer) {
