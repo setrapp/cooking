@@ -49,52 +49,53 @@ public class EggScript : MonoBehaviour {
 		{
 			if (Input.GetKeyDown(KeyCode.H))
 			{
-				if(!boiling) {
-					if (!heating) {
-						if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
-							heatTimer.StartTimer();
-							heating = true;
-						}
-					}
-					else {
-						if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
-							heatTimer.InvertTimer();
-							heating = false;
-						}
+				
+				if (!heating) {
+					if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
+						heatTimer.StartTimer();
+						heating = true;
 					}
 				}
 				else {
 					if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
-						boilTimer.AttemptCompleteTimer();
+						heatTimer.InvertTimer();
+						heating = false;
 					}
 				}
 			}
 
 			if (Input.GetKeyDown(KeyCode.E))
 			{
-				if(!eggAcquired)
-				{
-					eggs = GameObject.FindGameObjectsWithTag("Egg").ToList();
-					foreach (var egg in eggs)
+				if(!boiling) {
+					if(!eggAcquired)
 					{
-						if (Vector3.Distance(egg.transform.position, player.transform.position) < 5)
+						eggs = GameObject.FindGameObjectsWithTag("Egg").ToList();
+						foreach (var egg in eggs)
 						{
-							egg.renderer.enabled = false;
-							eggAcquired = true;
-							Destroy(egg);
-							Debug.Log(eggAcquired);
-							break;
+							if (Vector3.Distance(egg.transform.position, player.transform.position) < 5)
+							{
+								egg.renderer.enabled = false;
+								eggAcquired = true;
+								Destroy(egg);
+								Debug.Log(eggAcquired);
+								break;
+							}
+						}
+						eggTimer.StartTimer();
+					}
+					else
+					{
+						if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
+							if(eggTimer.AttemptCompleteTimer()) {
+								boilTimer.StartTimer();
+								boiling = true;
+							}
 						}
 					}
-					eggTimer.StartTimer();
 				}
-				else
-				{
+				else {
 					if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
-						if(eggTimer.AttemptCompleteTimer()) {
-							boilTimer.StartTimer();
-							boiling = true;
-						}
+						boilTimer.AttemptCompleteTimer();
 					}
 				}
 			}
@@ -113,30 +114,6 @@ public class EggScript : MonoBehaviour {
 					}
 				}
 				return;
-			}
-			else
-				if (Vector3.Distance(this.transform.position, player.transform.position) < 5)
-			{
-				if (Input.GetKeyDown(KeyCode.F))
-				{
-					if (eggs.Count == 0)
-					{
-						if (eggAcquired)
-						{
-							eggTimer.StartTimer();
-							//GUIManager.message = "Shut the toaster before the bread burns. Press 'f' to shut the toster. Make sure you shut it at the right time, else the bread wont toast well";
-							return;
-						}
-					}
-					else
-					{
-						//GUIManager.message = "Grab all breads, before you turn the toaster ON";
-					}
-				}
-			}
-			else
-			{
-				//GUIManager.message = "Find breads and toast them";
 			}
 		}
 		

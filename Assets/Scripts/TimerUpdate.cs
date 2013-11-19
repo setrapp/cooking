@@ -16,6 +16,7 @@ public class TimerUpdate : MonoBehaviour {
 	public float pivotTime = 0f;
 	Rect backgroundRect;
 	Rect timeRec;
+	Rect textRec;
 	public float step = 0f;
 	public float backstep = 0f;
 	public float offsetY = 0f;
@@ -80,7 +81,7 @@ public class TimerUpdate : MonoBehaviour {
     {
 		if(isActive)
 		{
-			textRec = new Rect(Screen.width - GUIWidth - 25, 10 + offsetY, 100, 20);
+			textRec = new Rect(Screen.width - GUIWidth - 75, 10 + offsetY, 100, 20);
 	        timeRec = new Rect(Screen.width - GUIWidth - 25, 10 + offsetY, timeBarLength , 20);
 	        pivot = new Rect(Screen.width - GUIWidth + pivotTime - 25, 10 + offsetY, perfectTimeWindow, 20);
 	        backgroundRect = new Rect(Screen.width - GUIWidth - 25, 10 + offsetY, GUIWidth, 20);
@@ -90,7 +91,7 @@ public class TimerUpdate : MonoBehaviour {
 			boxRect.y -= padding / 2;
 			boxRect.height += padding;
 
-			GUI.Label(textRec, 
+			GUI.Label(textRec, name);
 
 	        GUI.DrawTexture(backgroundRect, background);
 	        GUI.DrawTexture(timeRec, foreground, ScaleMode.StretchToFill, false);
