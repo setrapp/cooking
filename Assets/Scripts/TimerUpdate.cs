@@ -21,6 +21,7 @@ public class TimerUpdate : MonoBehaviour {
 	public float padding;       //Under Development for the GUI width to be independent of the timebar. 
 	public static List<TimerUpdate> timers = new List<TimerUpdate>();
 	public string Name = string.Empty;
+    public bool isActive = false;
     public TimerUpdate()
     {
 
@@ -39,12 +40,15 @@ public class TimerUpdate : MonoBehaviour {
  
     void Update () 
     {
-        AddjustCurrentTime(step);        //This can allow you to have differernt time steps for the change. 
-        if(Input.GetKeyDown(KeyCode.F))
-            Debug.Log(Check().ToString());
+		if(isActive)
+		{
+	        AddjustCurrentTime(step);        //This can allow you to have differernt time steps for the change. 
+	        //if(Input.GetKeyDown(KeyCode.F))
+	            //Debug.Log(Check().ToString());
+		}
     }
 
-    private ResponseType Check()
+    public ResponseType Check()
     {
         Rect r = pivot;
         r.x -= perfectTimeWindow / 2;
@@ -59,18 +63,22 @@ public class TimerUpdate : MonoBehaviour {
     
     void OnGUI()
     {
-        timeRec = new Rect(Screen.width - GUIWidth - 25, 10 + offsetY, timeBarLength , 20);
-        pivot = new Rect(Screen.width - GUIWidth + pivotTime - 25, 10 + offsetY, 5, 20);
-        backgroundRect = new Rect(Screen.width - GUIWidth - 25, 10 + offsetY, GUIWidth, 20);
-		var boxRect = backgroundRect;
-		boxRect.x -= padding/2;
-		boxRect.width += padding;
-		boxRect.y -= padding / 2;
-		boxRect.height += padding;
-        GUI.DrawTexture(backgroundRect, background);
-        GUI.DrawTexture(timeRec, foreground, ScaleMode.StretchToFill, false);
-        GUI.DrawTexture(pivot, lion);
-		GUI.Box (boxRect, "");
+		if(isActive)
+		{
+	        timeRec = new Rect(Screen.width - GUIWidth - 25, 10 + offsetY, timeBarLength , 20);
+	        pivot = new Rect(Screen.width - GUIWidth + pivotTime - 25, 10 + offsetY, 5, 20);
+	        backgroundRect = new Rect(Screen.width - GUIWidth - 25, 10 + offsetY, GUIWidth, 20);
+			var boxRect = backgroundRect;
+			boxRect.x -= padding/2;
+			boxRect.width += padding;
+			boxRect.y -= padding / 2;
+			boxRect.height += padding;
+	        GUI.DrawTexture(backgroundRect, background);
+	        GUI.DrawTexture(timeRec, foreground, ScaleMode.StretchToFill, false);
+	        GUI.DrawTexture(pivot, lion);
+			GUI.Box (boxRect, "");
+			Debug.Log (timers.First().Name);
+		}
     }
 
     public void AddjustCurrentTime(float adj)
@@ -86,5 +94,10 @@ public class TimerUpdate : MonoBehaviour {
             maxTime = 1;
         timeBarLength = GUIWidth * (curTime / ((float)maxTime)); 
     }
+
+	public override string ToString ()
+	{
+		return name;
+	}
  
 }

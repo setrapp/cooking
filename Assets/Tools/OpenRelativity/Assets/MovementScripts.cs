@@ -242,7 +242,7 @@ public class MovementScripts: MonoBehaviour
 				
 				// Toggle between relativistic and nonrelativistic (temporary)
 				if (Input.GetKeyDown("t")) {
-					ToggleSpecialRelativity();
+					ToggleSpecialRelativity(false, false);
 				}
 			  
 				if (isRelativistic) {	
@@ -362,7 +362,7 @@ public class MovementScripts: MonoBehaviour
         launchedObject.GetComponent<RelativisticObject>().SetStartTime();
     }
 
-	public void ToggleSpecialRelativity(bool forceToggle = false, bool forceTo = false) {
+	public void ToggleSpecialRelativity(bool forceToggle, bool forceTo) {
 		if (state.PlayerVelocityVector.sqrMagnitude > 0.5f) {
 			return;
 		}
