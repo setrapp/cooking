@@ -19,8 +19,11 @@ public class TimerUpdate : MonoBehaviour {
 	public float offsetY = 0f;
 	public int perfectTimeWindow = 0;
 	public float padding;       //Under Development for the GUI width to be independent of the timebar. 
-	public static List<TimerUpdate> timers = new List<TimerUpdate>();
-	public string Name = string.Empty;
+	//public static List<TimerUpdate> timers = new List<TimerUpdate>();
+	public string name = string.Empty;
+	private GameState gameState = null;
+	private MovementScripts movement = null;
+	
     public TimerUpdate()
     {
 
@@ -28,7 +31,9 @@ public class TimerUpdate : MonoBehaviour {
     void Start () 
     {
 		GUIWidth = maxTime;
-		timers.Add(this);
+		//timers.Add(this);
+		gameState = (GameState)GameObject.FindObjectOfType(typeof(GameState));
+		movement = (MovementScripts)GameObject.FindObjectOfType(typeof(MovementScripts));
     }
 
     public enum ResponseType
