@@ -59,10 +59,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 400006}
   - 33: {fileID: 3300004}
-  - 135: {fileID: 13500000}
   - 23: {fileID: 2300004}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
+  - 65: {fileID: 6500000}
   m_Layer: 8
   m_Name: PlayerMesh
   m_TagString: Playermesh
@@ -293,8 +293,20 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!65 &6500000
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .5, y: 1.35000002, z: .5}
+  m_Center: {x: 5.96046448e-08, y: .150000006, z: -8.94069672e-08}
 --- !u!92 &9200000
 Behaviour:
   m_ObjectHideFlags: 1
@@ -358,7 +370,7 @@ MonoBehaviour:
   invertKeyDown: 0
   viwMax: 19.9899998
   speedOfLightIncrement: .0500000007
-  parentCollider: {fileID: 13500000}
+  parentCollider: {fileID: 13500000, guid: 9246cab64723bb14585905e29c8d23d9, type: 2}
   nonrelativisticC: 1e+08
   relativisticC: 20
 --- !u!114 &11400006
@@ -390,18 +402,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_Enabled: 1
---- !u!135 &13500000
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
