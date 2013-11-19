@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class TimerManager : MonoBehaviour
 {
-	List<TimerUpdate> timers = null;
+	List<TimerUpdate> timers = new List<TimerUpdate>();
 	
 	void Start() {
 		AddTimer(gameObject.GetComponent<TimerUpdate>());
