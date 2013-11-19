@@ -7,7 +7,6 @@ public class TimerManager : MonoBehaviour
 	List<TimerUpdate> timers = new List<TimerUpdate>();
 	
 	void Start() {
-		AddTimer(gameObject.GetComponent<TimerUpdate>());
 	}
 	
 	public void AddTimer(TimerUpdate timer) {
@@ -30,6 +29,11 @@ public class TimerManager : MonoBehaviour
 			}
 		}
 		return foundTimer;
+	}
+	
+	public void StartTimer(string name) {
+		TimerUpdate timer = FindTimer(name);
+		timer.StartTimer();
 	}
 }
 
