@@ -5,12 +5,13 @@ public class MainGameEventScheduler : MonoBehaviour {
     public static task currentTask = 0;
 	// Use this for initialization
 	void Start () {
-
+		ToastScript.isActive = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        ToastScript.isActive = true;
+		
+        
 		//EggScript.isActive = true;
 	}
 

@@ -85,7 +85,7 @@ public class EggScript : MonoBehaviour {
 					else
 					{
 						if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
-							if(eggTimer.AttemptCompleteTimer()) {
+							if(eggTimer.AttemptSuccess() && heatTimer.AttemptSuccess(null, null, false, false)) {
 								boilTimer.StartTimer();
 								boiling = true;
 							}
@@ -97,7 +97,7 @@ public class EggScript : MonoBehaviour {
 				}
 				else {
 					if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
-						boilTimer.AttemptCompleteTimer();
+						boilTimer.AttemptSuccess();
 					}
 					heatTimer.EndTimer();
 				}
@@ -111,7 +111,7 @@ public class EggScript : MonoBehaviour {
 				{
 					if (Input.GetKeyDown(KeyCode.E))
 					{
-						if (eggTimer.AttemptCompleteTimer()) {
+						if (eggTimer.AttemptSuccess()) {
 							MainGameEventScheduler.switchTask();
 						}
 					}
@@ -120,17 +120,5 @@ public class EggScript : MonoBehaviour {
 			}
 		}
 		
-	}
-	
-	public void TimerUpdate(TimerStep step) {
-		if (step.name.Equals("Toaster")) {
-			
-		}
-	}
-	
-	public void ControlTimerEnd(string timerName) {
-		if (timerName.Equals("Toaster")) {
-			
-		}
 	}
 }

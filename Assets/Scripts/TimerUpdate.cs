@@ -67,10 +67,10 @@ public class TimerUpdate : MonoBehaviour {
 
     private ResponseType Check()
     {
-        Rect r = pivot;
-        r.x -= perfectTimeWindow / 2;
-        r.width = perfectTimeWindow;
-        if (r.Contains(new Vector2(timeRec.x + timeRec.width, pivot.y + pivot.height / 2)))      //If the current time is in perfect time range
+        //Rect r = pivot;
+        //r.x -= perfectTimeWindow / 2;
+        //r.width = perfectTimeWindow;
+        if (Mathf.Abs(curTime - pivotTime) < perfectTimeWindow)//(r.Contains(new Vector2(timeRec.x + timeRec.width, pivot.y + pivot.height / 2)))      //If the current time is in perfect time range
         {
             return ResponseType.perfect;
         }
@@ -123,7 +123,7 @@ public class TimerUpdate : MonoBehaviour {
         timeBarLength = GUIWidth * (curTime / ((float)maxTime)); 
 		UpdateTimer(adj);
 		if (!inverted && curTime >= maxTime || inverted && curTime <= 0) {
-			AttemptCompleteTimer();
+			AttemptSuccess();
 		}
     }
 
@@ -172,19 +172,22 @@ public class TimerUpdate : MonoBehaviour {
 		paused = false;
 	}
 	
-	public bool AttemptCompleteTimer() {
-		bool success;
-		if (Check() == TimerUpdate.ResponseType.perfect)
-        {
-            GUIManager.message = "Perfect Time! Good job";
-			success = true;
+	public bool AttemptSuccess(string successString = null, string failureString = null, bool endTimer = true, bool printSuccess = true, bool printFailure = true) {
+		bool success = Check() == TimerUpdate.ResponseType.perfect;
+		
+		if (success) {
+			if (printSuccess) {
+           		GUIManager.message = (successString == null ? "Perfect Time! Good job" : successString);
+			}
         }
-        else
-        {
-            GUIManager.message = "You Missed it! ";
-			success = false;
+        else {
+			if (printFailure) {
+           		GUIManager.message = (failureString == null ? "You Missed it!" : failureString);
+			}
         }
-		EndTimer();
+		if(endTimer) {
+			EndTimer();
+		}
 		return success;
 	}
 	

@@ -54,7 +54,7 @@ public class ToastScript : MonoBehaviour {
                 {
                     if (Input.GetKeyDown(KeyCode.F))
                     {
-                        if (toastTimer.AttemptCompleteTimer()) {
+                        if (toastTimer.AttemptSuccess()) {
 							MainGameEventScheduler.switchTask();
 						}
                     }

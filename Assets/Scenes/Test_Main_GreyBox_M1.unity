@@ -263,8 +263,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 35570519}
-  - 114: {fileID: 35570520}
   - 114: {fileID: 35570521}
+  - 114: {fileID: 35570520}
   m_Layer: 0
   m_Name: Objectives
   m_TagString: Untagged
@@ -286,9 +286,8 @@ Transform:
 --- !u!114 &35570520
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 2919733fb89a21b4280cfe5fb6826207,
-    type: 2}
-  m_PrefabInternal: {fileID: 493311689}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 35570518}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1905,7 +1904,8 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: 2919733fb89a21b4280cfe5fb6826207, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2919733fb89a21b4280cfe5fb6826207, type: 2}
   m_RootGameObject: {fileID: 469652315}
   m_IsPrefabParent: 0
