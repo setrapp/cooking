@@ -136,23 +136,25 @@ public class TimerUpdate : MonoBehaviour {
 	
 	public void EndTimer() {
 		isActive = false;
-		AttemptCompleteTimer();
 		foreach(MonoBehaviour timee in timees) {
 			timee.gameObject.SendMessage("TimerEnd", name);	
 		}
 	}
 	
 	public bool AttemptCompleteTimer() {
+		bool success;
 		if (Check() == TimerUpdate.ResponseType.perfect)
         {
             GUIManager.message = "Perfect Time! Good job";
-			return true;
+			success = true;
         }
         else
         {
             GUIManager.message = "You Missed it! ";
-			return false;
+			success = false;
         }
+		EndTimer();
+		return success;
 	}
 }
 
