@@ -4,7 +4,7 @@ using System.Collections;
 public class Flowerscript : MonoBehaviour {
 	
 	public bool touched;
-	//public bool grabbed;
+	public bool grabbed;
 	
 	private Vector3 screenPoint;
 	private Vector3 offset;
@@ -13,7 +13,7 @@ public class Flowerscript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+	GUIManager.message = "Perfect Time! Good job";
 	}
 	
 	// Update is called once per frame
@@ -26,12 +26,20 @@ public class Flowerscript : MonoBehaviour {
 			renderer.material.color = Color.blue;
 			
 		}
-		else if (touched == false)
-		{
-			renderer.material.color = Color.green;
-		}
+			else if(touched == false)
+			{
+				renderer.material.color = Color.green;
+			}
 		
-			
+
+		if(grabbed == true)
+		{
+			rigidbody.isKinematic = true;
+		}
+			else if(grabbed == false)
+			{
+				rigidbody.isKinematic = false;
+			}
 		
 	}
 	
@@ -53,9 +61,11 @@ public class Flowerscript : MonoBehaviour {
  
     offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
  	
+	grabbed = true;
+		
 	transform.Rotate(-90, 0, 0);
 		
-	print("grabbed");
+	//print("grabbed");
 	
 }
 	
@@ -70,6 +80,6 @@ transform.position = curPosition;
 	
 	void OnMouseUp()
 	{
-		//grabbed = false;
+		grabbed = false;
 	}
 }

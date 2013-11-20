@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 /*The bar goes right to left, if you want it in the other direction, just change curTime to 0 and increase the time while adjusting  */
 public class TimerUpdate : MonoBehaviour {
+	public string name = string.Empty;
 	public int maxTime = 100;
 	public float curTime = 100;
 	public float timeBarLength;
@@ -19,8 +20,10 @@ public class TimerUpdate : MonoBehaviour {
 	public float offsetY = 0f;
 	public int perfectTimeWindow = 0;
 	public float padding;       //Under Development for the GUI width to be independent of the timebar. 
-	public static List<TimerUpdate> timers = new List<TimerUpdate>();
-	public string Name = string.Empty;
+	//public static List<TimerUpdate> timers = new List<TimerUpdate>();
+	public List<MonoBehaviour> timees = null;
+	private GameState gameState = null;
+	private MovementScripts movement = null;
     public bool isActive = false;
     public TimerUpdate()
     {
@@ -29,7 +32,10 @@ public class TimerUpdate : MonoBehaviour {
     void Start () 
     {
 		GUIWidth = maxTime;
-		timers.Add(this);
+		//timers.Add(this);
+		gameState = (GameState)GameObject.FindObjectOfType(typeof(GameState));
+		movement = (MovementScripts)GameObject.FindObjectOfType(typeof(MovementScripts));
+		timees = new List<MonoBehaviour>();
     }
 
     public enum ResponseType
@@ -77,7 +83,6 @@ public class TimerUpdate : MonoBehaviour {
 	        GUI.DrawTexture(timeRec, foreground, ScaleMode.StretchToFill, false);
 	        GUI.DrawTexture(pivot, lion);
 			GUI.Box (boxRect, "");
-			Debug.Log (timers.First().Name);
 		}
     }
 
