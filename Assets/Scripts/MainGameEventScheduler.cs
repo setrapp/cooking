@@ -5,12 +5,14 @@ public class MainGameEventScheduler : MonoBehaviour {
     public static task currentTask = 0;
 	// Use this for initialization
 	void Start () {
-	    
+		ToastScript.isActive = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        ToastScript.isActive = true;
+		
+        
+		//EggScript.isActive = true;
 	}
 
     public static void switchTask()
@@ -23,8 +25,11 @@ public class MainGameEventScheduler : MonoBehaviour {
         {
             case 0: DisableAllEventScripts();
                 ToastScript.isActive = true;
+				EggScript.isActive = true;
+				GUIManager.message = "Heat stove and grab egg";
                 break;
             case 1: DisableAllEventScripts();
+				EggScript.isActive = true;
                 break;
         }
     }
@@ -32,6 +37,7 @@ public class MainGameEventScheduler : MonoBehaviour {
     private static void DisableAllEventScripts()
     {
         ToastScript.isActive = false;
+		EggScript.isActive = false;
     }
 }
 
