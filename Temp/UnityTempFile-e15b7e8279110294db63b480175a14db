@@ -1,0 +1,73 @@
+-debug
+-target:library
+-nowarn:0169
+-out:Temp/Assembly-CSharp.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
+-r:Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
+-define:UNITY_STANDALONE_WIN
+-define:ENABLE_MICROPHONE
+-define:ENABLE_TEXTUREID_MAP
+-define:ENABLE_AUDIO_FMOD
+-define:UNITY_STANDALONE
+-define:ENABLE_MONO
+-define:ENABLE_TERRAIN
+-define:ENABLE_SUBSTANCE
+-define:ENABLE_GENERICS
+-define:ENABLE_MOVIES
+-define:ENABLE_WWW
+-define:ENABLE_IMAGEEFFECTS
+-define:ENABLE_WEBCAM
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_NETWORK
+-define:ENABLE_PHYSICS
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_SHADOWS
+-define:ENABLE_AUDIO
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:UNITY_4_2_0
+-define:UNITY_4_2
+-define:ENABLE_PROFILER
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_WIN
+Assets/Scripts/Audio/Intro1.cs
+Assets/Scripts/Audio/Listener.cs
+Assets/Scripts/CharacterSwap.cs
+Assets/Scripts/ColliderCheck.cs
+Assets/Scripts/EggScript.cs
+"Assets/Scripts/Flower Mini Game/FlowerRushab.cs"
+"Assets/Scripts/Flower Mini Game/Flowerscript.cs"
+"Assets/Scripts/Flower Mini Game/VaseScript.cs"
+"Assets/Scripts/Flower Mini Game/vaseFlower.cs"
+"Assets/Scripts/Flower Mini Game/vaseFlower1.cs"
+"Assets/Scripts/Flower Mini Game/vaseFlower2.cs"
+Assets/Scripts/FoodCollection.cs
+Assets/Scripts/FoodCollection1.cs
+Assets/Scripts/FoodCollection2.cs
+Assets/Scripts/GUIManager.cs
+Assets/Scripts/InteractionScript.cs
+Assets/Scripts/MainGameEventScheduler.cs
+Assets/Scripts/ObjectInteraction.cs
+Assets/Scripts/OmeletteScript.cs
+Assets/Scripts/OverheatMeter.cs
+Assets/Scripts/RALPH_Animate_Script.cs
+Assets/Scripts/RelativityMatSwap.cs
+Assets/Scripts/TimerManager.cs
+Assets/Scripts/TimerUpdate.cs
+Assets/Scripts/ToastScript.cs
+Assets/Tools/OpenRelativity/Assets/GameState.cs
+Assets/Tools/OpenRelativity/Assets/InfoScript.cs
+Assets/Tools/OpenRelativity/Assets/MovementScripts.cs
+Assets/Tools/OpenRelativity/Assets/ObjectMeshDensity.cs
+Assets/Tools/OpenRelativity/Assets/PrefabScripts/Receiver2Script.cs
+Assets/Tools/OpenRelativity/Assets/PrefabScripts/ReceiverScript.cs
+Assets/Tools/OpenRelativity/Assets/PrefabScripts/SenderScript.cs
+Assets/Tools/OpenRelativity/Assets/RelativisticObject.cs
+Assets/Tools/OpenRelativity/Assets/RelativisticParent.cs
+Assets/Tools/OpenRelativity/Assets/shaders/ColorCorrectionEffect.cs
+Assets/Tools/OpenRelativity/Assets/shaders/ImageEffectBase.cs
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"
