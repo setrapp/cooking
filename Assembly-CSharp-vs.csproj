@@ -44,9 +44,19 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Audio\Intro1.cs" />
+     <Compile Include="Assets\Scripts\Audio\Listener.cs" />
+     <Compile Include="Assets\Scripts\CharacterSwap.cs" />
      <Compile Include="Assets\Scripts\ColliderCheck.cs" />
+     <Compile Include="Assets\Scripts\Decontamination.cs" />
+     <Compile Include="Assets\Scripts\Door1.cs" />
      <Compile Include="Assets\Scripts\EggScript.cs" />
-     <Compile Include="Assets\Scripts\Flowerscript.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\FlowerRushab.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\Flowerscript.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\VaseScript.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\vaseFlower.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\vaseFlower1.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\vaseFlower2.cs" />
      <Compile Include="Assets\Scripts\FoodCollection.cs" />
      <Compile Include="Assets\Scripts\FoodCollection1.cs" />
      <Compile Include="Assets\Scripts\FoodCollection2.cs" />
@@ -55,11 +65,18 @@
      <Compile Include="Assets\Scripts\MainGameEventScheduler.cs" />
      <Compile Include="Assets\Scripts\ObjectInteraction.cs" />
      <Compile Include="Assets\Scripts\OmeletteScript.cs" />
+     <Compile Include="Assets\Scripts\OverheatMeter.cs" />
      <Compile Include="Assets\Scripts\RALPH_Animate_Script.cs" />
      <Compile Include="Assets\Scripts\RelativityMatSwap.cs" />
      <Compile Include="Assets\Scripts\TimerManager.cs" />
      <Compile Include="Assets\Scripts\TimerUpdate.cs" />
      <Compile Include="Assets\Scripts\ToastScript.cs" />
+     <Compile Include="Assets\Scripts\doorsound.cs" />
+     <Compile Include="Assets\Scripts\moleTimer1.cs" />
+     <Compile Include="Assets\Scripts\moleTimer2.cs" />
+     <Compile Include="Assets\Scripts\moleTimer3.cs" />
+     <Compile Include="Assets\Scripts\moleTimer4.cs" />
+     <Compile Include="Assets\Scripts\rotaterWeight.cs" />
      <Compile Include="Assets\Tools\OpenRelativity\Assets\GameState.cs" />
      <Compile Include="Assets\Tools\OpenRelativity\Assets\InfoScript.cs" />
      <Compile Include="Assets\Tools\OpenRelativity\Assets\MovementScripts.cs" />
@@ -71,11 +88,13 @@
      <Compile Include="Assets\Tools\OpenRelativity\Assets\RelativisticParent.cs" />
      <Compile Include="Assets\Tools\OpenRelativity\Assets\shaders\ColorCorrectionEffect.cs" />
      <Compile Include="Assets\Tools\OpenRelativity\Assets\shaders\ImageEffectBase.cs" />
+     <Compile Include="Assets\TriggerSwapper.cs" />
      <None Include="Assets\Tools\OpenRelativity\README.txt" />
      <None Include="Assets\Tools\OpenRelativity\MITLicense.txt" />
      <None Include="Assets\Tools\OpenRelativity\Assets\shaders\relativity.shader" />
      <None Include="Assets\Tools\OpenRelativity\Assets\shaders\desaturateShader.shader" />
      <None Include="Assets\Tools\OpenRelativity\Assets\shaders\skybox.shader" />
+     <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>

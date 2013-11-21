@@ -6,14 +6,15 @@ TagManager:
   - FloatingBox
   - Playermesh
   - Globals
-  - 
-  - 
+  - Onions
+  - Mushroom
   - Fruits
   - Table
   - Bread
   - Toaster
   - Egg
   - Stove
+  - Mallet
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -47,3 +48,8 @@ TagManager:
   User Layer 29: 
   User Layer 30: 
   User Layer 31: 
+  m_SortingLayers:
+  - name: Default
+    userID: 0
+    uniqueID: 0
+    locked: 0

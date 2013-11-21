@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 using System.Linq;
 public class FoodCollection : MonoBehaviour {
@@ -40,3 +40,4 @@ public class FoodCollection : MonoBehaviour {
 		}
 	}
 }
+ */

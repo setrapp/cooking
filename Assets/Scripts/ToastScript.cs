@@ -55,7 +55,7 @@ public class ToastScript : MonoBehaviour {
                     if (Input.GetKeyDown(KeyCode.F))
                     {
                         if (toastTimer.AttemptSuccess()) {
-								MainGameEventScheduler.switchTask();
+                            MainGameEventScheduler.switchTask();
 								foreach(var obj in destroyObjects)
 									Destroy(obj);
 								destroyObjects.Clear();
@@ -86,7 +86,7 @@ public class ToastScript : MonoBehaviour {
                 }
                 else
                 {
-                    GUIManager.message = "Find breads and toast them";
+                    //GUIManager.message = "Find breads and toast them";
                 }
         }
 

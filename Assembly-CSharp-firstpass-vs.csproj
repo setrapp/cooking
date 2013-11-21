@@ -45,11 +45,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+     <Compile Include="Assets\Standard Assets\Water (Basic)\Sources\Scripts\WaterSimple.cs" />
      <None Include="Assets\Tools\OpenRelativity\README.txt" />
      <None Include="Assets\Tools\OpenRelativity\MITLicense.txt" />
      <None Include="Assets\Tools\OpenRelativity\Assets\shaders\relativity.shader" />
      <None Include="Assets\Tools\OpenRelativity\Assets\shaders\desaturateShader.shader" />
      <None Include="Assets\Tools\OpenRelativity\Assets\shaders\skybox.shader" />
+     <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
