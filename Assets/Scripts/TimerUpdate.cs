@@ -8,8 +8,12 @@ public class TimerUpdate : MonoBehaviour {
 	public float maxTime = 100;
 	public float startTime = 0;
 	private float curTime = 0;
+	public float CurTime {
+		get { return curTime; }
+	}
 	public float timeBarLength;
-	float GUIWidth; 
+	private float GUIWidth; 
+	private float GUIHeight;
 	public Texture2D background;  
 	public Texture2D foreground;
 	public Texture2D lion;
@@ -20,6 +24,7 @@ public class TimerUpdate : MonoBehaviour {
 	Rect textRec;
 	public float step = 0f;
 	public float backstep = 0f;
+	public float offsetX = -26f;
 	public float offsetY = 0f;
 	public int perfectTimeWindow = 0;
 	public float padding;       //Under Development for the GUI width to be independent of the timebar. 
@@ -29,6 +34,11 @@ public class TimerUpdate : MonoBehaviour {
 	private MovementScripts movement = null;
     private bool isActive = false;
 	private bool paused = false;
+	public bool hideOnPause = false;
+	public bool ignoreRelativity = false;
+	public bool killOnFailure = true;
+	public bool attemptAtMin = true;
+	public bool attemptAtMax = true;
 	public bool IsActive {
 		get { return isActive; }
 	}
@@ -38,11 +48,11 @@ public class TimerUpdate : MonoBehaviour {
     void Start () 
     {
 		GUIWidth = maxTime;
+		GUIHeight = 20;
 		GameObject.FindGameObjectWithTag("Globals").GetComponent<TimerManager>().AddTimer(this);
 		gameState = (GameState)GameObject.FindObjectOfType(typeof(GameState));
 		movement = (MovementScripts)GameObject.FindObjectOfType(typeof(MovementScripts));
 		timees = new List<MonoBehaviour>();
-
     }
 
 
@@ -95,7 +105,7 @@ public class TimerUpdate : MonoBehaviour {
         //Rect r = pivot;
         //r.x -= perfectTimeWindow / 2;
         //r.width = perfectTimeWindow;
-        if (Mathf.Abs(curTime - pivotTime) < perfectTimeWindow)//(r.Contains(new Vector2(timeRec.x + timeRec.width, pivot.y + pivot.height / 2)))      //If the current time is in perfect time range
+        if (curTime > pivotTime - pivot.width / 2 && curTime < pivotTime + pivot.width)//(r.Contains(new Vector2(timeRec.x + timeRec.width, pivot.y + pivot.height / 2)))      //If the current time is in perfect time range
         {
             return ResponseType.perfect;
         }
@@ -105,12 +115,23 @@ public class TimerUpdate : MonoBehaviour {
     
     void OnGUI()
     {
-		if(isActive)
+		// Wrap around the far side of the screen if offsets are negative
+		if (offsetX < 0)
 		{
-			textRec = new Rect(Screen.width - GUIWidth - 75, 10 + offsetY, 100, 20);
-	        timeRec = new Rect(Screen.width - GUIWidth - 25, 10 + offsetY, timeBarLength , 20);
-	        pivot = new Rect(Screen.width - GUIWidth + pivotTime - 25, 10 + offsetY, perfectTimeWindow, 20);
-	        backgroundRect = new Rect(Screen.width - GUIWidth - 25, 10 + offsetY, GUIWidth, 20);
+			offsetX = Screen.width + (offsetX + 1) - GUIWidth;	
+		}
+		if (offsetY < 0)
+		{
+			offsetY = Screen.height + (offsetY + 1) - GUIHeight;	
+		}
+		
+		
+		if(isActive && !(hideOnPause && paused))
+		{
+			textRec = new Rect(offsetX, offsetY - 30, 100, GUIHeight);
+	        timeRec = new Rect(offsetX, offsetY, timeBarLength , GUIHeight);
+	        pivot = new Rect(offsetX + pivotTime, offsetY, perfectTimeWindow, GUIHeight);
+	        backgroundRect = new Rect(offsetX, offsetY, GUIWidth, GUIHeight);
 			var boxRect = backgroundRect;
 			boxRect.x -= padding/2;
 			boxRect.width += padding;
@@ -131,7 +152,7 @@ public class TimerUpdate : MonoBehaviour {
 		if (paused) {
 			return;
 		}
-		if (movement.IsRelativistic) {
+		if (movement.IsRelativistic && !ignoreRelativity) {
 			adj *= 1 - (float)(gameState.PlayerVelocity / gameState.totalC);
 			adj /= 5.0f;
 		}
@@ -147,7 +168,7 @@ public class TimerUpdate : MonoBehaviour {
             maxTime = 1;
         timeBarLength = GUIWidth * (curTime / ((float)maxTime)); 
 		UpdateTimer(adj);
-		if (!inverted && curTime >= maxTime || inverted && curTime <= 0) {
+		if ((attemptAtMax && !inverted && curTime >= maxTime) || (attemptAtMin && inverted && curTime <= 0)) {
 			AttemptSuccess();
 		}
     }
@@ -170,6 +191,7 @@ public class TimerUpdate : MonoBehaviour {
 	public void StartTimer() {
 		isActive = true;
 		paused = false;
+		inverted = false;
 		curTime = startTime;
 	}
 	
@@ -187,8 +209,13 @@ public class TimerUpdate : MonoBehaviour {
 		}
 	}
 
-	public void InvertTimer() {
-		inverted = !inverted;
+	public void InvertTimer(bool forceInvert = false, bool forceTo = true) {
+		if (forceInvert) {
+			inverted = forceTo;
+		} 
+		else {
+			inverted = !inverted;
+		}
 	}
 	
 	public void PauseTimer() {
@@ -216,8 +243,10 @@ public class TimerUpdate : MonoBehaviour {
 			if (printFailure) {
            		GUIManager.message = (failureString == null ? "You Missed it! Restarting to the CheckPoint!" : failureString);
 			}
-			MainGameEventScheduler.LoadAgain();
-			GameObject.Find ("PlayerMesh").transform.position = MainGameEventScheduler.playerPositions.LastOrDefault();
+			if (killOnFailure) {
+				MainGameEventScheduler.LoadAgain();
+				GameObject.Find ("PlayerMesh").transform.position = MainGameEventScheduler.playerPositions.LastOrDefault();
+			}
         }
 		if(endTimer) {
 			EndTimer();

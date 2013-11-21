@@ -127,7 +127,10 @@ public class EggScript : MonoBehaviour {
 							MainGameEventScheduler.switchTask();
 							FinishTask();
 						}
-
+						else
+						{
+							LoadFromDestroy();
+						}
 					}
 				}
 				return;
