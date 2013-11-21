@@ -371,6 +371,8 @@ MonoBehaviour:
   omletteCook: {fileID: 0}
   timeManager: {fileID: 0}
   timerActive: 0
+  onionsPickedup: 0
+  mushroomsPickedUp: 0
 --- !u!1 &49633993
 GameObject:
   m_ObjectHideFlags: 0
@@ -9796,10 +9798,10 @@ MonoBehaviour:
   foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
   lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
   pivotTime: 30
-  step: 2
+  step: 10
   backstep: 0
   offsetY: 40
-  perfectTimeWindow: 240
+  perfectTimeWindow: 40
   padding: 10
   timees: []
 --- !u!114 &1159461838
@@ -9823,7 +9825,7 @@ MonoBehaviour:
   pivotTime: 20
   step: 2
   backstep: 0
-  offsetY: 180
+  offsetY: 220
   perfectTimeWindow: 20
   padding: 10
   timees: []
@@ -9846,7 +9848,7 @@ MonoBehaviour:
   foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
   lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
   pivotTime: 30
-  step: 2
+  step: 5
   backstep: 0
   offsetY: 120
   perfectTimeWindow: 20

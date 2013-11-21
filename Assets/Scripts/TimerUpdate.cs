@@ -94,7 +94,7 @@ public class TimerUpdate : MonoBehaviour {
         //Rect r = pivot;
         //r.x -= perfectTimeWindow / 2;
         //r.width = perfectTimeWindow;
-        if (Mathf.Abs(curTime - pivotTime) < perfectTimeWindow)//(r.Contains(new Vector2(timeRec.x + timeRec.width, pivot.y + pivot.height / 2)))      //If the current time is in perfect time range
+        if (curTime > pivotTime - pivot.width / 2 && curTime < pivotTime + pivot.width)//(r.Contains(new Vector2(timeRec.x + timeRec.width, pivot.y + pivot.height / 2)))      //If the current time is in perfect time range
         {
             return ResponseType.perfect;
         }
