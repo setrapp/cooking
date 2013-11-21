@@ -39,6 +39,7 @@ public class MovementScripts: MonoBehaviour
     GameState state;
     private bool bounce = false;
 	private bool jumpedOutRel = false;
+	public bool relativityAvailable = true;
 
 	public float speedOfLightIncrement = 1.0f;    
 	public Collider parentCollider = null;
@@ -382,6 +383,9 @@ public class MovementScripts: MonoBehaviour
     }
 
 	public void ToggleSpecialRelativity(bool forceToggle, bool forceTo) {
+		if (!relativityAvailable) {
+			return;
+		}
 		if (state.PlayerVelocityVector.sqrMagnitude > 0.5f) {
 			state.PlayerVelocityVector = state.PlayerVelocityVector * 0.25f;
 		}
