@@ -5,8 +5,6 @@ Project("{739B1F3A-9BD2-A0F3-5F27-52D367AF3107}") = "cooking", "Assembly-CSharp-
 EndProject
 Project("{739B1F3A-9BD2-A0F3-5F27-52D367AF3107}") = "cooking", "Assembly-CSharp.csproj", "{6B2149C7-DEB8-BF7C-2413-B512CBDF3014}"
 EndProject
-Project("{739B1F3A-9BD2-A0F3-5F27-52D367AF3107}") = "cooking", "Assembly-UnityScript-firstpass.unityproj", "{854673B7-359F-4CA6-7FBD-9918108D4144}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,15 +19,11 @@ Global
 		{6B2149C7-DEB8-BF7C-2413-B512CBDF3014}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B2149C7-DEB8-BF7C-2413-B512CBDF3014}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B2149C7-DEB8-BF7C-2413-B512CBDF3014}.Release|Any CPU.Build.0 = Release|Any CPU
-		{854673B7-359F-4CA6-7FBD-9918108D4144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{854673B7-359F-4CA6-7FBD-9918108D4144}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{854673B7-359F-4CA6-7FBD-9918108D4144}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{854673B7-359F-4CA6-7FBD-9918108D4144}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																		GlobalSection(MonoDevelopProperties) = preSolution
+																			GlobalSection(MonoDevelopProperties) = preSolution
 								GlobalSection(MonoDevelopProperties) = preSolution
 									GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
