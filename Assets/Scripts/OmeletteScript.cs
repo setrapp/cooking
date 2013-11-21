@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class OmeletteScript : MonoBehaviour {
     public static bool isActive;
@@ -17,6 +18,8 @@ public class OmeletteScript : MonoBehaviour {
     public bool timerActive;
     private TimerUpdate currentTimer = null;
     GameObject player;
+    public bool onionsPickedup = false;
+    public bool mushroomsPickedUp = false;
     // Use this for initialization
 	void Start () {
         timeManager = GameObject.Find("Globals").GetComponent<TimerManager>();
@@ -39,124 +42,177 @@ public class OmeletteScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isActive)
+		if (oilHeat == null)
+		{
+			oilHeat = timeManager.FindTimer("Oil Heat");
+			onionCook = timeManager.FindTimer("Cook Onions");
+			mushroomsCook = timeManager.FindTimer("Cook Mushrooms");
+			omletteCook = timeManager.FindTimer("Make Omlette");
+			currentTimer = oilHeat;
+		}
+		if (isActive)
         {
-			if(!timerActive)
-			{
-            if (!oilHeated)
+            if (!timerActive)
             {
-                if (Input.GetKey(KeyCode.E))
-                {
-					timerActive = true;
-                    currentTimer = oilHeat;
-					oilHeat.StartTimer();
-                }
-            }
-            else
-            {
-                if (!onionsCollected)
+                if (!oilHeated)
                 {
                     if (Input.GetKey(KeyCode.E))
                     {
-                        if (Vector3.Distance(player.transform.position, GameObject.Find("Onion Basket").transform.position) < 5)
-                        {
-                            foreach (var onion in GameObject.FindGameObjectsWithTag("Onions"))
-                            {
-                                onion.SetActive(false);
-                                onion.renderer.enabled = false;
-                                destroyObjects.Add(onion);
-                            }
-                            onionCook.StartTimer();
-                            timerActive = true;
-                            currentTimer = onionCook;
-                        }
+                        timerActive = true;
+                        currentTimer = oilHeat;
+                        oilHeat.StartTimer();
                     }
                 }
                 else
                 {
-                    if (!mushroomsCollected)
+                    if (!onionsCollected)
                     {
-                        if (Input.GetKey(KeyCode.E))
-                        {
-
-                            if (Input.GetKey(KeyCode.E))
+						if (Input.GetKeyDown(KeyCode.E))
+						{
+                            if (Vector3.Distance(player.transform.position, GameObject.Find("Onion Basket").transform.position) < 5)
                             {
-                                if (Vector3.Distance(player.transform.position, GameObject.Find("Mushroom").transform.position) < 5)
+                                foreach (var onion in GameObject.FindGameObjectsWithTag("Onions"))
                                 {
-                                    foreach (var onion in GameObject.FindGameObjectsWithTag("Mushroom"))
-                                    {
-                                        onion.SetActive(false);
-                                        onion.renderer.enabled = false;
-                                        destroyObjects.Add(onion);
-                                    }
-                                    mushroomsCook.StartTimer();
-                                    timerActive = true;
-                                    currentTimer = mushroomsCook;
+                                    onion.SetActive(false);
+                                    onion.renderer.enabled = false;
+                                    destroyObjects.Add(onion);
                                 }
+                                onionsPickedup = true;
+								timerActive = true;
+                                currentTimer = onionCook;
                             }
                         }
                     }
                     else
                     {
-                        if (!eggsCollected)
+                        //if (!mushroomsCollected)
+                        //{
+                        //    if (Input.GetKeyDown(KeyCode.E))
+                        //    {
+                        //        if (Vector3.Distance(player.transform.position, GameObject.Find("Mushroom Basket").transform.position) < 5)
+                        //        {
+                        //            foreach (var onion in GameObject.FindGameObjectsWithTag("Mushroom"))
+                        //            {
+                        //                //onion.SetActive(false);
+                        //                onion.renderer.enabled = false;
+                        //                destroyObjects.Add(onion);
+                        //            }
+                        //            mushroomsPickedUp = true;
+                        //            timerActive = true;
+                        //            currentTimer = mushroomsCook;
+                        //        }
+                        //    }
+                        //}
+                        //else
                         {
-                            omletteCook.StartTimer();
-                            timerActive = true;
-                        }
-                        else
-                        {
-                           
+                            if (!eggsCollected)
+                            {
+                                omletteCook.StartTimer();
+                                timerActive = true;
+                            }
+                            else
+                            {
+
+                            }
                         }
                     }
                 }
             }
-			}
-            if(timerActive)
+            else
             {
-                if (Input.GetKey(KeyCode.Q))
+                if(onionsPickedup && !onionsCollected)
                 {
-                    if (currentTimer.name.Equals(oilHeat.name))
+                    if (Vector3.Distance(player.transform.position, GameObject.Find("Frying pan").transform.position) < 5)
+                        if (Input.GetKey(KeyCode.E))
+                        {
+                            onionCook.StartTimer();
+                            timerActive = true;
+                            return;
+                        }
+                }
+                if(mushroomsPickedUp && !mushroomsCollected)
+                {
+                    if (Vector3.Distance(player.transform.position, GameObject.Find("Frying pan").transform.position) < 5)
+                        if (Input.GetKey(KeyCode.E))
+                        {
+                            mushroomsCook.StartTimer();
+                            timerActive = true;
+                            return;
+                        }
+                }
+                
+                if (timerActive)
+                {
+                    if (Input.GetKey(KeyCode.Q))
                     {
-                        if(Vector3.Distance(player.transform.position, GameObject.Find("Frying pan").transform.position) < 5)
-                            if(currentTimer.AttemptSuccess("Just in Time, now find onions from frdige and cook them.", "Oops you over heated oil", true, true, true))
+                        if (currentTimer.name.Equals(oilHeat.name))
+                        {
+                            if (Vector3.Distance(player.transform.position, GameObject.Find("Frying pan").transform.position) < 5)
+                                if (currentTimer.AttemptSuccess("Just in Time, now find onions from frdige and cook them.", "Oops you over heated oil", false, true, true))
+                                {
+                                    oilHeated = true;
+                                }
+                                else
+                                {
+                                    LoadFromDestroy();
+                                    oilHeat.resetTime();
+                                }
+                        }
+
+                        if (currentTimer.name.Equals(onionCook.name))
+                        {
+                            if (currentTimer.AttemptSuccess("You have heated onions, quick get mushrooms from fridge and heat them too!", "The onions get dark and over cooked, restarting from last checkpoint", true, true, true))
                             {
-                                oilHeated = true;
+                                onionsCollected = true;
                             }
-                    }
-
-                    if(currentTimer.name.Equals(onionCook.name))
-                    {
-                        if(currentTimer.AttemptSuccess("You have heated onions, quick get mushrooms from fridge and heat them too!", "The onions get dark and over cooked, restarting from last checkpoint", true, true, true))
-                        {
-                            onionsCollected = true;
+                            else
+                            {
+                                LoadFromDestroy();
+                                oilHeat.resetTime();
+                            }
                         }
-                    }
 
-                    if(currentTimer.name.Equals(mushroomsCook.name))
-                    {
-                        if(currentTimer.AttemptSuccess("Mushrooms are cooked, time to grab eggs and pour the yolk in the frying pan", "Mushrooms are burnt and ruined, try again!", true, true, true))
+                        if (currentTimer.name.Equals(mushroomsCook.name))
                         {
-                            mushroomsCollected = true;
+                            if (currentTimer.AttemptSuccess("Mushrooms are cooked, time to grab eggs and pour the yolk in the frying pan", "Mushrooms are burnt and ruined, try again!", true, true, true))
+                            {
+                                mushroomsCollected = true;
+                            }
+                            else
+                            {
+                                LoadFromDestroy();
+                                oilHeat.resetTime();
+                                mushroomsCook.resetTime();
+                            }
                         }
-                    }
 
-                    if(currentTimer.name.Equals(omletteCook.name))
-                    {
-                        if(currentTimer.AttemptSuccess("You just learnt how to make a omlette succesfully, but dont flatter yourself, its just an omlette", "Failed in the last step, retry making the omlette", true, true, true))
+                        if (currentTimer.name.Equals(omletteCook.name))
                         {
-                            //FINISH
+                            if (currentTimer.AttemptSuccess("You just learnt how to make a omlette succesfully, but dont flatter yourself, its just an omlette", "Failed in the last step, retry making the omlette", true, true, true))
+                            {
+                                //FINISH
+                            }
+                            else
+                            {
+                                LoadFromDestroy();
+                                omletteCook.resetTime();
+                            }
                         }
-                    }
 
-                    currentTimer = null;
-                    timerActive = false;
+                        currentTimer = null;
+                        timerActive = false;
+                    }
                 }
             }
         }
 	}
 
-    public static void LoadFromDestroy()
+    public void LoadFromDestroy()
     {
+        onionsPickedup = false;
+        mushroomsPickedUp = false;
+        eggsCollected = false;
+        oilHeated = false;
         foreach(var obj in destroyObjects)
         {
             obj.SetActive(true);
@@ -164,3 +220,4 @@ public class OmeletteScript : MonoBehaviour {
         }
     }
 }
+

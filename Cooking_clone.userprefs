@@ -1,0 +1,23 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\OmeletteScript.cs">
+    <Files>
+      <File FileName="c:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\TimerManager.cs" Line="31" Column="1" />
+      <File FileName="c:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\TimerUpdate.cs" Line="216" Column="5" />
+      <File FileName="Assets\Scripts\EggScript.cs" Line="37" Column="32" />
+      <File FileName="Assets\Scripts\MainGameEventScheduler.cs" Line="28" Column="34" />
+      <File FileName="Assets\Scripts\ToastScript.cs" Line="52" Column="14" />
+      <File FileName="Assets\Scripts\OmeletteScript.cs" Line="88" Column="43" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint enabled="false" file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\OmeletteScript.cs" line="127" />
+      <Breakpoint enabled="false" file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\OmeletteScript.cs" line="71" />
+      <Breakpoint enabled="false" file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\OmeletteScript.cs" line="81" />
+      <Breakpoint enabled="false" file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\OmeletteScript.cs" line="80" />
+      <Breakpoint enabled="false" file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\OmeletteScript.cs" line="45" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

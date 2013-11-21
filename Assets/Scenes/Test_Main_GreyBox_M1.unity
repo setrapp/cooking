@@ -363,6 +363,8 @@ MonoBehaviour:
   omletteCook: {fileID: 0}
   timeManager: {fileID: 0}
   timerActive: 0
+  onionsPickedup: 0
+  mushroomsPickedUp: 0
 --- !u!1 &49633993
 GameObject:
   m_ObjectHideFlags: 0
@@ -9415,7 +9417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Toaster
-  maxTime: 20
+  maxTime: 100
   startTime: 0
   timeBarLength: 0
   background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
@@ -9447,7 +9449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Boil
-  maxTime: 20
+  maxTime: 100
   startTime: 0
   timeBarLength: 0
   background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
@@ -9479,7 +9481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Egg
-  maxTime: 20
+  maxTime: 100
   startTime: 0
   timeBarLength: 0
   background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
@@ -9488,8 +9490,8 @@ MonoBehaviour:
   pivotTime: 5
   step: 1
   backstep: 0
-  offsetX: -1
-  offsetY: -26
+  offsetX: -26
+  offsetY: 70
   perfectTimeWindow: 10
   padding: 10
   timees: []
@@ -9511,7 +9513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Heat
-  maxTime: 20
+  maxTime: 100
   startTime: 0
   timeBarLength: 0
   background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
@@ -9542,18 +9544,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Oil Heat
-  maxTime: 300
+  maxTime: 100
   startTime: 0
   timeBarLength: 0
   background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
   foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
   lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
   pivotTime: 30
-  step: 2
+  step: 10
   backstep: 0
   offsetX: -26
   offsetY: 40
-  perfectTimeWindow: 240
+  perfectTimeWindow: 40
   padding: 10
   timees: []
   hideOnPause: 0
@@ -9573,7 +9575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Cook Mushrooms
-  maxTime: 60
+  maxTime: 100
   startTime: 0
   timeBarLength: 0
   background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
@@ -9583,7 +9585,7 @@ MonoBehaviour:
   step: 2
   backstep: 0
   offsetX: -26
-  offsetY: 180
+  offsetY: 220
   perfectTimeWindow: 20
   padding: 10
   timees: []
@@ -9604,14 +9606,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Cook Onions
-  maxTime: 60
+  maxTime: 100
   startTime: 0
   timeBarLength: 0
   background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
   foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
   lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
   pivotTime: 30
-  step: 2
+  step: 5
   backstep: 0
   offsetX: -26
   offsetY: 120
@@ -9676,7 +9678,7 @@ MonoBehaviour:
   step: 20
   backstep: 10
   offsetX: 100
-  offsetY: 25
+  offsetY: 100
   perfectTimeWindow: 0
   padding: 10
   timees: []
@@ -12942,7 +12944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe53cba7abc30f45a8e4f209b6731fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ACCEL_RATE: 5
+  ACCEL_RATE: 20
   rotSpeed: 10
   camTransform: {fileID: 1078473435}
   speedOfLightTarget: 0
