@@ -207,7 +207,7 @@ public class TimerUpdate : MonoBehaviour {
 		if (success) {
 			if (printSuccess) {
            		GUIManager.message = (successString == null ? "Perfect Time! Good job" : successString);
-				MainGameEventScheduler.switchTask();
+				
 			}
         }
         else {

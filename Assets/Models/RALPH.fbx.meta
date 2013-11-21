@@ -109,13 +109,16 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    optimizeGameObjects: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
+    extraExposedTransformPaths: []
     clipAnimations:
-    - name: default_T
+    - serializedVersion: 16
+      name: default_T
       takeName: Take 001
       firstFrame: 0
       lastFrame: .100000009
@@ -124,6 +127,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -135,8 +139,12 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
+      events: []
       transformMask: []
-    - name: default_Stand
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: default_Stand
       takeName: Take 001
       firstFrame: 1
       lastFrame: 1.10000002
@@ -145,6 +153,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -156,8 +165,12 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
+      events: []
       transformMask: []
-    - name: Walk_fwd
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk_fwd
       takeName: Take 001
       firstFrame: 2
       lastFrame: 30
@@ -166,6 +179,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -177,8 +191,12 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
+      events: []
       transformMask: []
-    - name: holding_item
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: holding_item
       takeName: Take 001
       firstFrame: 35
       lastFrame: 35.0999985
@@ -187,6 +205,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -198,8 +217,12 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
+      events: []
       transformMask: []
-    - name: backup_T
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: backup_T
       takeName: Take 001
       firstFrame: 47.9000015
       lastFrame: 48
@@ -208,6 +231,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -219,7 +243,10 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
+      events: []
       transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -246,7 +273,6 @@ ModelImporter:
   humanDescription:
     human: []
     skeleton: []
-    handles: []
     armTwist: .5
     foreArmTwist: .5
     upperLegTwist: .5
@@ -256,6 +282,5 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  additionalBone: 1
   animationType: 1
   userData: 
