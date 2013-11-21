@@ -381,7 +381,7 @@ public class MovementScripts: MonoBehaviour
 
 	public void ToggleSpecialRelativity(bool forceToggle, bool forceTo) {
 		if (state.PlayerVelocityVector.sqrMagnitude > 0.5f) {
-			state.PlayerVelocityVector = state.PlayerVelocityVector *0.5f;
+			state.PlayerVelocityVector = state.PlayerVelocityVector * 0.25f;
 		}
 		
 		if (forceToggle) {
@@ -392,6 +392,7 @@ public class MovementScripts: MonoBehaviour
 		}
 		state.SpeedOfLight = (isRelativistic ? relativisticC : nonrelativisticC);
 		speedOfLightTarget = (float)state.SpeedOfLight;
+		//gameObject.SendMessage("SetCharacterType", isRelativistic);
 	}
 
 	public void HandleCollision()
