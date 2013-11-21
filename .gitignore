@@ -1,6 +1,5 @@
 Temp/
 obj/
 *.csproj
-*.unityproj
 *.suo
 *.pidb
