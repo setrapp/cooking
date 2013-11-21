@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\MainGameEventScheduler.cs" />
      <Compile Include="Assets\Scripts\ObjectInteraction.cs" />
      <Compile Include="Assets\Scripts\OmeletteScript.cs" />
+     <Compile Include="Assets\Scripts\RALPH_Animate_Script.cs" />
      <Compile Include="Assets\Scripts\RelativityMatSwap.cs" />
      <Compile Include="Assets\Scripts\TimerManager.cs" />
      <Compile Include="Assets\Scripts\TimerUpdate.cs" />
