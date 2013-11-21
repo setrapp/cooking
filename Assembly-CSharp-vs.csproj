@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_2_0;UNITY_4_2;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_2_2;UNITY_4_2;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -37,17 +37,26 @@
     <Reference Include="System.XML" />
 	<Reference Include="System.Core" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Audio\Intro1.cs" />
+     <Compile Include="Assets\Scripts\Audio\Listener.cs" />
      <Compile Include="Assets\Scripts\CharacterSwap.cs" />
      <Compile Include="Assets\Scripts\ColliderCheck.cs" />
+     <Compile Include="Assets\Scripts\Decontamination.cs" />
+     <Compile Include="Assets\Scripts\Door1.cs" />
      <Compile Include="Assets\Scripts\EggScript.cs" />
-     <Compile Include="Assets\Scripts\Flowerscript.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\FlowerRushab.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\Flowerscript.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\VaseScript.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\vaseFlower.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\vaseFlower1.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\vaseFlower2.cs" />
      <Compile Include="Assets\Scripts\FoodCollection.cs" />
      <Compile Include="Assets\Scripts\FoodCollection1.cs" />
      <Compile Include="Assets\Scripts\FoodCollection2.cs" />
@@ -61,6 +70,7 @@
      <Compile Include="Assets\Scripts\TimerManager.cs" />
      <Compile Include="Assets\Scripts\TimerUpdate.cs" />
      <Compile Include="Assets\Scripts\ToastScript.cs" />
+     <Compile Include="Assets\Scripts\doorsound.cs" />
      <Compile Include="Assets\Tools\OpenRelativity\Assets\GameState.cs" />
      <Compile Include="Assets\Tools\OpenRelativity\Assets\InfoScript.cs" />
      <Compile Include="Assets\Tools\OpenRelativity\Assets\MovementScripts.cs" />
@@ -77,7 +87,7 @@
      <None Include="Assets\Tools\OpenRelativity\Assets\shaders\relativity.shader" />
      <None Include="Assets\Tools\OpenRelativity\Assets\shaders\desaturateShader.shader" />
      <None Include="Assets\Tools\OpenRelativity\Assets\shaders\skybox.shader" />
- <Reference Include="Assembly-UnityScript-firstpass">
+ <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
   </ItemGroup>
