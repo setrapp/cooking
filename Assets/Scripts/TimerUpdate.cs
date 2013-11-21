@@ -191,6 +191,7 @@ public class TimerUpdate : MonoBehaviour {
 	public void StartTimer() {
 		isActive = true;
 		paused = false;
+		inverted = false;
 		curTime = startTime;
 	}
 	

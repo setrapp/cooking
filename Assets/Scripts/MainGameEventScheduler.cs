@@ -28,6 +28,10 @@ public class MainGameEventScheduler : MonoBehaviour {
                 EggScript.isActive = true;
                 break;
         }
+		
+		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		player.GetComponent<OverheatMeter>().reset();
+		player.GetComponent<MovementScripts>().ToggleSpecialRelativity(true, false);
     }
     public static void switchTask()
     {

@@ -9,9 +9,18 @@ public class OverheatMeter : MonoBehaviour
 	private bool isVisible = false;
 	private bool isHeating = false;
 	
+	
+	
 	void Start () {
 		timerManager = GameObject.FindGameObjectWithTag("Globals").GetComponent<TimerManager>();
+		
+	}
+
+	public void reset () {
+		overheatTimer.StartTimer();
+		overheatTimer.PauseTimer();
 		isVisible = false;
+		isHeating = false;
 	}
 	
 	void Update ()
