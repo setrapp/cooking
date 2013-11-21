@@ -303,7 +303,7 @@ public class MovementScripts: MonoBehaviour
 				//Current position of the mouse
 				//Difference between last frame's mouse position
 				//X axis position change
-				/*float positionChangeX = -(float)Input.GetAxisRaw("Mouse X");
+				float positionChangeX = -(float)Input.GetAxisRaw("Mouse X");
 
 				//Y axis position change
 				float positionChangeY = (float)inverted * Input.GetAxisRaw("Mouse Y");
@@ -329,7 +329,7 @@ public class MovementScripts: MonoBehaviour
 				else{
 				//keep track of our frames
 				frames++;                
-				}*/
+				}
 
 				//If we have a speed of light less than max speed, fix it.
                 //This should never happen
@@ -380,9 +380,9 @@ public class MovementScripts: MonoBehaviour
     }
 
 	public void ToggleSpecialRelativity(bool forceToggle, bool forceTo) {
-		/*if (state.PlayerVelocityVector.sqrMagnitude > 0.5f) {
-			state.PlayerVelocityVector = state.PlayerVelocityVector *0.5f;
-		}*/
+		if (state.PlayerVelocityVector.sqrMagnitude > 0.5f) {
+			state.PlayerVelocityVector = state.PlayerVelocityVector * 0.25f;
+		}
 		
 		if (forceToggle) {
 			isRelativistic = forceTo;
@@ -392,7 +392,7 @@ public class MovementScripts: MonoBehaviour
 		}
 		state.SpeedOfLight = (isRelativistic ? relativisticC : nonrelativisticC);
 		speedOfLightTarget = (float)state.SpeedOfLight;
-		gameObject.SendMessage("SetCharacterType", isRelativistic);
+		//gameObject.SendMessage("SetCharacterType", isRelativistic);
 	}
 
 	public void HandleCollision()
