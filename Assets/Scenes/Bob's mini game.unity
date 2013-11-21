@@ -218,7 +218,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: a57e1f3dfa714485384be73d3d973ca4, type: 2}
   m_PrefabInternal: {fileID: 1944067917}
   m_GameObject: {fileID: 41632273}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: .253474891, y: 1.22897935, z: -1.65448868}
   m_LocalScale: {x: .0530990809, y: .335851669, z: .0530990846}
   m_Children: []
@@ -359,7 +359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe53cba7abc30f45a8e4f209b6731fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ACCEL_RATE: 10
+  normalAcceleration: 20
+  crazyAcceleration: 5
   rotSpeed: 10
   camTransform: {fileID: 283059268}
   speedOfLightTarget: 0
@@ -369,6 +370,7 @@ MonoBehaviour:
   mouseSensitivity: 100
   invertKeyDown: 0
   viwMax: 19.9899998
+  relativityAvailable: 1
   speedOfLightIncrement: .0500000007
   parentCollider: {fileID: 283059269}
   nonrelativisticC: 1e+08
@@ -753,7 +755,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 4e70f2ec91814a74e8db27e5285ef569, type: 2}
+  - {fileID: 2100000, guid: 7eaecb5cfab0748a7b87d318a5888f63, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1096,7 +1098,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 892649601}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0, y: .707106888, z: 0, w: .707106769}
   m_LocalPosition: {x: -.180913925, y: .0657868385, z: .385247827}
   m_LocalScale: {x: .0749999657, y: .302343667, z: .44250074}
   m_Children: []
@@ -1292,7 +1294,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: a57e1f3dfa714485384be73d3d973ca4, type: 2}
   m_PrefabInternal: {fileID: 1787816765}
   m_GameObject: {fileID: 1409048029}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: .769140959, y: 1.22897935, z: -1.65448868}
   m_LocalScale: {x: .0530990809, y: .335851669, z: .0530990809}
   m_Children: []
@@ -1515,7 +1517,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: a57e1f3dfa714485384be73d3d973ca4, type: 2}
   m_PrefabInternal: {fileID: 1472554715}
   m_GameObject: {fileID: 1525644035}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: .515051126, y: 1.22897935, z: -1.65448868}
   m_LocalScale: {x: .0530990809, y: .335851669, z: .0530990884}
   m_Children: []
@@ -1973,7 +1975,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1960444139}
-  m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381676, w: .875426054}
+  m_LocalRotation: {x: .408217967, y: -.234569743, z: .109381683, w: .875426114}
   m_LocalPosition: {x: 0, y: 9.36781693, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2159,6 +2161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1992553079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2272,7 +2275,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 0f34e28c8056cc049924042cdf2d546d, type: 2}
+  - {fileID: 2100000, guid: 89fd6757bb689449dba6cd874fe0f067, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -2388,7 +2391,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2143234021}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0, y: .707106888, z: 0, w: .707106769}
   m_LocalPosition: {x: -.180913925, y: .0657868385, z: .756548882}
   m_LocalScale: {x: .0749999657, y: .302343667, z: .44250071}
   m_Children: []

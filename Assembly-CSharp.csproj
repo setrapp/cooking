@@ -49,8 +49,10 @@
      <Compile Include="Assets\Scripts\CharacterSwap.cs" />
      <Compile Include="Assets\Scripts\ColliderCheck.cs" />
      <Compile Include="Assets\Scripts\Decontamination.cs" />
+     <Compile Include="Assets\Scripts\DontDieOnLoad.cs" />
      <Compile Include="Assets\Scripts\Door1.cs" />
      <Compile Include="Assets\Scripts\EggScript.cs" />
+     <Compile Include="Assets\Scripts\EnterMinigame.cs" />
      <Compile Include="Assets\Scripts\Flower Mini Game\FlowerRushab.cs" />
      <Compile Include="Assets\Scripts\Flower Mini Game\Flowerscript.cs" />
      <Compile Include="Assets\Scripts\Flower Mini Game\VaseScript.cs" />
@@ -100,6 +102,8 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{38C542B4-285A-C230-1BCC-B1086F1B48B3}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{854673B7-359F-4CA6-7FBD-9918108D4144}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
