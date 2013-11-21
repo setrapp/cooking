@@ -19,6 +19,9 @@ public class OverheatMeter : MonoBehaviour
 		if (overheatTimer == null) {
 			overheatTimer = timerManager.FindTimer("RALPH Overheat");
 			overheatTimer.AddTimee(this);
+			overheatTimer.hideOnPause = true;
+			overheatTimer.ignoreRelativity = true;
+			overheatTimer.attemptAtMin = false;
 			overheatTimer.StartTimer();
 			overheatTimer.PauseTimer();
 		}

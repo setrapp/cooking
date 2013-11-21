@@ -380,9 +380,9 @@ public class MovementScripts: MonoBehaviour
     }
 
 	public void ToggleSpecialRelativity(bool forceToggle, bool forceTo) {
-		/*if (state.PlayerVelocityVector.sqrMagnitude > 0.5f) {
+		if (state.PlayerVelocityVector.sqrMagnitude > 0.5f) {
 			state.PlayerVelocityVector = state.PlayerVelocityVector *0.5f;
-		}*/
+		}
 		
 		if (forceToggle) {
 			isRelativistic = forceTo;

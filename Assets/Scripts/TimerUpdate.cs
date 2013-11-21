@@ -35,6 +35,10 @@ public class TimerUpdate : MonoBehaviour {
     private bool isActive = false;
 	private bool paused = false;
 	public bool hideOnPause = false;
+	public bool ignoreRelativity = false;
+	public bool killOnFailure = true;
+	public bool attemptAtMin = true;
+	public bool attemptAtMax = true;
 	public bool IsActive {
 		get { return isActive; }
 	}
@@ -124,10 +128,10 @@ public class TimerUpdate : MonoBehaviour {
 		
 		if(isActive && !(hideOnPause && paused))
 		{
-			textRec = new Rect(offsetX - 50, offsetY + 10, 100, GUIHeight);
-	        timeRec = new Rect(offsetX, offsetY + 10, timeBarLength , GUIHeight);
-	        pivot = new Rect(offsetX + pivotTime, offsetY + 10, perfectTimeWindow, GUIHeight);
-	        backgroundRect = new Rect(offsetX, offsetY + 10, GUIWidth, GUIHeight);
+			textRec = new Rect(offsetX, offsetY - 30, 100, GUIHeight);
+	        timeRec = new Rect(offsetX, offsetY, timeBarLength , GUIHeight);
+	        pivot = new Rect(offsetX + pivotTime, offsetY, perfectTimeWindow, GUIHeight);
+	        backgroundRect = new Rect(offsetX, offsetY, GUIWidth, GUIHeight);
 			var boxRect = backgroundRect;
 			boxRect.x -= padding/2;
 			boxRect.width += padding;
@@ -148,7 +152,7 @@ public class TimerUpdate : MonoBehaviour {
 		if (paused) {
 			return;
 		}
-		if (movement.IsRelativistic) {
+		if (movement.IsRelativistic && !ignoreRelativity) {
 			adj *= 1 - (float)(gameState.PlayerVelocity / gameState.totalC);
 			adj /= 5.0f;
 		}
@@ -164,7 +168,7 @@ public class TimerUpdate : MonoBehaviour {
             maxTime = 1;
         timeBarLength = GUIWidth * (curTime / ((float)maxTime)); 
 		UpdateTimer(adj);
-		if (!inverted && curTime >= maxTime || inverted && curTime <= 0) {
+		if ((attemptAtMax && !inverted && curTime >= maxTime) || (attemptAtMin && inverted && curTime <= 0)) {
 			AttemptSuccess();
 		}
     }
@@ -238,8 +242,10 @@ public class TimerUpdate : MonoBehaviour {
 			if (printFailure) {
            		GUIManager.message = (failureString == null ? "You Missed it! Restarting to the CheckPoint!" : failureString);
 			}
-			MainGameEventScheduler.LoadAgain();
-			GameObject.Find ("PlayerMesh").transform.position = MainGameEventScheduler.playerPositions.LastOrDefault();
+			if (killOnFailure) {
+				MainGameEventScheduler.LoadAgain();
+				GameObject.Find ("PlayerMesh").transform.position = MainGameEventScheduler.playerPositions.LastOrDefault();
+			}
         }
 		if(endTimer) {
 			EndTimer();
