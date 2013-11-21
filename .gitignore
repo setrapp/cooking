@@ -1,7 +1,17 @@
+<<<<<<< HEAD
 Temp/
 obj/
+=======
+>>>>>>> fe87fef8e11c8c2f1844b5d3e37f0ea828ba8a63
 *.sln
+*.userprefs
 *.csproj
-*.unityproj
-*.suo
 *.pidb
+*.unityproj
+.DS_Store
+/Library/FailedAssetImports.txt
+/Library/cache/
+/Library/previews/
+/Library/ScriptAssemblies
+/obj
+/Temp

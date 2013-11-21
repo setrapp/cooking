@@ -5,8 +5,9 @@ using System.Collections.Generic;
 /*The bar goes right to left, if you want it in the other direction, just change curTime to 0 and increase the time while adjusting  */
 public class TimerUpdate : MonoBehaviour {
 	public string name = string.Empty;
-	public int maxTime = 100;
-	public float curTime = 100;
+	public float maxTime = 100;
+	public float startTime = 0;
+	private float curTime = 0;
 	public float timeBarLength;
 	float GUIWidth; 
 	public Texture2D background;  
@@ -169,6 +170,7 @@ public class TimerUpdate : MonoBehaviour {
 	public void StartTimer() {
 		isActive = true;
 		paused = false;
+		curTime = startTime;
 	}
 	
 	private void UpdateTimer(float dt) {
