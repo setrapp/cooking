@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 public class EggScript : MonoBehaviour {
-	public bool eggAcquired = false;
+	public static bool eggAcquired = false;
 	private List<GameObject> eggs = new List<GameObject>();
 	public TimerUpdate heatTimer = null;
 	public TimerUpdate eggTimer = null;
@@ -11,16 +11,18 @@ public class EggScript : MonoBehaviour {
 	TimerManager timerManager = null;
 	GameObject player = null;
 	GameObject stove = null;
-	private bool boiling = false;
-	private bool heating = false;
-
+	private static bool boiling = false;
+	private static bool heating = false;
+	public static List<GameObject> destroyObjects = new List<GameObject>();
 	public static bool isActive = false;
+	private GameObject container = null;
 	// Use this for initialization
 	void Start () {
 		
 		timerManager = GameObject.FindGameObjectWithTag("Globals").GetComponent<TimerManager>();
 		player = GameObject.FindGameObjectWithTag("Player");
-		stove = GameObject.FindGameObjectWithTag("Stove");
+		stove = GameObject.Find("Heater");
+		container = GameObject.Find ("Container");
 		//toastTimer = GameObject.Find("Toaster").GetComponent<TimerUpdate>();
 		/*eggTimer.AddTimee(this);
 		boilTimer.AddTimee(this);
@@ -30,6 +32,7 @@ public class EggScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
+
 		if (eggTimer == null) {
 			eggTimer = timerManager.FindTimer("Egg");
 			eggTimer.AddTimee(this);
@@ -76,7 +79,9 @@ public class EggScript : MonoBehaviour {
 							{
 								egg.renderer.enabled = false;
 								eggAcquired = true;
-								Destroy(egg);
+								destroyObjects.Add(egg);
+								egg.SetActive(false);
+								//Destroy(egg);
 								break;
 							}
 						}
@@ -98,6 +103,13 @@ public class EggScript : MonoBehaviour {
 				else {
 					if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
 						boilTimer.AttemptSuccess();
+						
+						foreach(var obj in destroyObjects)
+						{
+							obj.SetActive(true);
+							obj.renderer.enabled = true;
+							obj.transform.position = container.transform.position;
+						}
 					}
 					heatTimer.EndTimer();
 				}
@@ -107,18 +119,52 @@ public class EggScript : MonoBehaviour {
 			
 			if (eggTimer.IsActive)
 			{
-				if (Vector3.Distance(this.transform.position, player.transform.position) < 5)
+				if (Vector3.Distance(container.transform.position, player.transform.position) < 5)
 				{
-					if (Input.GetKeyDown(KeyCode.E))
+					if (Input.GetKeyDown(KeyCode.Q))
 					{
 						if (eggTimer.AttemptSuccess()) {
 							MainGameEventScheduler.switchTask();
+							FinishTask();
 						}
+
 					}
 				}
 				return;
 			}
 		}
 		
+	}
+
+	public void FinishTask()
+	{
+		var container = GameObject.Find ("Container");
+		GameObject.Find("Frying pan").SetActive(true);
+		GameObject.Find("Frying pan").renderer.enabled = true;
+		foreach(var obj in destroyObjects)
+		{
+			obj.SetActive(true);
+			obj.renderer.enabled = true;
+			obj.transform.position = container.transform.position;
+		}
+		boiling = false;
+		heating = false;
+		eggAcquired = false;
+	}
+
+	public static void LoadFromDestroy()
+	{
+		var container = GameObject.Find ("Container");
+        GameObject.Find("Frying pan").SetActive(true);
+        GameObject.Find("Frying pan").renderer.enabled = true;
+		foreach(var obj in destroyObjects)
+		{
+			obj.SetActive(true);
+			obj.renderer.enabled = true;
+			//obj.transform.position = container.transform.position;
+		}
+		boiling = false;
+		heating = false;
+		eggAcquired = false;
 	}
 }

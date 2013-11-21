@@ -6,8 +6,8 @@ TagManager:
   - FloatingBox
   - Playermesh
   - Globals
-  - flower
-  - 
+  - Onions
+  - Mushroom
   - Fruits
   - Table
   - Bread
@@ -47,3 +47,8 @@ TagManager:
   User Layer 29: 
   User Layer 30: 
   User Layer 31: 
+  m_SortingLayers:
+  - name: Default
+    userID: 0
+    uniqueID: 0
+    locked: 0

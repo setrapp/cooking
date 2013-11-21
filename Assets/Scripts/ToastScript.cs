@@ -1,19 +1,16 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 public class ToastScript : MonoBehaviour {
-	
 	public bool breadAcquired = false;
 	private List<GameObject> breads = new List<GameObject>();
 	private TimerUpdate toastTimer = null;
 	TimerManager timerManager = null;
 	GameObject player = null;
 	GameObject toaster = null;
-	
-	
+	public static List<GameObject> destroyObjects = new List<GameObject>();
 	public static bool isActive = false;
-	/*
 	// Use this for initialization
 	void Start () {
 		
@@ -41,9 +38,9 @@ public class ToastScript : MonoBehaviour {
                 {
                     if (Vector3.Distance(bread.transform.position, player.transform.position) < 5)
                     {
-                        bread.renderer.enabled = false;
                         breadAcquired = true;
-                        Destroy(bread);
+						bread.SetActive(false);
+						destroyObjects.Add(bread);
                         break;
                     }
                 }
@@ -58,7 +55,10 @@ public class ToastScript : MonoBehaviour {
                     if (Input.GetKeyDown(KeyCode.F))
                     {
                         if (toastTimer.AttemptSuccess()) {
-							MainGameEventScheduler.switchTask();
+                            MainGameEventScheduler.switchTask();
+								foreach(var obj in destroyObjects)
+									Destroy(obj);
+								destroyObjects.Clear();
 						}
                     }
                 }
@@ -86,7 +86,7 @@ public class ToastScript : MonoBehaviour {
                 }
                 else
                 {
-                    GUIManager.message = "Find breads and toast them";
+                    //GUIManager.message = "Find breads and toast them";
                 }
         }
 
@@ -103,7 +103,14 @@ public class ToastScript : MonoBehaviour {
 			
 		}
 	}
-	*/
 
+	public static void LoadFromDestroy()
+	{
+		foreach(var obj in destroyObjects)
+		{
+			obj.SetActive(true);
+			obj.renderer.enabled = true;
+		}
+		destroyObjects.Clear();
+	}
 }
-

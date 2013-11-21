@@ -34,7 +34,7 @@ public class TimerUpdate : MonoBehaviour {
 	}
 	private float dt = 0;
 	private bool inverted = false;
-	
+
     void Start () 
     {
 		GUIWidth = maxTime;
@@ -42,8 +42,9 @@ public class TimerUpdate : MonoBehaviour {
 		gameState = (GameState)GameObject.FindObjectOfType(typeof(GameState));
 		movement = (MovementScripts)GameObject.FindObjectOfType(typeof(MovementScripts));
 		timees = new List<MonoBehaviour>();
-		
+
     }
+
 
     public enum ResponseType
     {
@@ -62,7 +63,30 @@ public class TimerUpdate : MonoBehaviour {
 				AddjustCurrentTime(-backstep);
 			}
 	        //if(Input.GetKeyDown(KeyCode.F))
-	            //Debug.Log(Check().ToString());
+	        if(isActive)
+			if(curTime > (pivotTime - pivot.width / 2))
+			{
+				var playerObj = GameObject.FindGameObjectWithTag("Playermesh");
+				playerObj.particleSystem.enableEmission = true;
+				playerObj.particleSystem.Play();
+			}
+			else
+			{
+				GameObject.FindGameObjectWithTag("Playermesh").particleSystem.enableEmission = false;
+			}
+		}
+
+		var player = GameObject.Find ("PlayerMesh");
+		if(this.isActive)
+		{
+			if(this.curTime >= 0 + pivotTime - pivot.width / 2 && this.curTime <= pivotTime + pivot.width)
+			{
+				player.particleSystem.enableEmission = true;
+			}
+			else
+			{
+				player.particleSystem.enableEmission = false;
+			}
 		}
     }
 
@@ -153,6 +177,7 @@ public class TimerUpdate : MonoBehaviour {
 		foreach(MonoBehaviour timee in timees) {
 			timee.gameObject.SendMessage("TimerUpdate", new TimerStep(name, dt), SendMessageOptions.DontRequireReceiver);	
 		}
+
     }
 	
 	public void EndTimer() {
@@ -173,6 +198,10 @@ public class TimerUpdate : MonoBehaviour {
 	public void ResumeTimer() {
 		paused = false;
 	}
+
+	public void resetTime () {
+		curTime = 0f;
+	}
 	
 	public bool AttemptSuccess(string successString = null, string failureString = null, bool endTimer = true, bool printSuccess = true, bool printFailure = true) {
 		bool success = Check() == TimerUpdate.ResponseType.perfect;
@@ -180,12 +209,15 @@ public class TimerUpdate : MonoBehaviour {
 		if (success) {
 			if (printSuccess) {
            		GUIManager.message = (successString == null ? "Perfect Time! Good job" : successString);
+				
 			}
         }
         else {
 			if (printFailure) {
-           		GUIManager.message = (failureString == null ? "You Missed it!" : failureString);
+           		GUIManager.message = (failureString == null ? "You Missed it! Restarting to the CheckPoint!" : failureString);
 			}
+			MainGameEventScheduler.LoadAgain();
+			GameObject.Find ("PlayerMesh").transform.position = MainGameEventScheduler.playerPositions.LastOrDefault();
         }
 		if(endTimer) {
 			EndTimer();
