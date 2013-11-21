@@ -86,7 +86,7 @@ public class ToastScript : MonoBehaviour {
                 }
                 else
                 {
-                    GUIManager.message = "Find breads and toast them";
+                    //GUIManager.message = "Find breads and toast them";
                 }
         }
 

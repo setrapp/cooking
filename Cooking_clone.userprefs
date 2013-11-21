@@ -1,18 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\OmeletteScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ToastScript.cs">
     <Files>
-      <File FileName="c:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\TimerManager.cs" Line="31" Column="1" />
+      <File FileName="c:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\TimerManager.cs" Line="45" Column="44" />
       <File FileName="c:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\TimerUpdate.cs" Line="211" Column="26" />
-      <File FileName="Assets\Scripts\EggScript.cs" Line="37" Column="32" />
+      <File FileName="Assets\Scripts\EggScript.cs" Line="82" Column="21" />
       <File FileName="Assets\Scripts\MainGameEventScheduler.cs" Line="28" Column="34" />
-      <File FileName="Assets\Scripts\ToastScript.cs" Line="52" Column="14" />
-      <File FileName="Assets\Scripts\OmeletteScript.cs" Line="32" Column="16" />
+      <File FileName="Assets\Scripts\ToastScript.cs" Line="85" Column="22" />
+      <File FileName="Assets\Scripts\OmeletteScript.cs" Line="74" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\OmeletteScript.cs" line="37" />
+      <Breakpoint file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\OmeletteScript.cs" line="129" />
+      <Breakpoint file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\OmeletteScript.cs" line="129" />
+      <Breakpoint file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\OmeletteScript.cs" line="167" />
+      <Breakpoint file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\OmeletteScript.cs" line="166" />
+      <Breakpoint file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\EggScript.cs" line="54" />
+      <Breakpoint file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\EggScript.cs" line="71" />
+      <Breakpoint file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\OmeletteScript.cs" line="74" />
+      <Breakpoint file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\MainGameEventScheduler.cs" line="33" />
+      <Breakpoint file="C:\Users\Rushabh\Documents\Cooking_clone\Assets\Scripts\ToastScript.cs" line="58" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -86,6 +86,7 @@
      <None Include="Assets\Tools\OpenRelativity\Assets\shaders\relativity.shader" />
      <None Include="Assets\Tools\OpenRelativity\Assets\shaders\desaturateShader.shader" />
      <None Include="Assets\Tools\OpenRelativity\Assets\shaders\skybox.shader" />
+     <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>

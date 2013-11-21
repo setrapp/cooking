@@ -50,12 +50,11 @@ public class OmeletteScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetKey(KeyCode.R))
-        {
-            GameObject.Find("Omlette").renderer.enabled = true;
-            GameObject.Find("Omlette").particleSystem.enableEmission = true;
-            GameObject.Find("Omlette").particleSystem.Emit(100);
-        }
+        //if(Input.GetKey(KeyCode.R))
+        //{
+        //    var t =  GameObject.Find("Omlette");
+         
+        //}
 		if (oilHeat == null)
 		{
 			oilHeat = timeManager.FindTimer("Oil Heat");
@@ -70,7 +69,8 @@ public class OmeletteScript : MonoBehaviour {
             {
                 if (!oilHeated)
                 {
-                    if (Input.GetKey(KeyCode.E))
+					GUIManager.message = "Press O to complete the next task";
+                    if (Input.GetKey(KeyCode.O))
                     {
                         timerActive = true;
                         currentTimer = oilHeat;
@@ -81,7 +81,8 @@ public class OmeletteScript : MonoBehaviour {
                 {
                     if (!onionsCollected)
                     {
-						if (Input.GetKeyDown(KeyCode.E))
+						GUIManager.message = "Press P to complete the next task";
+						if (Input.GetKeyDown(KeyCode.P))
 						{
                             if (Vector3.Distance(player.transform.position, GameObject.Find("Onion Basket").transform.position) < 5)
                             {
@@ -122,9 +123,14 @@ public class OmeletteScript : MonoBehaviour {
                             if (!eggsCollected)
                             {
                                 omletteCook.StartTimer();
+								GUIManager.message = "Press P to complete the next task";
+
 								GameObject.Find("Omlette").renderer.enabled = true;
                                 GameObject.Find("Omlette").particleSystem.enableEmission = true;
-                                timerActive = true;
+								GameObject.Find("Omlette").renderer.enabled = true;
+								GameObject.Find("Omlette").particleSystem.enableEmission = true;
+								GameObject.Find("Omlette").particleSystem.Emit(25);
+								timerActive = true;
                             }
                             else
                             {
@@ -173,6 +179,7 @@ public class OmeletteScript : MonoBehaviour {
                                     LoadFromDestroy();
                                     oilHeat.resetTime();
                                 }
+							timerActive = false;
                         }
 
                         if (currentTimer.name.Equals(onionCook.name))
