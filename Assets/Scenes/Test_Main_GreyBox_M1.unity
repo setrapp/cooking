@@ -3738,7 +3738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Toaster
   maxTime: 20
-  curTime: 0
+  startTime: 0
   timeBarLength: 0
   background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
   foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
@@ -3764,7 +3764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Boil
   maxTime: 20
-  curTime: 0
+  startTime: 0
   timeBarLength: 0
   background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
   foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
@@ -3790,7 +3790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Egg
   maxTime: 20
-  curTime: 0
+  startTime: 0
   timeBarLength: 0
   background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
   foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
@@ -3816,7 +3816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Heat
   maxTime: 20
-  curTime: 0
+  startTime: 0
   timeBarLength: 0
   background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
   foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
@@ -5785,7 +5785,7 @@ MonoBehaviour:
   invertKeyDown: 0
   viwMax: 19.9899998
   speedOfLightIncrement: .0500000007
-  parentCollider: {fileID: 13500000, guid: 9246cab64723bb14585905e29c8d23d9, type: 2}
+  parentCollider: {fileID: 0}
   nonrelativisticC: 1e+08
   relativisticC: 20
 --- !u!114 &1536914336
