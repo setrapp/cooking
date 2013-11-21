@@ -4,8 +4,8 @@ using System.Collections;
 public class MovementScripts: MonoBehaviour
 {
     //Consts 
-    private const float SLOW_DOWN_RATE = 2f;
-    private const float ACCEL_RATE = 20f;
+    private const float SLOW_DOWN_RATE = 0.95f;
+    public float ACCEL_RATE = 20f;
     private const int INIT_FRAME_WAIT = 5;
     private const float DEGREE_TO_RADIAN_CONST = 57.2957795f;
     
@@ -35,6 +35,8 @@ public class MovementScripts: MonoBehaviour
     public float viwMax = 3;
     //Gamestate reference for quick access
     GameState state;
+    private bool bounce = false;
+	private bool jumpedOutRel = false;
 
 	public float speedOfLightIncrement = 1.0f;    
 	public Collider parentCollider = null;
@@ -51,7 +53,7 @@ public class MovementScripts: MonoBehaviour
         state = GetComponent<GameState>();
         //Lock and hide cursor
         //Screen.lockCursor = true;
-        Screen.showCursor = false;
+        //Screen.showCursor = false;
 		//Set the speed of light to the starting speed of light in GameState
 		speedOfLightTarget = (int)state.SpeedOfLight;
         //Inverted, at first
@@ -67,6 +69,8 @@ public class MovementScripts: MonoBehaviour
 	//Again, use LateUpdate to solve some collision issues.
     void LateUpdate()
     {
+	
+		
 		if(true)
 		{
 			float viewRotX = 0;
@@ -107,19 +111,6 @@ public class MovementScripts: MonoBehaviour
 				//Get our angle between the velocity and the X axis. Get the angle in degrees (radians suck)
 				float rotationAroundX = DEGREE_TO_RADIAN_CONST * Mathf.Acos(Vector3.Dot(playerVelocityVector, Vector3.right) / playerVelocityVector.magnitude);
 				
-				// Reset player velocity if player is not moving
-				/*if (transform.position.x == state.SuperOldPosition.x) {
-					playerVelocityVector.x = 0;	
-				}
-				if (transform.position.y == state.SuperOldPosition.y) {
-					playerVelocityVector.y = 0;
-				}
-				if (transform.position.z == state.SuperOldPosition.z) {
-					playerVelocityVector.z = 0;	
-				}*/
-				
-				
-
 				//Make a Quaternion from the angle, one to rotate, one to rotate back. 
 				Quaternion rotateX = Quaternion.AngleAxis(rotationAroundX, Vector3.Cross(playerVelocityVector, Vector3.right).normalized);
 				Quaternion unRotateX = Quaternion.AngleAxis(rotationAroundX, Vector3.Cross(Vector3.right,playerVelocityVector).normalized);
@@ -163,31 +154,37 @@ public class MovementScripts: MonoBehaviour
 				//And rotate our added velocity by camera angle
 
 				addedVelocity = cameraRotation * addedVelocity;
-				
+			
 				// Simple collision detection to reset velocity when hitting a wall
-				/*RaycastHit hit;
+				RaycastHit hit;
 		        Vector3 p1 = transform.position;
-				if (Physics.Raycast(transform.position, transform.forward, parentCollider.bounds.extents.z) && Vector3.Dot(transform.forward, addedVelocity) < 0)
+			
+				/*if (Physics.Raycast(transform.position, transform.forward, parentCollider.bounds.extents.z) && Vector3.Dot(transform.forward, addedVelocity) < 0)
 				{
-					playerVelocityVector = Vector3.zero;
+					playerVelocityVector *= -0.75f;//Vector3.zero;
 				}
 				if (Physics.Raycast(transform.position, -transform.forward, parentCollider.bounds.extents.z) && Vector3.Dot(transform.forward, addedVelocity) > 0)
 				{
-					playerVelocityVector = Vector3.zero;
+					playerVelocityVector *= -0.75f;//Vector3.zero;
 				}
 				if (Physics.Raycast(transform.position, -transform.right, parentCollider.bounds.extents.x) && Vector3.Dot(transform.forward, addedVelocity) < 0)
 				{
-					playerVelocityVector = Vector3.zero;
+					playerVelocityVector *= -0.75f;//Vector3.zero;
 				}
 				if (Physics.Raycast(transform.position, transform.right, parentCollider.bounds.extents.x) && Vector3.Dot(transform.forward, addedVelocity) > 0)
 				{
-					playerVelocityVector = Vector3.zero;
+					playerVelocityVector *= -0.75f;//Vector3.zero;
 				}*/
+			
+			/*if (bounce) {
+				playerVelocityVector *= 0.75f;
+				bounce = false;
+			}*/
 
 				//AUTO SLOW DOWN CODE BLOCK
 
 				//If we are not adding velocity this round to our x direction, slow down
-				if (addedVelocity.x == 0)
+				/*if (addedVelocity.x == 0)
 				{
 					//find our current direction of movement and oppose it
 					addedVelocity += new Vector3(-1*SLOW_DOWN_RATE*playerVelocityVector.x * (float)Time.deltaTime, 0, 0);
@@ -201,7 +198,16 @@ public class MovementScripts: MonoBehaviour
 				if (addedVelocity.y == 0)
 				{
 					addedVelocity += new Vector3(0, -1*SLOW_DOWN_RATE*playerVelocityVector.y * (float)Time.deltaTime,0);
+				}*/
+				
+				// Fake-it Friction!!!
+				bool slowingDown = false;
+				if (addedVelocity.sqrMagnitude == 0){
+					addedVelocity = playerVelocityVector  - (playerVelocityVector / SLOW_DOWN_RATE);
+					slowingDown = true;
 				}
+				
+				//
 				/*
 				 * IF you turn on this bit of code, you'll get head bob. It's a fun little effect, but if you make the magnitude of the cosine too large it gets sickening.
 				if (!double.IsNaN((float)(0.2 * Mathf.Cos((float)GetComponent<GameState>().TotalTimePlayer) * Time.deltaTime)) && frames > 2)
@@ -226,15 +232,34 @@ public class MovementScripts: MonoBehaviour
 
 					//Unrotate our new total velocity
 					rotatedVelocity = unRotateX * rotatedVelocity;
-					//Set it
-					state.PlayerVelocityVector = rotatedVelocity;
 					
+					// Clip veclocity to zero if it is low enough
+					float minSpeed = 1.0f;
+					if (slowingDown && rotatedVelocity.sqrMagnitude < minSpeed * minSpeed) {
+						rotatedVelocity = Vector3.zero;
+					}
+					
+					// Jump to non-relativistic rendering when moving slowly
+					float minRelativisticSpeed = 2.0f;
+					if (rotatedVelocity.sqrMagnitude < minRelativisticSpeed * minRelativisticSpeed && isRelativistic) {
+						ToggleSpecialRelativity(true, false);
+						jumpedOutRel = true;
+					}
+					// Jump back to relativistic rendering if we jumped out but are not moving fast enough
+					if (rotatedVelocity.sqrMagnitude >= minRelativisticSpeed && !isRelativistic && jumpedOutRel)
+					{
+						ToggleSpecialRelativity(true, true);
+						jumpedOutRel = 	false;
+					}
+					
+					//Set it
+					state.PlayerVelocityVector = rotatedVelocity;					
 				}
 				//CHANGE the speed of light
 				
 				// Toggle between relativistic and nonrelativistic (temporary)
 				if (Input.GetKeyDown("t")) {
-					ToggleSpecialRelativity();
+					ToggleSpecialRelativity(false, false);
 				}
 			  
 				if (isRelativistic) {	
@@ -289,7 +314,7 @@ public class MovementScripts: MonoBehaviour
 				float viewRotY = 0;
 				//Take the position changes and translate them into an amount of rotation
 				viewRotX = (float)(-positionChangeX * Time.deltaTime * rotSpeed * mouseSensitivity);
-				viewRotY = (float)(positionChangeY * Time.deltaTime * rotSpeed * mouseSensitivity);
+				//viewRotY = (float)(positionChangeY * Time.deltaTime * rotSpeed * mouseSensitivity);
 
 				//Perform Rotation on the camera, so that we can look in places that aren't the direction of movement
                 //Wait some frames on start up, otherwise we spin during the intialization when we can't see yet
@@ -354,7 +379,11 @@ public class MovementScripts: MonoBehaviour
         launchedObject.GetComponent<RelativisticObject>().SetStartTime();
     }
 
-	public void ToggleSpecialRelativity(bool forceToggle = false, bool forceTo = false) {
+	public void ToggleSpecialRelativity(bool forceToggle, bool forceTo) {
+		if (state.PlayerVelocityVector.sqrMagnitude > 0.5f) {
+			state.PlayerVelocityVector = state.PlayerVelocityVector *0.5f;
+		}
+		
 		if (forceToggle) {
 			isRelativistic = forceTo;
 		}
@@ -363,5 +392,10 @@ public class MovementScripts: MonoBehaviour
 		}
 		state.SpeedOfLight = (isRelativistic ? relativisticC : nonrelativisticC);
 		speedOfLightTarget = (float)state.SpeedOfLight;
+	}
+
+	public void HandleCollision()
+	{
+		bounce = true;
 	}
 }
