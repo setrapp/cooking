@@ -4,7 +4,7 @@
     <Files>
       <File FileName="../../../Unity Projects/Circle Combat/Assets/Scripts/Moves4.cs" Line="400" Column="3" />
       <File FileName="../../../Unity Projects/Circle Combat/Assets/Scripts/CollisionEvents.cs" Line="28" Column="76" />
-      <File FileName="Assets/Scripts/VaseScript.cs" Line="47" Column="56" />
+      <File FileName="Assets/Scripts/VaseScript.cs" Line="4" Column="1" />
       <File FileName="Assets/Scripts/MainGameEventScheduler.cs" Line="1" Column="1" />
       <File FileName="Assets/FoodCollection.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Flower Mini Game/vaseFlower1.cs" Line="8" Column="2" />

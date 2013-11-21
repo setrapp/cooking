@@ -2159,11 +2159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  vaseflow1: 0
-  vaseflow2: 0
-  vaseflow3: 0
 --- !u!114 &1992553079
 MonoBehaviour:
   m_ObjectHideFlags: 0
