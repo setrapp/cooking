@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 public class ToastScript : MonoBehaviour {
+	
 	public bool breadAcquired = false;
 	private List<GameObject> breads = new List<GameObject>();
 	private TimerUpdate toastTimer = null;
@@ -10,7 +11,9 @@ public class ToastScript : MonoBehaviour {
 	GameObject player = null;
 	GameObject toaster = null;
 	
+	
 	public static bool isActive = false;
+	/*
 	// Use this for initialization
 	void Start () {
 		
@@ -100,4 +103,7 @@ public class ToastScript : MonoBehaviour {
 			
 		}
 	}
+	*/
+
 }
+
