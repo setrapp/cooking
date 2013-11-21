@@ -26,23 +26,16 @@ public class MainGameEventScheduler : MonoBehaviour {
             case 1: DisableAllEventScripts();
                 EggScript.isActive = true;
                 break;
-<<<<<<< HEAD
 		case 2:DisableAllEventScripts();
 			OmeletteScript oScript = GameObject.Find("Objectives").GetComponent<OmeletteScript>();
 			OmeletteScript.isActive = true;
 			break;
-		}
-	}
-	public static void switchTask()
-=======
-        }
-		
+		}		
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		player.GetComponent<OverheatMeter>().reset();
 		player.GetComponent<MovementScripts>().ToggleSpecialRelativity(true, false);
     }
     public static void switchTask()
->>>>>>> e20cb1fcc0c7a666110c3584a2fefb2f43e4198a
     {
         if ((int)currentTask < (int)task.none - 1)
         {
