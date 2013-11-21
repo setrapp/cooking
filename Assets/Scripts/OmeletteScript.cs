@@ -29,19 +29,33 @@ public class OmeletteScript : MonoBehaviour {
         omletteCook = timeManager.FindTimer("Make Omlette");
         currentTimer = oilHeat;
         player = GameObject.FindGameObjectWithTag("Playermesh");
+		Initialize();
 	}
 
     public void Initialize()
     {
-        GameObject.Find("Omlette").SetActive(true);
+		
+		GameObject.Find("Cylinder55").SetActive(true);
+		GameObject.Find("Cylinder55").renderer.enabled = true;
+		GameObject.Find("Box59").SetActive(true);
+		GameObject.Find("Box59").renderer.enabled = true;
+		GameObject.Find("Omlette").SetActive(true);
         GameObject.Find("Omlette").renderer.enabled = true;
         GameObject.Find("Frying pan").SetActive(true);
+        GameObject.Find("Omlette").particleSystem.renderer.enabled = false;
         GameObject.Find("Frying pan").renderer.enabled = true;
-        
+        GameObject.Find("Omlette").renderer.enabled = false;
+        GameObject.Find("Omlette").particleSystem.enableEmission = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if(Input.GetKey(KeyCode.R))
+        {
+            GameObject.Find("Omlette").renderer.enabled = true;
+            GameObject.Find("Omlette").particleSystem.enableEmission = true;
+            GameObject.Find("Omlette").particleSystem.Emit(100);
+        }
 		if (oilHeat == null)
 		{
 			oilHeat = timeManager.FindTimer("Oil Heat");
@@ -108,6 +122,8 @@ public class OmeletteScript : MonoBehaviour {
                             if (!eggsCollected)
                             {
                                 omletteCook.StartTimer();
+								GameObject.Find("Omlette").renderer.enabled = true;
+                                GameObject.Find("Omlette").particleSystem.enableEmission = true;
                                 timerActive = true;
                             }
                             else
@@ -188,9 +204,9 @@ public class OmeletteScript : MonoBehaviour {
 
                         if (currentTimer.name.Equals(omletteCook.name))
                         {
-                            if (currentTimer.AttemptSuccess("You just learnt how to make a omlette succesfully, but dont flatter yourself, its just an omlette", "Failed in the last step, retry making the omlette", true, true, true))
+                            if (currentTimer.AttemptSuccess(null, null, true, true, true) && currentTimer.AttemptSuccess("You just learnt how to make a omlette succesfully, but dont flatter yourself, its just an omlette", "Failed in the last step, retry making the omlette", true, true, true))
                             {
-                                //FINISH
+                                MainGameEventScheduler.switchTask();
                             }
                             else
                             {
@@ -209,10 +225,7 @@ public class OmeletteScript : MonoBehaviour {
 
     public void LoadFromDestroy()
     {
-        onionsPickedup = false;
-        mushroomsPickedUp = false;
-        eggsCollected = false;
-        oilHeated = false;
+        GameObject.Find("Omlette").particleSystem.enableEmission = false;
         foreach(var obj in destroyObjects)
         {
             obj.SetActive(true);
