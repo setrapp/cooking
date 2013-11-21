@@ -7,6 +7,8 @@ public class MainGameEventScheduler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		ToastScript.isActive = true;
+        currentTask = task.omlette;
+        OmeletteScript.isActive = true;
 	}
 	
 	// Update is called once per frame
@@ -42,6 +44,11 @@ public class MainGameEventScheduler : MonoBehaviour {
             case 1: DisableAllEventScripts();
 				EggScript.isActive = true;
                 break;
+            case 2: DisableAllEventScripts();
+                OmeletteScript oScript = GameObject.Find("Objectives").GetComponent<OmeletteScript>();
+                oScript.Initialize();
+                OmeletteScript.isActive = true;
+                break;
         }
     }
 
@@ -58,6 +65,6 @@ public enum task
     toaster = 0, 
     eggs = 1,
     omlette = 2,
-    Quiche = 3,
-    none = 4
+    //Quiche = 3,
+    none = 3
 }
