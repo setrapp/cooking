@@ -12,6 +12,9 @@ public class VaseScript : MonoBehaviour {
 	vaseflow1 = false;
 	vaseflow2 = false;
 	vaseflow3 = false;
+		
+		
+	GUIManager.message = "Drag the lucky bamboo into the vase to make an arrangement.";	
 	}
 	
 	// Update is called once per frame
@@ -25,6 +28,23 @@ public class VaseScript : MonoBehaviour {
 			print ("flower1");
 			vaseflow1 = true;
 			
+			GUIManager.message = "Lovely!";	
+			
+		}
+		
+		if(col.gameObject.name == "flowerTwo"){
+			print ("flower2");
+			vaseflow2 = true;
+			
+			GUIManager.message = "So Chic!";	
+			
+		}
+		
+		if(col.gameObject.name == "flowerThree"){
+			print ("flower3");
+			vaseflow3 = true;
+			
+			GUIManager.message = "Martha Stewart would be proud!";	
 		}
 	}
 }

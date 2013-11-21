@@ -13,7 +13,7 @@ public class Flowerscript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	GUIManager.message = "Perfect Time! Good job";
+	
 
 	}
 	
