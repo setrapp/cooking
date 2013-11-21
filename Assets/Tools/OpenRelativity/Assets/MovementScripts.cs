@@ -5,7 +5,9 @@ public class MovementScripts: MonoBehaviour
 {
     //Consts 
     private const float SLOW_DOWN_RATE = 0.95f;
-    public float ACCEL_RATE = 20f;
+	private float acceleration = 0f;
+    public float normalAcceleration = 20f;
+	public float crazyAcceleration = 5f;
     private const int INIT_FRAME_WAIT = 5;
     private const float DEGREE_TO_RADIAN_CONST = 57.2957795f;
     
@@ -58,7 +60,7 @@ public class MovementScripts: MonoBehaviour
 		speedOfLightTarget = (int)state.SpeedOfLight;
         //Inverted, at first
         inverted = -1;
-        
+        acceleration = normalAcceleration;
 		
         viwMax = Mathf.Min(viwMax,(float)GameObject.FindGameObjectWithTag("Player").GetComponent<GameState>().MaxSpeed);
 		
@@ -139,13 +141,13 @@ public class MovementScripts: MonoBehaviour
 
 				float temp;
 				//Movement due to left/right input
-				addedVelocity += new Vector3(0, 0, (temp = -Input.GetAxis("Vertical"))*ACCEL_RATE* (float)Time.deltaTime);
+				addedVelocity += new Vector3(0, 0, (temp = -Input.GetAxis("Vertical"))*acceleration* (float)Time.deltaTime);
 				if (temp != 0)
 				{
 					state.keyHit = true;
 				}
 
-				addedVelocity += new Vector3((temp = -Input.GetAxis("Horizontal"))*ACCEL_RATE * (float)Time.deltaTime, 0, 0);
+				addedVelocity += new Vector3((temp = -Input.GetAxis("Horizontal"))*acceleration * (float)Time.deltaTime, 0, 0);
 				if (temp != 0)
 				{
                     state.keyHit = true;
@@ -392,6 +394,7 @@ public class MovementScripts: MonoBehaviour
 		}
 		state.SpeedOfLight = (isRelativistic ? relativisticC : nonrelativisticC);
 		speedOfLightTarget = (float)state.SpeedOfLight;
+		acceleration = (isRelativistic ? crazyAcceleration : normalAcceleration);
 		//gameObject.SendMessage("SetCharacterType", isRelativistic);
 	}
 
