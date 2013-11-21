@@ -44,10 +44,17 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Audio\Intro1.cs" />
+     <Compile Include="Assets\Scripts\Audio\Listener.cs" />
      <Compile Include="Assets\Scripts\CharacterSwap.cs" />
      <Compile Include="Assets\Scripts\ColliderCheck.cs" />
      <Compile Include="Assets\Scripts\EggScript.cs" />
-     <Compile Include="Assets\Scripts\Flowerscript.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\FlowerRushab.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\Flowerscript.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\VaseScript.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\vaseFlower.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\vaseFlower1.cs" />
+     <Compile Include="Assets\Scripts\Flower Mini Game\vaseFlower2.cs" />
      <Compile Include="Assets\Scripts\FoodCollection.cs" />
      <Compile Include="Assets\Scripts\FoodCollection1.cs" />
      <Compile Include="Assets\Scripts\FoodCollection2.cs" />
@@ -56,6 +63,7 @@
      <Compile Include="Assets\Scripts\MainGameEventScheduler.cs" />
      <Compile Include="Assets\Scripts\ObjectInteraction.cs" />
      <Compile Include="Assets\Scripts\OmeletteScript.cs" />
+     <Compile Include="Assets\Scripts\OverheatMeter.cs" />
      <Compile Include="Assets\Scripts\RALPH_Animate_Script.cs" />
      <Compile Include="Assets\Scripts\RelativityMatSwap.cs" />
      <Compile Include="Assets\Scripts\TimerManager.cs" />
