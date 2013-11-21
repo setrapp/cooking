@@ -43,7 +43,7 @@ public class OmeletteScript : MonoBehaviour {
         GameObject.Find("Omlette").renderer.enabled = true;
         GameObject.Find("Frying pan").SetActive(true);
         GameObject.Find("Omlette").particleSystem.renderer.enabled = false;
-        GameObject.Find("Frying pan").renderer.enabled = true;
+        //GameObject.Find("Frying pan").renderer.enabled = true;
         GameObject.Find("Omlette").renderer.enabled = false;
         GameObject.Find("Omlette").particleSystem.enableEmission = false;
     }

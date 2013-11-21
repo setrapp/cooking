@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\OmeletteScript.cs" />
      <Compile Include="Assets\Scripts\OverheatMeter.cs" />
      <Compile Include="Assets\Scripts\RALPH_Animate_Script.cs" />
+     <Compile Include="Assets\Scripts\RelativityLimiter.cs" />
      <Compile Include="Assets\Scripts\RelativityMatSwap.cs" />
      <Compile Include="Assets\Scripts\TimerManager.cs" />
      <Compile Include="Assets\Scripts\TimerUpdate.cs" />
