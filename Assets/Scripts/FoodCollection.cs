@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
-public class FoodCollection1 : MonoBehaviour {
+public class FoodCollection : MonoBehaviour {
 	
 	public GameObject player;
 	// Use this for initialization

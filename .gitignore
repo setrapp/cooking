@@ -1,8 +1,0 @@
-Library/
-Temp/
-obj/
-*.sln
-*.csproj
-*.unityproj
-*.suo
-*.pidb

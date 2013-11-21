@@ -11,10 +11,10 @@ public class OmeletteScript : MonoBehaviour {
     void Initialize()
     {
         //GameObject[] internals = GameObject.Find("Frying pan").GetComponentsInChildren<GameObject>();
-        foreach(var obj in internals)
-        {
+        //foreach(var obj in internals)
+        //{
             
-        }
+        //}
         GameObject.Find("Frying pan").SetActive(true);
         GameObject.Find("Frying pan").renderer.enabled = true;
     }
