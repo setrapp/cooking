@@ -11,6 +11,9 @@ public class ToastScript : MonoBehaviour {
 	GameObject toaster = null;
 	public static List<GameObject> destroyObjects = new List<GameObject>();
 	public static bool isActive = false;
+	public AudioSource success = null;
+	public AudioSource failure = null;
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -54,7 +57,7 @@ public class ToastScript : MonoBehaviour {
                 {
                     if (Input.GetKeyDown(KeyCode.F))
                     {
-                        if (toastTimer.AttemptSuccess()) {
+                        if (toastTimer.AttemptSuccess(null, null, success, failure)) {
                             MainGameEventScheduler.switchTask();
 								foreach(var obj in destroyObjects)
 									Destroy(obj);

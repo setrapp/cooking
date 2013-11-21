@@ -170,7 +170,7 @@ public class OmeletteScript : MonoBehaviour {
                         if (currentTimer.name.Equals(oilHeat.name))
                         {
                             if (Vector3.Distance(player.transform.position, GameObject.Find("Frying pan").transform.position) < 5)
-                                if (currentTimer.AttemptSuccess("Just in Time, now find onions from frdige and cook them.", "Oops you over heated oil", false, true, true))
+                                if (currentTimer.AttemptSuccess("Just in Time, now find onions from frdige and cook them.", "Oops you over heated oil", null, null, false, true, true))
                                 {
                                     oilHeated = true;
                                 }
@@ -184,7 +184,7 @@ public class OmeletteScript : MonoBehaviour {
 
                         if (currentTimer.name.Equals(onionCook.name))
                         {
-                            if (currentTimer.AttemptSuccess("You have heated onions, quick get mushrooms from fridge and heat them too!", "The onions get dark and over cooked, restarting from last checkpoint", true, true, true))
+                            if (currentTimer.AttemptSuccess("You have heated onions, quick get mushrooms from fridge and heat them too!", "The onions get dark and over cooked, restarting from last checkpoint", null, null, true, true, true))
                             {
                                 onionsCollected = true;
                             }
@@ -197,7 +197,7 @@ public class OmeletteScript : MonoBehaviour {
 
                         if (currentTimer.name.Equals(mushroomsCook.name))
                         {
-                            if (currentTimer.AttemptSuccess("Mushrooms are cooked, time to grab eggs and pour the yolk in the frying pan", "Mushrooms are burnt and ruined, try again!", true, true, true))
+                            if (currentTimer.AttemptSuccess("Mushrooms are cooked, time to grab eggs and pour the yolk in the frying pan", "Mushrooms are burnt and ruined, try again!", null, null, true, true, true))
                             {
                                 mushroomsCollected = true;
                             }
@@ -211,7 +211,7 @@ public class OmeletteScript : MonoBehaviour {
 
                         if (currentTimer.name.Equals(omletteCook.name))
                         {
-                            if (currentTimer.AttemptSuccess(null, null, true, true, true) && currentTimer.AttemptSuccess("You just learnt how to make a omlette succesfully, but dont flatter yourself, its just an omlette", "Failed in the last step, retry making the omlette", true, true, true))
+                            if (currentTimer.AttemptSuccess(null, null, null, null, true, true, true) && currentTimer.AttemptSuccess("You just learnt how to make a omlette succesfully, but dont flatter yourself, its just an omlette", "Failed in the last step, retry making the omlette", null, null, true, true, true))
                             {
                                 MainGameEventScheduler.switchTask();
                             }

@@ -230,18 +230,24 @@ public class TimerUpdate : MonoBehaviour {
 		curTime = 0f;
 	}
 	
-	public bool AttemptSuccess(string successString = null, string failureString = null, bool endTimer = true, bool printSuccess = true, bool printFailure = true) {
+	public bool AttemptSuccess(string successString = null, string failureString = null, AudioSource successAudio = null, AudioSource failureAudio = null, bool endTimer = true, bool printSuccess = true, bool printFailure = true) {
 		bool success = Check() == TimerUpdate.ResponseType.perfect;
 		
 		if (success) {
 			if (printSuccess) {
            		GUIManager.message = (successString == null ? "Perfect Time! Good job" : successString);
+				if (successAudio) {
+					successAudio.Play();
+				}
 				
 			}
         }
         else {
 			if (printFailure) {
            		GUIManager.message = (failureString == null ? "You Missed it! Restarting to the CheckPoint!" : failureString);
+				if (failureAudio) {
+					failureAudio.Play();
+				}
 			}
 			if (killOnFailure) {
 				MainGameEventScheduler.LoadAgain();
@@ -253,6 +259,33 @@ public class TimerUpdate : MonoBehaviour {
 		}
 		return success;
 	}
+	
+	/*public bool AttemptSuccessAudio(, bool endTimer = true, bool playSuccess = true, bool playFailure = true) {
+		bool success = Check() == TimerUpdate.ResponseType.perfect;
+		
+		if (successAudio == null && failureAudio == null) {
+			return AttemptSuccess(null, null, endTimer, playSuccess, playFailure);
+		}
+		
+		if (success) {
+			if (playSuccess) {
+           		successAudio.Play();
+			}
+        }
+        else {
+			if (playFailure) {
+           		failureAudio.Play();
+			}
+			if (killOnFailure) {
+				MainGameEventScheduler.LoadAgain();
+				GameObject.Find ("PlayerMesh").transform.position = MainGameEventScheduler.playerPositions.LastOrDefault();
+			}
+        }
+		if(endTimer) {
+			EndTimer();
+		}
+		return success;
+	}*/
 	
 	public void DebugJumpToPerfect(bool pause = true)
 	{

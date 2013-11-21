@@ -16,6 +16,8 @@ public class EggScript : MonoBehaviour {
 	public static List<GameObject> destroyObjects = new List<GameObject>();
 	public static bool isActive = false;
 	private GameObject container = null;
+	public AudioSource success = null;
+	public AudioSource failure = null;
 	// Use this for initialization
 	void Start () {
 		
@@ -90,7 +92,7 @@ public class EggScript : MonoBehaviour {
 					else
 					{
 						if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
-							if(eggTimer.AttemptSuccess() && heatTimer.AttemptSuccess(null, null, false, false)) {
+							if(eggTimer.AttemptSuccess() && heatTimer.AttemptSuccess(null, null, success, failure, false, false)) {
 								boilTimer.StartTimer();
 								boiling = true;
 							}
