@@ -40,7 +40,7 @@ public class EnterMinigame : MonoBehaviour
 	}
 	
 	void Update() {
-		if(moved && (transform.position - mainGame.transform.position).magnitude > 10)
+		if(moved && (transform.position - mainGame.transform.position).magnitude > 4)
 		{
 			gameObject.collider.enabled = true;
 			moved = false;
