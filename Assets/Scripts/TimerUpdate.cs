@@ -77,8 +77,10 @@ public class TimerUpdate : MonoBehaviour {
 			if(curTime > (pivotTime - pivot.width / 2))
 			{
 				var playerObj = GameObject.FindGameObjectWithTag("Playermesh");
-				playerObj.particleSystem.enableEmission = true;
-				playerObj.particleSystem.Play();
+				if (playerObj != null && playerObj.particleSystem != null) {
+					playerObj.particleSystem.enableEmission = true;
+					playerObj.particleSystem.Play();
+				}
 			}
 			else
 			{
@@ -91,11 +93,15 @@ public class TimerUpdate : MonoBehaviour {
 		{
 			if(this.curTime >= 0 + pivotTime - pivot.width / 2 && this.curTime <= pivotTime + pivot.width)
 			{
-				player.particleSystem.enableEmission = true;
+				if (player != null && player.particleSystem != null) {
+					player.particleSystem.enableEmission = true;
+				}
 			}
 			else
 			{
-				player.particleSystem.enableEmission = false;
+				if (player != null && player.particleSystem != null) {
+					player.particleSystem.enableEmission = false;
+				}
 			}
 		}
     }
