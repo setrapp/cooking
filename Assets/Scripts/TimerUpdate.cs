@@ -84,7 +84,7 @@ public class TimerUpdate : MonoBehaviour {
 			}
 			else
 			{
-				GameObject.FindGameObjectWithTag("Playermesh").particleSystem.enableEmission = false;
+				//GameObject.FindGameObjectWithTag("Playermesh").particleSystem.enableEmission = false;
 			}
 		}
 
@@ -256,8 +256,7 @@ public class TimerUpdate : MonoBehaviour {
 				}
 			}
 			if (killOnFailure) {
-				MainGameEventScheduler.LoadAgain();
-				GameObject.Find ("PlayerMesh").transform.position = MainGameEventScheduler.playerPositions.LastOrDefault();
+				MainGameEventScheduler.FailedObjective();
 			}
         }
 		if(endTimer) {

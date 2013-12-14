@@ -14,7 +14,13 @@ public class MainGameEventScheduler : MonoBehaviour {
 	void Update () {
 		//EggScript.isActive = true;
 	}
-
+	
+	public static void FailedObjective()
+	{
+		LoadAgain();
+		GameObject.FindGameObjectWithTag("Playermesh").transform.position = playerPositions[playerPositions.Count - 1];
+	}
+	
     public static void LoadAgain()
     {
         switch ((int)currentTask)

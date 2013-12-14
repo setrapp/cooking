@@ -14,10 +14,11 @@ public class Door1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-				if((GameObject.Find("Button").GetComponent<Decontamination>().opened)){
-					//gameObject.audio.Play();
-					StartCoroutine(doormove());
+		Decontamination decontaminationScript = GameObject.Find("Decontamination Trigger").GetComponent<Decontamination>();
+		if(decontaminationScript.opened){
+			//gameObject.audio.Play();
+			GUIManager.Instance.RemoveObjective(decontaminationScript.pleaseWait.name);
+			StartCoroutine(doormove());
 		}
 	
 	

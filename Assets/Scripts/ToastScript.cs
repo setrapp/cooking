@@ -13,6 +13,9 @@ public class ToastScript : MonoBehaviour {
 	public static bool isActive = false;
 	public AudioSource success = null;
 	public AudioSource failure = null;
+	public Objective grabToast = null;
+	public Objective toastToast = null;
+	public Objective finishToast = null;
 	
 	// Use this for initialization
 	void Start () {
