@@ -684,6 +684,18 @@ MonoBehaviour:
   boilTimer: {fileID: 0}
   success: {fileID: 2147360966}
   failure: {fileID: 321655622}
+  grabEgg:
+    name: grab egg
+    objective: Find an Egg (E)
+  heatStove:
+    name: heat stove
+    objective: Set Stove to ON Mode (H)
+  placeEgg:
+    name: place egg
+    objective: Enter Egg in Boiling Water (E)
+  finishEgg:
+    name: finish egg
+    objective: Retrieve the Perfect Egg (E)
 --- !u!114 &35570521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,14 +712,14 @@ MonoBehaviour:
   success: {fileID: 2147360966}
   failure: {fileID: 321655622}
   grabToast:
-    name: 
-    objective: 
+    name: grab toast
+    objective: Grab 100% Toast (F)
   toastToast:
-    name: 
-    objective: 
+    name: toast toast
+    objective: Begin Toasting the Toast in the Toastatron (F)
   finishToast:
-    name: 
-    objective: 
+    name: finish toast
+    objective: Save the Toast!!! Patience (F)
 --- !u!114 &35570522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5854,6 +5866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31552b1c0d52b6f408ec6ab482889532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  torchPrefab: {fileID: 100000, guid: 1e5c742accdc1824fb01f98f446fa63c, type: 2}
 --- !u!114 &469652319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7362,6 +7375,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1424043828}
   m_GameObject: {fileID: 644291645}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &648881004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 648881005}
+  m_Layer: 0
+  m_Name: TorchPlaceHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &648881005
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 648881004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1078473435}
 --- !u!1 &650373848
 GameObject:
   m_ObjectHideFlags: 0
@@ -11703,6 +11742,7 @@ Transform:
   m_LocalPosition: {x: -.183612823, y: .577476978, z: -40.8277588}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 648881005}
   - {fileID: 1900826237}
   - {fileID: 1536914333}
   - {fileID: 1421073182}
@@ -14447,6 +14487,14 @@ Prefab:
       propertyPath: flowerGame
       value: 
       objectReference: {fileID: 960083488}
+    - target: {fileID: 11400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: toastToast.objective
+      value: Begin Toasting the Toast in the Toastatron (F)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: torchPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 1e5c742accdc1824fb01f98f446fa63c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
   m_RootGameObject: {fileID: 469652315}

@@ -83,6 +83,12 @@ public class GUIManager : MonoBehaviour {
 			}
 		}
 	}
+	
+	public void RemoveAllObjectives() {
+		for (int i = 0; i < objectives.Count; i++) {
+			objectives.RemoveAt(i);
+		}
+	}
 }
 
 [System.Serializable]

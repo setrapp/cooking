@@ -3,6 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 public class ToastScript : MonoBehaviour {
+	public static ToastScript Instance {
+		get {
+			if (instance == null) {
+				instance = GameObject.FindGameObjectWithTag("Globals").GetComponentInChildren<ToastScript>();	
+			}
+			return instance;
+		}
+	}
+	private static ToastScript instance;
 	public bool breadAcquired = false;
 	private List<GameObject> breads = new List<GameObject>();
 	private TimerUpdate toastTimer = null;
@@ -14,7 +23,7 @@ public class ToastScript : MonoBehaviour {
 	public AudioSource success = null;
 	public AudioSource failure = null;
 	public Objective grabToast = new Objective("grab toast", "Grab 100% Toast (F)");
-	public Objective toastToast = new Objective("toast toast", "Toast the Toast in the Toastatron (F)");
+	public Objective toastToast = new Objective("toast toast", "Begin Toasting the Toast in the Toastatron (F)");
 	public Objective finishToast = new Objective("finish toast", "Save the Toast!!! Patience (F)");
 	
 	// Use this for initialization
@@ -65,9 +74,10 @@ public class ToastScript : MonoBehaviour {
                     {
                         if (toastTimer.AttemptSuccess(null, null, success, failure)) {
                             MainGameEventScheduler.switchTask();
-								foreach(var obj in destroyObjects)
-									Destroy(obj);
-								destroyObjects.Clear();
+							foreach(var obj in destroyObjects)
+								Destroy(obj);
+							destroyObjects.Clear();
+							GUIManager.Instance.RemoveObjective(finishToast.name);
 						}
                     }
                 }
@@ -83,8 +93,10 @@ public class ToastScript : MonoBehaviour {
                             if (breadAcquired)
                             {
 								toastTimer.StartTimer();
-                                GUIManager.message = "Shut the toaster before the bread burns. Press 'f' to shut the toster. Make sure you shut it at the right time, else the bread wont toast well";
-                                return;
+								GUIManager.Instance.RemoveObjective(toastToast.name);
+                                //GUIManager.message = "Shut the toaster before the bread burns. Press 'f' to shut the toster. Make sure you shut it at the right time, else the bread wont toast well";
+                                GUIManager.Instance.RemoveObjective(grabToast.name);
+								return;
                             }
                         }
                         else
@@ -100,6 +112,13 @@ public class ToastScript : MonoBehaviour {
         }
 
     }
+	
+	public void StartTask() 
+	{
+		GUIManager.Instance.AddObjective(grabToast);
+		GUIManager.Instance.AddObjective(toastToast);
+		GUIManager.Instance.AddObjective(finishToast);
+	}
 	
 	public void TimerUpdate(TimerStep step) {
 		if (step.name.Equals("Toaster")) {
