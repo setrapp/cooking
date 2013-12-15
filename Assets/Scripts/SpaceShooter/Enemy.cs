@@ -51,11 +51,17 @@ public class Enemy: BaseSpaceObject {
 				if(par != null) {
 					par.Play();
 				}
-				this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			//	this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
 				this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+				iTween.FadeTo(this.gameObject, iTween.Hash("amount", 0, "time", 0.5, "oncomplete", "OnDied", "oncompletetarget", this.gameObject));
 			}
 
 		}
+	}
+
+	public void OnDied() {
+		Destroy(this.gameObject);
 	}
 	
 	public void OnTriggerExit2D(Collider2D col) {
