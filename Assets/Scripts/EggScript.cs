@@ -31,6 +31,8 @@ public class EggScript : MonoBehaviour {
 	public Objective heatStove = new Objective("heat stove", "Set Stove to ON Mode (H)");
 	public Objective placeEgg = new Objective("place egg", "Enter Egg in Boiling Water (E)");
 	public Objective finishEgg = new Objective("finish egg", "Retrieve the Perfect Egg (E)");
+	
+	
 	// Use this for initialization
 	void Start () {
 		

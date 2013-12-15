@@ -25,6 +25,8 @@ public class ToastScript : MonoBehaviour {
 	public Objective grabToast = new Objective("grab toast", "Grab 100% Toast (F)");
 	public Objective toastToast = new Objective("toast toast", "Begin Toasting the Toast in the Toastatron (F)");
 	public Objective finishToast = new Objective("finish toast", "Save the Toast!!! Patience (F)");
+	public InteractionPopup breadPopup = null;
+	public InteractionPopup toasterPopup = null;
 	
 	// Use this for initialization
 	void Start () {
@@ -32,6 +34,8 @@ public class ToastScript : MonoBehaviour {
 		timerManager = GameObject.FindGameObjectWithTag("Globals").GetComponent<TimerManager>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		toaster = GameObject.FindGameObjectWithTag("Toaster");
+		//breadPopup.enabled = false;
+		//toasterPopup.enabled = false;
 		//toastTimer = GameObject.Find("Toaster").GetComponent<TimerUpdate>();
 		//toastTimer.AddTimee(this);
 	}
@@ -62,6 +66,7 @@ public class ToastScript : MonoBehaviour {
 			if (breads.Count < 1) {
 				breadAcquired = true;
 				GUIManager.Instance.RemoveObjective(grabToast.name);
+				breadPopup.enabled = false;
 			}
 
             
@@ -78,6 +83,7 @@ public class ToastScript : MonoBehaviour {
 								Destroy(obj);
 							destroyObjects.Clear();
 							GUIManager.Instance.RemoveObjective(finishToast.name);
+							toasterPopup.enabled = false;
 						}
                     }
                 }
@@ -95,7 +101,6 @@ public class ToastScript : MonoBehaviour {
 								toastTimer.StartTimer();
 								GUIManager.Instance.RemoveObjective(toastToast.name);
                                 //GUIManager.message = "Shut the toaster before the bread burns. Press 'f' to shut the toster. Make sure you shut it at the right time, else the bread wont toast well";
-                                GUIManager.Instance.RemoveObjective(grabToast.name);
 								return;
                             }
                         }

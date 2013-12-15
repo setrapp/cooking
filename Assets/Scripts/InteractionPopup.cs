@@ -15,10 +15,11 @@ public class InteractionPopup : MonoBehaviour
 		popupOn = false;
 		if ((player.transform.position - transform.position).sqrMagnitude < Mathf.Pow(((SphereCollider)collider).radius,2)) {
 			popupOn = true;	
+			Vector3 newForward = (Camera.main.transform.position - popup.transform.position) * - 1;
+			newForward.y = transform.forward.y;
+			popup.transform.forward = newForward;
 		}
 		popup.SetActive(popupOn);
-		Vector3 lookAtPos = new Vector3(player.transform.position.x, popup.transform.position.y, player.transform.position.z);
-		popup.transform.LookAt(player.transform);
 	}
 }
 
