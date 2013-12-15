@@ -1101,15 +1101,15 @@ Transform:
   m_PrefabInternal: {fileID: 307508314}
   m_GameObject: {fileID: 74501941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.05369568, y: 1.26994658, z: -29.4269657}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalPosition: {x: -2.33606529, y: .613453627, z: 8.55892372}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 630855767}
   - {fileID: 706300809}
   - {fileID: 926272366}
   - {fileID: 1642599541}
   - {fileID: 631128998}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1552660963}
 --- !u!1 &86043989
 GameObject:
   m_ObjectHideFlags: 0
@@ -3021,19 +3021,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1552660963}
     m_Modifications:
     - target: {fileID: 400008, guid: 80dff326d39bb6249bd0a2edf1ba1e36, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.05369568
+      value: -2.33606529
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 80dff326d39bb6249bd0a2edf1ba1e36, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.26994658
+      value: .613453627
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 80dff326d39bb6249bd0a2edf1ba1e36, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -29.4269657
+      value: 8.55892372
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 80dff326d39bb6249bd0a2edf1ba1e36, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3055,6 +3055,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2920719e9565f41c292ab1f0e2610ecc, type: 2}
+    - target: {fileID: 400008, guid: 80dff326d39bb6249bd0a2edf1ba1e36, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 80dff326d39bb6249bd0a2edf1ba1e36, type: 2}
     - {fileID: 8200000, guid: 80dff326d39bb6249bd0a2edf1ba1e36, type: 2}
@@ -3294,6 +3298,57 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!1 &342447253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 342447254}
+  - 65: {fileID: 342447255}
+  - 114: {fileID: 342447256}
+  m_Layer: 0
+  m_Name: Kitchen Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &342447254
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 342447253}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -31.5556774, y: -8.82702923, z: 21.6971207}
+  m_LocalScale: {x: 1, y: .5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1148222005}
+--- !u!65 &342447255
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 342447253}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .200000003, y: 3, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &342447256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 342447253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68bedf4d60a31b4793ad617e2697125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &348222908
 GameObject:
   m_ObjectHideFlags: 0
@@ -12418,6 +12473,7 @@ Transform:
   - {fileID: 1634826154}
   - {fileID: 1196091471}
   - {fileID: 718662478}
+  - {fileID: 342447254}
   - {fileID: 1000912973}
   - {fileID: 583450167}
   - {fileID: 348222912}
@@ -17511,6 +17567,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 539029828}
+  - {fileID: 74501942}
   - {fileID: 499549881}
   - {fileID: 1245353274}
   - {fileID: 1148222005}

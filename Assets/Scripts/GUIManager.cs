@@ -65,11 +65,9 @@ public class GUIManager : MonoBehaviour {
 	
 	public void AddObjective(Objective newObjective) {
 		bool duplicate = false;
-		if (objectives.Count > 0) {
-			foreach (Objective existingObjective in objectives) {
-				if (existingObjective.name.Equals(newObjective.name)) {
-					duplicate = true;
-				}
+		for (int i = 0; i < objectives.Count; i++) {
+			if (objectives[i].name.Equals(newObjective.name)) {
+				duplicate = true;
 			}
 		}
 		if (duplicate) {
@@ -79,11 +77,9 @@ public class GUIManager : MonoBehaviour {
 	}
 	
 	public void RemoveObjective(string name) {
-		if (objectives.Count > 0) {
-			foreach (Objective objective in objectives) {
-				if (objective.name.Equals(name)) {
-					objectives.Remove(objective);
-				}
+		for (int i = 0; i < objectives.Count; i++) {
+			if (objectives[i].name.Equals(name)) {
+				objectives.RemoveAt(i);
 			}
 		}
 	}

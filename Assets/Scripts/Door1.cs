@@ -15,6 +15,7 @@ public class Door1 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Decontamination decontaminationScript = GameObject.Find("Decontamination Trigger").GetComponent<Decontamination>();
+		KitchenDoor kitchenScript = GameObject.Find("Kitchen Trigger").GetComponent<KitchenDoor>();
 		if(decontaminationScript.opened){
 			//gameObject.audio.Play();
 			GUIManager.Instance.RemoveObjective(decontaminationScript.pleaseWait.name);

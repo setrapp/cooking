@@ -13,9 +13,9 @@ public class ToastScript : MonoBehaviour {
 	public static bool isActive = false;
 	public AudioSource success = null;
 	public AudioSource failure = null;
-	public Objective grabToast = null;
-	public Objective toastToast = null;
-	public Objective finishToast = null;
+	public Objective grabToast = new Objective("grab toast", "Grab 100% Toast (F)");
+	public Objective toastToast = new Objective("toast toast", "Toast the Toast in the Toastatron (F)");
+	public Objective finishToast = new Objective("finish toast", "Save the Toast!!! Patience (F)");
 	
 	// Use this for initialization
 	void Start () {
@@ -44,13 +44,16 @@ public class ToastScript : MonoBehaviour {
                 {
                     if (Vector3.Distance(bread.transform.position, player.transform.position) < 5)
                     {
-                        breadAcquired = true;
 						bread.SetActive(false);
 						destroyObjects.Add(bread);
                         break;
                     }
                 }
             }
+			if (breads.Count < 1) {
+				breadAcquired = true;
+				GUIManager.Instance.RemoveObjective(grabToast.name);
+			}
 
             
 
