@@ -5,6 +5,9 @@ public class MainGameEventScheduler : MonoBehaviour {
     public static task currentTask = 0;
     public static List<Vector3> playerPositions = new List<Vector3>();
     public GameObject torchPrefab;
+	public static bool onFire = false;
+	public float timer;
+	//public bool notExtinguished = false;
     public static MainGameEventScheduler Instance
     {
         get
@@ -27,6 +30,15 @@ public class MainGameEventScheduler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//EggScript.isActive = true;
+		if(onFire == true && timer < Time.time)
+		{
+			LoadAgain();
+			GameObject.FindGameObjectWithTag("Playermesh").transform.position = playerPositions[playerPositions.Count - 1];
+			onFire = false;
+			Torchelight torch = GameObject.FindGameObjectWithTag("Playermesh").GetComponentInChildren<Torchelight>();
+			if(torch != null)
+				Destroy(torch.gameObject);
+		}
 	}
 	
 	public void FailedObjective()
@@ -34,8 +46,9 @@ public class MainGameEventScheduler : MonoBehaviour {
 
         GameObject torch = (GameObject)Instantiate(torchPrefab, GameObject.Find("TorchPlaceHolder").transform.position, Quaternion.identity);
         torch.transform.parent = GameObject.FindGameObjectWithTag("Playermesh").transform;
-		//LoadAgain();
-		GameObject.FindGameObjectWithTag("Playermesh").transform.position = playerPositions[playerPositions.Count - 1];
+		onFire = true;
+		timer = Time.time + 3;
+		
 	}
 	
     public static void LoadAgain()

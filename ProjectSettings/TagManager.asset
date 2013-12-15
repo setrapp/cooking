@@ -15,9 +15,11 @@ TagManager:
   - Egg
   - Stove
   - Mallet
-  - 
+  - WaterSpout
   - flower
   - PlayerTrigger
+  - 
+  - TagLight
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
