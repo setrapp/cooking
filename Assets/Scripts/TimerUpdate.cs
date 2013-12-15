@@ -256,7 +256,7 @@ public class TimerUpdate : MonoBehaviour {
 				}
 			}
 			if (killOnFailure) {
-				MainGameEventScheduler.FailedObjective();
+				MainGameEventScheduler.Instance.FailedObjective();
 			}
         }
 		if(endTimer) {

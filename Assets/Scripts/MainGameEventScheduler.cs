@@ -4,7 +4,21 @@ using System.Collections.Generic;
 public class MainGameEventScheduler : MonoBehaviour {
     public static task currentTask = 0;
     public static List<Vector3> playerPositions = new List<Vector3>();
-	// Use this for initialization
+    public GameObject torchPrefab;
+    public static MainGameEventScheduler Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindGameObjectWithTag("Globals").GetComponent<MainGameEventScheduler>();
+            }
+            return instance;
+        }
+    }
+    public static MainGameEventScheduler instance = null;
+    
+    // Use this for initialization
 	void Start () {
 		ToastScript.isActive = true;
         currentTask = task.toaster;
@@ -15,9 +29,12 @@ public class MainGameEventScheduler : MonoBehaviour {
 		//EggScript.isActive = true;
 	}
 	
-	public static void FailedObjective()
+	public void FailedObjective()
 	{
-		LoadAgain();
+
+        GameObject torch = (GameObject)Instantiate(torchPrefab, GameObject.Find("TorchPlaceHolder").transform.position, Quaternion.identity);
+        torch.transform.parent = GameObject.FindGameObjectWithTag("Playermesh").transform;
+		//LoadAgain();
 		GameObject.FindGameObjectWithTag("Playermesh").transform.position = playerPositions[playerPositions.Count - 1];
 	}
 	
@@ -71,6 +88,7 @@ public class MainGameEventScheduler : MonoBehaviour {
     {
         ToastScript.isActive = false;
 		EggScript.isActive = false;
+		OmeletteScript.isActive = false;
     }
 }
 
