@@ -3,6 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 public class EggScript : MonoBehaviour {
+	public static EggScript Instance {
+		get {
+			if (instance == null) {
+				instance = GameObject.FindGameObjectWithTag("Globals").GetComponentInChildren<EggScript>();	
+			}
+			return instance;
+		}
+	}
+	private static EggScript instance;
 	public static bool eggAcquired = false;
 	private List<GameObject> eggs = new List<GameObject>();
 	public TimerUpdate heatTimer = null;
@@ -18,6 +27,10 @@ public class EggScript : MonoBehaviour {
 	private GameObject container = null;
 	public AudioSource success = null;
 	public AudioSource failure = null;
+	public Objective grabEgg = new Objective("grab egg", "Find an Egg (E)");
+	public Objective heatStove = new Objective("heat stove", "Set Stove to ON Mode (H)");
+	public Objective placeEgg = new Objective("place egg", "Enter Egg in Boiling Water (E)");
+	public Objective finishEgg = new Objective("finish egg", "Retrieve the Perfect Egg (E)");
 	// Use this for initialization
 	void Start () {
 		
@@ -34,7 +47,6 @@ public class EggScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-
 		if (eggTimer == null) {
 			eggTimer = timerManager.FindTimer("Egg");
 			eggTimer.AddTimee(this);
@@ -51,7 +63,7 @@ public class EggScript : MonoBehaviour {
 		}
 		
 		if (isActive)
-		{
+		{			
 			if (Input.GetKeyDown(KeyCode.H))
 			{
 				
@@ -59,6 +71,7 @@ public class EggScript : MonoBehaviour {
 					if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
 						heatTimer.StartTimer();
 						heating = true;
+						GUIManager.Instance.RemoveObjective(heatStove.name);
 					}
 				}
 				else {
@@ -83,6 +96,7 @@ public class EggScript : MonoBehaviour {
 								eggAcquired = true;
 								destroyObjects.Add(egg);
 								egg.SetActive(false);
+								GUIManager.Instance.RemoveObjective(grabEgg.name);
 								//Destroy(egg);
 								break;
 							}
@@ -95,6 +109,7 @@ public class EggScript : MonoBehaviour {
 							if(eggTimer.AttemptSuccess() && heatTimer.AttemptSuccess(null, null, success, failure, false, false)) {
 								boilTimer.StartTimer();
 								boiling = true;
+								GUIManager.Instance.RemoveObjective(placeEgg.name);
 							}
 							else {
 								heatTimer.EndTimer();
@@ -126,6 +141,7 @@ public class EggScript : MonoBehaviour {
 					if (Input.GetKeyDown(KeyCode.Q))
 					{
 						if (eggTimer.AttemptSuccess()) {
+							GUIManager.Instance.RemoveObjective(finishEgg.name);
 							MainGameEventScheduler.switchTask();
 							FinishTask();
 						}
@@ -139,6 +155,14 @@ public class EggScript : MonoBehaviour {
 			}
 		}
 		
+	}
+	
+	public void StartTask() 
+	{
+		GUIManager.Instance.AddObjective(grabEgg);
+		GUIManager.Instance.AddObjective(heatStove);
+		GUIManager.Instance.AddObjective(placeEgg);
+		GUIManager.Instance.AddObjective(finishEgg);
 	}
 
 	public void FinishTask()

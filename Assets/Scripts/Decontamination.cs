@@ -41,11 +41,10 @@ public class Decontamination : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider trigger) {
 		
-		if(trigger.gameObject.tag.Equals("PlayerTrigger")) {
+		if(trigger.gameObject.tag.Equals("PlayerTrigger") && !opened) {
 			GUIManager.Instance.AddObjective(decontamination);
 			
 			triggered = true;
-			
 		}
 	}
 	

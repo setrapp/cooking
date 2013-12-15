@@ -34,45 +34,38 @@ public class MainGameEventScheduler : MonoBehaviour {
 
         GameObject torch = (GameObject)Instantiate(torchPrefab, GameObject.Find("TorchPlaceHolder").transform.position, Quaternion.identity);
         torch.transform.parent = GameObject.FindGameObjectWithTag("Playermesh").transform;
-		//LoadAgain();
+		LoadAgain();
 		GameObject.FindGameObjectWithTag("Playermesh").transform.position = playerPositions[playerPositions.Count - 1];
 	}
 	
     public static void LoadAgain()
     {
-        switch ((int)currentTask)
-        {
-            case 0: DisableAllEventScripts();
-                ToastScript.isActive = true;
-                
-                break;
-            case 1: DisableAllEventScripts();
-                EggScript.isActive = true;
-                break;
-		case 2:DisableAllEventScripts();
-			OmeletteScript oScript = GameObject.Find("Objectives").GetComponent<OmeletteScript>();
-			OmeletteScript.isActive = true;
-			break;
-		}		
+		GUIManager.Instance.RemoveAllObjectives();
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		player.GetComponent<OverheatMeter>().reset();
 		player.GetComponent<MovementScripts>().ToggleSpecialRelativity(true, false);
+		
+		switchTask(true);
     }
-    public static void switchTask()
+    public static void switchTask(bool resetFromFailure = false)
     {
         if ((int)currentTask < (int)task.none - 1)
         {
-            currentTask++;
+			if (!resetFromFailure) {
+           		currentTask++;
+			}
         }
         switch ((int)currentTask)
         {
             case 0: DisableAllEventScripts();
                 ToastScript.isActive = true;
+				ToastScript.Instance.StartTask();
 				GUIManager.message = "Heat stove and grab egg";
 				return;
                 break;
             case 1: DisableAllEventScripts();
 				EggScript.isActive = true;
+				EggScript.Instance.StartTask();
 				return;
                 break;
             case 2: DisableAllEventScripts();
