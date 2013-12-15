@@ -8,6 +8,7 @@ public class FireHydrant : MonoBehaviour {
 	private GameObject waterSpout;
 	public float timer;
 	
+	
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Playermesh");
@@ -28,6 +29,9 @@ public class FireHydrant : MonoBehaviour {
 			GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 			playerObject.GetComponent<OverheatMeter>().reset();
 			playerObject.GetComponent<MovementScripts>().ToggleSpecialRelativity(true, false);
+			MainGameEventScheduler scheduler = GameObject.FindGameObjectWithTag("Globals").GetComponent<MainGameEventScheduler>();
+			GUIManager.Instance.RemoveObjective(scheduler.findFireHydrant.name);
+			GUIManager.Instance.RemoveObjective(scheduler.putOutFire.name);
 		}
 		if(timer < Time.time)
 			waterSpout.particleSystem.Stop();

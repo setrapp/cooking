@@ -6,6 +6,9 @@ public class MainGameEventScheduler : MonoBehaviour {
     public static List<Vector3> playerPositions = new List<Vector3>();
     public GameObject torchPrefab;
 	public static bool onFire;
+	public Objective findFireHydrant = new Objective("find hydrant", "Find the Fire Hydrant");
+	public Objective putOutFire = new Objective("on fire", "STOP BEING ON FIRE (E)");
+	public float timer;
     public static MainGameEventScheduler Instance
     {
         get
@@ -41,11 +44,12 @@ public class MainGameEventScheduler : MonoBehaviour {
 	
 	public void FailedObjective()
 	{
-
         GameObject torch = (GameObject)Instantiate(torchPrefab, GameObject.Find("TorchPlaceHolder").transform.position, Quaternion.identity);
         torch.transform.parent = GameObject.FindGameObjectWithTag("Playermesh").transform;
 		onFire = true;
 		timer = Time.time + 3;
+		GUIManager.Instance.AddObjective(findFireHydrant);
+		GUIManager.Instance.AddObjective(putOutFire);
 	}
 	
     public static void LoadAgain()
