@@ -765,6 +765,9 @@ MonoBehaviour:
   finishEgg:
     name: finish egg
     objective: Retrieve the Perfect Egg (E)
+  eggPopup: {fileID: 136078986}
+  stovePopup: {fileID: 794855629}
+  eggBoilerPopup: {fileID: 1559311912}
 --- !u!114 &35570521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1677,7 +1680,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1946179476}
   m_GameObject: {fileID: 136078983}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f6e02d76198a9c4fa26ff50cfa7d5aa, type: 3}
   m_Name: 
@@ -3134,7 +3137,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 767568475}
   m_GameObject: {fileID: 198379701}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f6e02d76198a9c4fa26ff50cfa7d5aa, type: 3}
   m_Name: 
@@ -3202,7 +3205,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 859497528}
   m_GameObject: {fileID: 205149949}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f6e02d76198a9c4fa26ff50cfa7d5aa, type: 3}
   m_Name: 
@@ -9058,6 +9061,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1.43894434
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
   m_RootGameObject: {fileID: 794855626}
@@ -10686,6 +10693,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
   m_RootGameObject: {fileID: 198379701}
@@ -10810,7 +10821,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 667558503}
   m_GameObject: {fileID: 794855626}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f6e02d76198a9c4fa26ff50cfa7d5aa, type: 3}
   m_Name: 
@@ -11298,6 +11309,10 @@ Prefab:
     - target: {fileID: 400000, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
       propertyPath: m_LocalPosition.y
       value: 1.63909912
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
@@ -17663,6 +17678,18 @@ Prefab:
       propertyPath: toasterPopup
       value: 
       objectReference: {fileID: 205149952}
+    - target: {fileID: 11400000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: eggPopup
+      value: 
+      objectReference: {fileID: 136078986}
+    - target: {fileID: 11400000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: stovePopup
+      value: 
+      objectReference: {fileID: 794855629}
+    - target: {fileID: 11400000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: eggBoilerPopup
+      value: 
+      objectReference: {fileID: 1559311912}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
   m_RootGameObject: {fileID: 469652315}
@@ -21021,7 +21048,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1665982179}
   m_GameObject: {fileID: 1559311909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f6e02d76198a9c4fa26ff50cfa7d5aa, type: 3}
   m_Name: 
@@ -22482,6 +22509,10 @@ Prefab:
     - target: {fileID: 400002, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
       propertyPath: m_LocalScale.x
       value: 1.43894434
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
@@ -25398,6 +25429,10 @@ Prefab:
     - target: {fileID: 10200000, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
       propertyPath: m_Text
       value: E for Egg
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85c06965bd8f02a40867b8d2b6e057a1, type: 2}
