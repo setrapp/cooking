@@ -11,8 +11,10 @@ public class Decontamination : MonoBehaviour {
 	public Objective pleaseWait = new Objective("wait", "Please Wait ...");
 	public GameObject decomtaminationButton;
 	private GameObject player = null;
-	public float buttonRange = 10;
 	public GameObject particleSystem = null;
+	public CollisionChecker buttonTrigger;
+	public CollisionChecker matTrigger;
+	
 	// Use this for initialization
 	void Start () {
 		opened = false;
@@ -24,7 +26,8 @@ public class Decontamination : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if(Input.GetKey(KeyCode.B) && (triggered == true) && (decomtaminationButton.transform.position - player.transform.position).sqrMagnitude < buttonRange * buttonRange) {
+		
+		if(Input.GetKey(KeyCode.B) && (triggered == true) && buttonTrigger.Triggering) {
 			if(alreadyplayed == false) {
 				gameObject.audio.Play();
 				alreadyplayed = true;
