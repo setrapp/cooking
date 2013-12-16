@@ -8,8 +8,10 @@ public class TriggerSwapper : MonoBehaviour
 	bool swapped = false;
 	
 	void OnTriggerEnter(Collider collider) {
-		swapObjectOn.SetActive(true);
-		swapObjectOff.SetActive(false);
+		if (collider.gameObject.tag.Equals("PlayerTrigger")) {
+			swapObjectOn.SetActive(true);
+			swapObjectOff.SetActive(false);
+		}
 	}
 }
 

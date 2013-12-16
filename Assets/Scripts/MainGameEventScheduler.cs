@@ -9,7 +9,7 @@ public class MainGameEventScheduler : MonoBehaviour {
 	public Objective findFireHydrant = new Objective("find hydrant", "Find the Fire Hydrant");
 	public Objective putOutFire = new Objective("on fire", "STOP BEING ON FIRE (E)");
 	public float maxTime;
-	public TimerUpdate fireTimer;
+	private TimerUpdate fireTimer;
 	public float currentTime;
 	public float timer;
 
@@ -30,11 +30,14 @@ public class MainGameEventScheduler : MonoBehaviour {
 	void Start () {
 		ToastScript.isActive = true;
         currentTask = task.toaster;
-		fireTimer = gameObject.GetComponent<TimerManager>().FindTimer("On Fire Timer");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (fireTimer == null) {
+			fireTimer = GetComponent<TimerManager>().FindTimer("On Fire Timer");	
+		}
+		
 		//EggScript.isActive = true;
 		maxTime = fireTimer.maxTime;
 		currentTime = fireTimer.CurTime;

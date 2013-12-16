@@ -10,9 +10,9 @@ public class TimerManager : MonoBehaviour
 	}
 	
 	void OnGUI() {
-        //if (GUI.Button(new Rect(10, Screen.height - 40, 150, 30), "Perfect!!!")) {
-        //    DebugJumpToPerfect(true);
-        //}
+        if (GUI.Button(new Rect(10, Screen.height - 40, 150, 30), "Perfect!!!")) {
+            DebugJumpToPerfect(true);
+        }
 	}
 	
 	public void AddTimer(TimerUpdate timer) {

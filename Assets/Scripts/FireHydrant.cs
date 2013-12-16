@@ -14,12 +14,14 @@ public class FireHydrant : MonoBehaviour {
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Playermesh");
 		waterSpout = GameObject.FindGameObjectWithTag("WaterSpout");
-		fireTimer = GameObject.Find ("Globals").GetComponent<TimerManager>().FindTimer("On Fire Timer");
-		//fireTimer = gameObject.GetComponent<TimerManager>().FindTimer("On Fire Timer");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (fireTimer == null) {
+			fireTimer = GameObject.Find ("Globals").GetComponent<TimerManager>().FindTimer("On Fire Timer");
+		}
+		
 		if(Input.GetKey(KeyCode.E) && (transform.position - player.transform.position).sqrMagnitude < hydrantRange * hydrantRange && 
 			gameObject.GetComponentInChildren<FireHydrantCone>().withinHydrantRange)
 		{

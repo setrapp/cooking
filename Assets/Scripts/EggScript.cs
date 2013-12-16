@@ -31,7 +31,9 @@ public class EggScript : MonoBehaviour {
 	public Objective heatStove = new Objective("heat stove", "Set Stove to ON Mode (H)");
 	public Objective placeEgg = new Objective("place egg", "Enter Egg in Boiling Water (E)");
 	public Objective finishEgg = new Objective("finish egg", "Retrieve the Perfect Egg (E)");
-	
+	public InteractionPopup eggPopup = null;
+	public InteractionPopup stovePopup = null;
+	public InteractionPopup eggBoilerPopup = null;
 	
 	// Use this for initialization
 	void Start () {
@@ -99,6 +101,8 @@ public class EggScript : MonoBehaviour {
 								destroyObjects.Add(egg);
 								egg.SetActive(false);
 								GUIManager.Instance.RemoveObjective(grabEgg.name);
+								eggPopup.enabled = false;
+								eggBoilerPopup.enabled = true;
 								//Destroy(egg);
 								break;
 							}
@@ -144,6 +148,8 @@ public class EggScript : MonoBehaviour {
 					{
 						if (eggTimer.AttemptSuccess()) {
 							GUIManager.Instance.RemoveObjective(finishEgg.name);
+							stovePopup.enabled = false;
+							eggBoilerPopup.enabled = false;
 							MainGameEventScheduler.switchTask();
 							FinishTask();
 						}
@@ -165,6 +171,9 @@ public class EggScript : MonoBehaviour {
 		GUIManager.Instance.AddObjective(heatStove);
 		GUIManager.Instance.AddObjective(placeEgg);
 		GUIManager.Instance.AddObjective(finishEgg);
+		eggPopup.enabled = true;
+		stovePopup.enabled = true;
+		eggBoilerPopup.enabled = false;
 	}
 
 	public void FinishTask()
