@@ -14,6 +14,7 @@ public class Decontamination : MonoBehaviour {
 	public GameObject particleSystem = null;
 	public CollisionChecker buttonTrigger;
 	public CollisionChecker matTrigger;
+	bool droppedWalls = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -39,6 +40,10 @@ public class Decontamination : MonoBehaviour {
 			GUIManager.Instance.AddObjective(pleaseWait);
 			StartCoroutine(doorwait());
 
+		}
+		
+		if (matTrigger.Triggering && !droppedWalls) {
+			
 		}
 	
 	}
