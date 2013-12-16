@@ -54,7 +54,7 @@ public class Enemy: BaseSpaceObject {
 			//	this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
 				this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
-				iTween.FadeTo(this.gameObject, iTween.Hash("amount", 0, "time", 0.5, "oncomplete", "OnDied", "oncompletetarget", this.gameObject));
+				//iTween.FadeTo(this.gameObject, iTween.Hash("amount", 0, "time", 0.5, "oncomplete", "OnDied", "oncompletetarget", this.gameObject));
 			}
 
 		}
