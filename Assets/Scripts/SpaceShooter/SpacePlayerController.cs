@@ -10,6 +10,7 @@ class SpacePlayerController: MonoBehaviour {
 	public float DashTimeout = 0.8f;
 	public float PlayerHalfWidth = 1.0f;
 	public float PlayerHalfHeight = 0.5f;
+	public float BarralRotationSpeed = 8f;
 	public int   ShootCooldown = 20;
 	public int   MaxHealth = 3;
 	public int   CurrentHealth = 3;
@@ -19,6 +20,7 @@ class SpacePlayerController: MonoBehaviour {
 
 	float _dashResetTime = 0.0f;
 	float _currentSpeed;
+	float _rotateY = 180f;
 	int   _currentShootCooldown;
 	ParticleSystem _particle;
 
@@ -101,8 +103,11 @@ class SpacePlayerController: MonoBehaviour {
 		float newY = MathUtil.Clamp(cameraPos.y - cameraOrthoSize - PlayerHalfHeight, 
 		                            cameraPos.y + cameraOrthoSize - PlayerHalfHeight, 
 		                            prevPos.y + deltaY);
+		if(deltaX != 0)	{
+			_rotateY += BarralRotationSpeed * Mathf.Sign(deltaX);
+			this.gameObject.transform.rotation = Quaternion.AngleAxis(_rotateY, Vector3.up);
+		}
 
-		
 		Player.transform.position = new Vector3(newX, newY, prevPos.z);
 	}
 
@@ -111,8 +116,11 @@ class SpacePlayerController: MonoBehaviour {
 			if(Input.GetKey(KeyCode.Z)) {
 				Vector3 pos = this.transform.position;
 				Color color = new Color(1, 1, 1, 0.7f);
-				BulletManager.ShootBullet(new Vector3(pos.x - 0.8f, pos.y + 1.0f, pos.z), color, 0, 90, 1, "PB");
-				BulletManager.ShootBullet(new Vector3(pos.x + 0.8f, pos.y + 1.0f, pos.z), color, 0, 90, 1, "PB");
+
+				float dx = 0.8f * Mathf.Cos(_rotateY * Mathf.Deg2Rad);
+				float dz = 0.8f * Mathf.Sin(_rotateY * Mathf.Deg2Rad);
+				BulletManager.ShootBullet(new Vector3(pos.x - dx, pos.y + 1.0f, pos.z + dz), color, 0, 90, 1, "PB");
+				BulletManager.ShootBullet(new Vector3(pos.x + dx, pos.y + 1.0f, pos.z + dz), color, 0, 90, 1, "PB");
 				BulletManager.ShootBullet(new Vector3(pos.x, pos.y + 1.5f, pos.z), color, 1, 90, 1, "PB");
 
 				if(ShootingSound != null)
