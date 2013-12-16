@@ -1,18 +1,13 @@
 using System;
 using UnityEngine;
 
-public class TargetShooter: BaseSpaceObject {
-
-	public override void OnLogic(int currentFrame) {
-
+class TargetShooter: BulletShooter {
+	public override void OnShoot(int frame) {
+		this.BulletManager.ShootBulletTo(this.gameObject.transform.position,
+		                                 SpacePlayerController.Instance.Player,
+		                                 Color.white,
+		                                 this.BulletType,
+		                                 this.Scale,
+		                                 "EB");
 	}
-
-	public override void OnEnabled() {
-
-	}
-
-	public override void OnDisabled() {
-
-	}
-
 };

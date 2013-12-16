@@ -25,7 +25,6 @@ public class Player : MonoBehaviour {
 			OutlineObject obj = hit.collider.gameObject.GetComponent<OutlineObject>();
 
 			if(obj != null) {
-				Debug.Log("asdsd");
 				if(obj.enabled) {
 	           		if(obj != pickingCacheObject) {
 						obj.OnPickingEnter();
