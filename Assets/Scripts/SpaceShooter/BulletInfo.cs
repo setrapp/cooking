@@ -9,7 +9,7 @@ public class BulletInfo {
 	public float  Speed = 3;
 	public float  Accel = 0.1f;
 	public int    Damage = 1;
-	public Sprite BulletSprite;
+	//public Sprite BulletSprite;
 };
 
 public class Bullet: MonoBehaviour {

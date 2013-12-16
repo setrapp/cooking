@@ -44,7 +44,7 @@ public class BulletManager: MonoBehaviour {
 		BulletInfo info = new BulletInfo();
 		info.Speed = prototype.Speed;
 		info.Accel = prototype.Accel;
-		info.BulletSprite = prototype.BulletSprite;
+		//info.BulletSprite = prototype.BulletSprite;
 		info.Damage = prototype.Damage;
 		return info;
 	}
@@ -56,11 +56,11 @@ public class BulletManager: MonoBehaviour {
 		
 		bullet.transform.position = position;
 		
-		SpriteRenderer renderer = bulletObj.AddComponent<SpriteRenderer>();
-		renderer.sprite = bullet.Info.BulletSprite;
-		renderer.sortingOrder = 1;
+		//SpriteRenderer renderer = bulletObj.AddComponent<SpriteRenderer>();
+		//renderer.sprite = bullet.Info.BulletSprite;
+		//renderer.sortingOrder = 1;
 		
-		bulletObj.AddComponent<BoxCollider2D>().isTrigger = true;
+		//bulletObj.AddComponent<BoxCollider2D>().isTrigger = true;
 		
 		Bullets.Add(bullet);
 		bullet.transform.parent = BulletContainer.transform;

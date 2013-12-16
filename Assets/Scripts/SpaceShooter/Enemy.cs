@@ -20,8 +20,8 @@ public class Enemy: BaseSpaceObject {
 
 		if(_damagedCooldown > 0) {
 			_damagedCooldown--;
-			if(_damagedCooldown == 0)
-				this.GetComponent<SpriteRenderer>().color = Color.white;
+			//if(_damagedCooldown == 0)
+			//	this.GetComponent<SpriteRenderer>().color = Color.white;
 		}
 	}
 	
@@ -33,7 +33,7 @@ public class Enemy: BaseSpaceObject {
 		
 	}
 	
-	public void OnTriggerEnter2D(Collider2D col) {
+	/*public void OnTriggerEnter2D(Collider2D col) {
 		if(Died)
 			return;
 
@@ -58,14 +58,14 @@ public class Enemy: BaseSpaceObject {
 			}
 
 		}
-	}
+	}*/
 
 	public void OnDied() {
 		Destroy(this.gameObject);
 	}
 	
-	public void OnTriggerExit2D(Collider2D col) {
+	/*public void OnTriggerExit2D(Collider2D col) {
 		
-	}
+	}*/
 	
 };
