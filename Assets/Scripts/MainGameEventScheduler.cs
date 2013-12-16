@@ -8,7 +8,11 @@ public class MainGameEventScheduler : MonoBehaviour {
 	public static bool onFire;
 	public Objective findFireHydrant = new Objective("find hydrant", "Find the Fire Hydrant");
 	public Objective putOutFire = new Objective("on fire", "STOP BEING ON FIRE (E)");
+	public float maxTime;
+	public TimerUpdate fireTimer;
+	public float currentTime;
 	public float timer;
+
     public static MainGameEventScheduler Instance
     {
         get
@@ -26,28 +30,33 @@ public class MainGameEventScheduler : MonoBehaviour {
 	void Start () {
 		ToastScript.isActive = true;
         currentTask = task.toaster;
+		fireTimer = gameObject.GetComponent<TimerManager>().FindTimer("On Fire Timer");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//EggScript.isActive = true;
-		if(onFire == true && timer < Time.time)
+		maxTime = fireTimer.maxTime;
+		currentTime = fireTimer.CurTime;
+		if(onFire == true && currentTime >= maxTime)
 		{
 			LoadAgain();
 			GameObject.FindGameObjectWithTag("Playermesh").transform.position = playerPositions[playerPositions.Count - 1];
 			onFire = false;
 			Torchelight torch = GameObject.FindGameObjectWithTag("Playermesh").GetComponentInChildren<Torchelight>();
+			fireTimer.resetTime();
+			fireTimer.EndTimer();
 			if(torch != null)
 				Destroy(torch.gameObject);
 		}
 	}
-	
+
 	public void FailedObjective()
 	{
         GameObject torch = (GameObject)Instantiate(torchPrefab, GameObject.Find("TorchPlaceHolder").transform.position, Quaternion.identity);
         torch.transform.parent = GameObject.FindGameObjectWithTag("Playermesh").transform;
 		onFire = true;
-		timer = Time.time + 3;
+		fireTimer.StartTimer();
 		GUIManager.Instance.AddObjective(findFireHydrant);
 		GUIManager.Instance.AddObjective(putOutFire);
 	}

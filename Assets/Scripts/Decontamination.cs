@@ -12,7 +12,7 @@ public class Decontamination : MonoBehaviour {
 	public GameObject decomtaminationButton;
 	private GameObject player = null;
 	public float buttonRange = 10;
-	
+	public GameObject particleSystem = null;
 	// Use this for initialization
 	void Start () {
 		opened = false;
@@ -28,13 +28,14 @@ public class Decontamination : MonoBehaviour {
 			if(alreadyplayed == false) {
 				gameObject.audio.Play();
 				alreadyplayed = true;
+				particleSystem.SetActive(true);
 			}
 			
 			decomtaminationButton.renderer.material.color = Color.green;
 			GUIManager.Instance.RemoveObjective(decontamination.name);
 			GUIManager.Instance.AddObjective(pleaseWait);
 			StartCoroutine(doorwait());
-			
+
 		}
 	
 	}
@@ -42,8 +43,7 @@ public class Decontamination : MonoBehaviour {
 	void OnTriggerEnter(Collider trigger) {
 		
 		if(trigger.gameObject.tag.Equals("PlayerTrigger") && !opened) {
-			GUIManager.Instance.AddObjective(decontamination);
-			
+			GUIManager.Instance.AddObjective(decontamination);			
 			triggered = true;
 		}
 	}
@@ -51,6 +51,7 @@ public class Decontamination : MonoBehaviour {
 	IEnumerator doorwait (){
 		
 		yield return new WaitForSeconds(7.0f);
+		particleSystem.SetActive(false);
 		opened = true;
 	}
 }
