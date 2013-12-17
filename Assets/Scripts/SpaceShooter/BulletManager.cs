@@ -53,11 +53,12 @@ public class BulletManager: MonoBehaviour {
 		return info;
 	}
 
-	Bullet _CreateBullet(Vector3 position, Color color, BulletInfo prototype, float direction, float scale, string tag) {
+	Bullet _CreateBullet(Vector3 position, Color color, BulletInfo prototype, float direction, float scale, string tag, float spd = 0f) {
 		GameObject bulletObj = new GameObject();
 		Bullet bullet = bulletObj.AddComponent<Bullet>();
 		bullet.Info = CreateInfo(prototype, direction);
-		bullet.transform.position = position;
+		if(spd != 0f)
+			bullet.Info.Speed = spd;
 		
 		SpriteRenderer renderer = bulletObj.AddComponent<SpriteRenderer>();
 		renderer.sprite = bullet.Info.BulletSprite;
@@ -72,25 +73,26 @@ public class BulletManager: MonoBehaviour {
 		scale = prototype.Scale * scale;
 		bullet.transform.localScale = new Vector3(scale, scale, scale);
 		bullet.transform.rotation = Quaternion.AngleAxis(direction + 90, Vector3.forward);
+		bullet.transform.position = position;
 
 		bullet.tag = tag;
 
 		return bullet;
 	}
 
-	public Bullet ShootBullet(Vector3 position, Color color, int id, float direction, float scale, string tag) {
-		return this._CreateBullet(position, color, this.BulletTypes[id], direction, scale, tag);
+	public Bullet ShootBullet(Vector3 position, Color color, int id, float direction, float scale, string tag, float spd = 0f) {
+		return this._CreateBullet(position, color, this.BulletTypes[id], direction, scale, tag, spd);
 	}
 
-	public Bullet ShootBullet(Vector3 position, Color color, BulletInfo prototype, float direction, float scale, string tag) {
-		return this._CreateBullet(position, color, prototype, direction, scale, tag);
+	public Bullet ShootBullet(Vector3 position, Color color, BulletInfo prototype, float direction, float scale, string tag, float spd = 0f) {
+		return this._CreateBullet(position, color, prototype, direction, scale, tag, spd);
 	}
 
-	public Bullet ShootBulletTo(Vector3 position, GameObject target, Color color, int id, float scale, string tag) {
+	public Bullet ShootBulletTo(Vector3 position, GameObject target, Color color, int id, float scale, string tag, float spd = 0f) {
 		Vector3 targetPos = target.transform.position;
 		Vector3 dis = targetPos - position ;
 		float angle = (float)(Math.Atan2(dis.y, dis.x) * Mathf.Rad2Deg);
-		return this._CreateBullet(position, color, this.BulletTypes[id], angle, scale, tag);
+		return this._CreateBullet(position, color, this.BulletTypes[id], angle, scale, tag, spd);
 	}
 
 

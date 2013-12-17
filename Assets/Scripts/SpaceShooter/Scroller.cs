@@ -22,7 +22,8 @@ class Scroller: MonoBehaviour {
 
 	public void Start() {
 		_currentDistance = 0.0f;
-		Paused = true;
+		Paused = false;
+		Application.targetFrameRate = 60;
 
 		Instance = this;
 

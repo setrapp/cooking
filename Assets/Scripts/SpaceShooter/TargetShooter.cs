@@ -8,6 +8,7 @@ class TargetShooter: BulletShooter {
 		                                 Color.white,
 		                                 this.BulletType,
 		                                 this.Scale,
-		                                 "EB");
+		                                 "EB",
+		                                 this.SpeedOverride);
 	}
 };

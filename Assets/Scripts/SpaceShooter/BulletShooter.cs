@@ -8,6 +8,7 @@ public class BulletShooter: MonoBehaviour {
 	public int 			 BulletType;
 	public int 			 MaxCount = 0;
 	public float 		 Scale = 1f;
+	public float 		 SpeedOverride = 0f;
 
 	int _currentCooldown = 0;
 	int _currentCount;
