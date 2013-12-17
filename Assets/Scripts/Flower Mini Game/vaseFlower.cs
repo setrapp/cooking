@@ -3,8 +3,13 @@ using System.Collections;
 
 public class vaseFlower : MonoBehaviour {
 
+	public bool isplaced;
+
 	// Use this for initialization
 	void Start () {
+		isplaced = false;
+
+	
 	
 	}
 	
@@ -13,6 +18,7 @@ public class vaseFlower : MonoBehaviour {
 	
 	if ((GameObject.Find("vaseCollider").GetComponent<VaseScript>().vaseflow1)){
 			renderer.enabled = true;
+			isplaced = true;
 	}
 }
 }
