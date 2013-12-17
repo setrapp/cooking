@@ -66,7 +66,7 @@ public class ToastScript : MonoBehaviour {
 			else if (!breadAcquired){
 				breadAcquired = true;
 				GUIManager.Instance.RemoveObjective(grabToast.name);
-				breadPopup.enabled = false;
+				breadPopup.ForceOffAndDisable();
 			}
 
             
@@ -85,7 +85,7 @@ public class ToastScript : MonoBehaviour {
 								Destroy(obj);
 							destroyObjects.Clear();
 							GUIManager.Instance.RemoveObjective(finishToast.name);
-							toasterPopup.enabled = false;
+							toasterPopup.ForceOffAndDisable();
 						}
                     }
                 }

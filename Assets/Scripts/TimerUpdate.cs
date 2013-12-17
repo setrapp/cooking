@@ -89,7 +89,7 @@ public class TimerUpdate : MonoBehaviour {
 		var player = GameObject.Find ("PlayerMesh");
 		if(this.isActive)
 		{
-			if(this.curTime >= 0 + pivotTime - pivot.width / 2 && this.curTime <= pivotTime + pivot.width)
+			if(this.curTime >= pivotTime && this.curTime <= pivotTime + pivot.width)
 			{
 				if (player != null && player.particleSystem != null) {
 					player.particleSystem.enableEmission = true;
@@ -116,6 +116,9 @@ public class TimerUpdate : MonoBehaviour {
     
     void OnGUI()
     {
+		// This should not be needed, but the math is not quite right.
+		GUIWidth = maxTime;
+		
 		// Wrap around the far side of the screen if offsets are negative
 		if (offsetX < 0)
 		{
@@ -128,7 +131,7 @@ public class TimerUpdate : MonoBehaviour {
 		
 		
 		if(isActive && !(hideOnPause && paused))
-		{
+		{	
 			float widthTimeRatio = (GUIWidth / maxTime);
 			textRec = new Rect(offsetX, offsetY - 30, 100, GUIHeight);
 	        timeRec = new Rect(offsetX, offsetY, timeBarLength * widthTimeRatio, GUIHeight);
