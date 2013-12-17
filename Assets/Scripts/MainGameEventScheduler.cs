@@ -12,6 +12,7 @@ public class MainGameEventScheduler : MonoBehaviour {
 	private TimerUpdate fireTimer;
 	public float currentTime;
 	public float timer;
+	public Camera playerCamera = null;
 
     public static MainGameEventScheduler Instance
     {
@@ -69,7 +70,13 @@ public class MainGameEventScheduler : MonoBehaviour {
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		player.GetComponent<OverheatMeter>().reset();
 		player.GetComponent<MovementScripts>().ToggleSpecialRelativity(true, false);
-		
+		Camera[] cameras = Camera.allCameras;
+		foreach (Camera camera in cameras) {
+			if (camera != Instance.playerCamera) {
+				camera.gameObject.SetActive(false);
+			}
+		}
+		Instance.playerCamera.gameObject.SetActive(true);
 		switchTask(true);
     }
     public static void switchTask(bool resetFromFailure = false)
