@@ -16,6 +16,9 @@ public class GUIManager : MonoBehaviour {
     public static bool isActive = true;
 	public List<Objective> objectives = null;
 	public Rect objectivesBox;
+	private Rect scoreBox = new Rect();
+	public float timer;
+	public bool showingScore = false;
 	//public bool isObjectivesActive = true;
 	// Use this for initialization
 	void Start () {
@@ -25,6 +28,13 @@ public class GUIManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		objectivesBox = WrapBoxToScreen(objectivesBox);
+		scoreBox = WrapBoxToScreen(scoreBox);
+		scoreBox = new Rect (0, 0, 100, 100);
+		scoreBox.center = new Vector2 (Screen.width/2, Screen.height/2);
+		if(timer < Time.time)
+		{
+			showingScore = false;
+		}
 	}
 
     void OnGUI()
@@ -33,6 +43,9 @@ public class GUIManager : MonoBehaviour {
         {
             GUI.Label(new Rect((Screen.width * 0.5f) - 75, 75, 150, 100), message);
         }*/
+		//Print objectives
+		if(showingScore == true)
+			GUI.Label(scoreBox, ScoreManager.Instance.scoreMessage);
 		if (objectives.Count > 0) {
 			string objectivesString = "Objectives:\n";
 			for (int i = 0; i < objectives.Count; i++) {
@@ -88,6 +101,10 @@ public class GUIManager : MonoBehaviour {
 		for (int i = 0; i < objectives.Count; i++) {
 			objectives.RemoveAt(i);
 		}
+	}
+	public void ShowScore() {
+		timer = Time.time + 4;
+		showingScore = true;
 	}
 }
 

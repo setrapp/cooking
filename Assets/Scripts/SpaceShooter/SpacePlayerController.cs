@@ -10,16 +10,25 @@ class SpacePlayerController: MonoBehaviour {
 	public float DashTimeout = 0.8f;
 	public float PlayerHalfWidth = 1.0f;
 	public float PlayerHalfHeight = 0.5f;
+	public float BarralRotationSpeed = 8f;
 	public int   ShootCooldown = 20;
+	public int   MaxHealth = 3;
+	public int   CurrentHealth = 3;
+	public GUIStyle HUDGuiStyle;
+
+	public AudioSource ShootingSound;
 
 	float _dashResetTime = 0.0f;
 	float _currentSpeed;
+	float _rotateY = 180f;
 	int   _currentShootCooldown;
 	ParticleSystem _particle;
 
 	public static SpacePlayerController Instance;
 
 	public void Start() {
+		Instance = this;
+
 		Player = this.gameObject;
 		_currentSpeed = this.Speed;
 
@@ -27,10 +36,13 @@ class SpacePlayerController: MonoBehaviour {
 		_particle = Player.GetComponentInChildren<ParticleSystem>();
 		BulletManager = this.GetComponentInChildren<BulletManager>();
 	
-		Instance = this;
+		CurrentHealth = MaxHealth;
 	}
 
 	public void Update() {
+		if(Scroller.Paused)
+			return;
+
 		this.CheckDash();
 		this.CheckMove();
 		this.CheckAttack();
@@ -62,7 +74,7 @@ class SpacePlayerController: MonoBehaviour {
 
 	public void CheckMove() {
 		Vector3 prevPos = Player.transform.position;
-		float rspeed = Time.fixedDeltaTime * _currentSpeed;
+		float rspeed = Time.deltaTime * _currentSpeed;
 		float deltaX = 0.0f;
 		float deltaY = 0.0f;
 		if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) {
@@ -91,8 +103,11 @@ class SpacePlayerController: MonoBehaviour {
 		float newY = MathUtil.Clamp(cameraPos.y - cameraOrthoSize - PlayerHalfHeight, 
 		                            cameraPos.y + cameraOrthoSize - PlayerHalfHeight, 
 		                            prevPos.y + deltaY);
+		if(deltaX != 0)	{
+			_rotateY += BarralRotationSpeed * Mathf.Sign(deltaX);
+			this.gameObject.transform.rotation = Quaternion.AngleAxis(_rotateY, Vector3.up);
+		}
 
-		
 		Player.transform.position = new Vector3(newX, newY, prevPos.z);
 	}
 
@@ -100,15 +115,46 @@ class SpacePlayerController: MonoBehaviour {
 		if(_currentShootCooldown == 0) {
 			if(Input.GetKey(KeyCode.Z)) {
 				Vector3 pos = this.transform.position;
-				BulletManager.ShootBullet(new Vector3(pos.x - 0.8f, pos.y + 1.0f, pos.z), 0);
-				BulletManager.ShootBullet(new Vector3(pos.x + 0.8f, pos.y + 1.0f, pos.z), 0);
-				BulletManager.ShootBullet(new Vector3(pos.x, pos.y + 1.5f, pos.z), 1);
-				
+				Color color = new Color(1, 1, 1, 0.7f);
+
+				float dx = 0.8f * Mathf.Cos(_rotateY * Mathf.Deg2Rad);
+				float dz = 0.8f * Mathf.Sin(_rotateY * Mathf.Deg2Rad);
+				BulletManager.ShootBullet(new Vector3(pos.x - dx, pos.y + 1.0f, pos.z + dz), color, 0, 90, 1, "PB");
+				BulletManager.ShootBullet(new Vector3(pos.x + dx, pos.y + 1.0f, pos.z + dz), color, 0, 90, 1, "PB");
+				BulletManager.ShootBullet(new Vector3(pos.x, pos.y + 1.5f, pos.z), color, 1, 90, 1, "PB");
+
+				if(ShootingSound != null)
+					ShootingSound.Play();
+
 				_currentShootCooldown = this.ShootCooldown;
 			}
 		} else {
 			--_currentShootCooldown;
 		}
+	}
+
+	public void OnTriggerEnter2D(Collider2D col) {
+		GameObject obj = col.gameObject;
+		if(obj.tag != "EB")
+			return;
+		
+		Bullet bullet = obj.GetComponent<Bullet>();
+		if(bullet != null) {
+			this.CurrentHealth -= 1;
+			if(this.CurrentHealth <= 0) {
+				this.OnDied();
+			}
+			bullet.Died = true;
+		}
+	}
+
+	void OnDied() {
+		HUDLayer.Instance.ShowScreenText("Mission Failed!", 1.0f, 999f, 1.0f, TextAnchor.UpperCenter);
+		Scroller.Paused = true;
+	}
+
+	public void OnGUI() {
+		GUI.Label(new Rect(0, Screen.height - 30, 600, 60), "Health: " + this.CurrentHealth.ToString() + "/" + this.MaxHealth.ToString(), HUDGuiStyle);
 	}
 
 };

@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 class Scroller: MonoBehaviour {
@@ -8,24 +10,44 @@ class Scroller: MonoBehaviour {
 
 	public Camera ScrollCamera;
 	public GameObject Player;
+	public HUDLayer HudLayer;
+
+	public List<GameObject> OtherScrollObjects = new List<GameObject>();
 
 	public static Rect CameraRect;
+	public static bool Paused;
+	public static Scroller Instance;
 
 	float _currentDistance;
 
 	public void Start() {
 		_currentDistance = 0.0f;
+		Paused = true;
+
+		Instance = this;
+
+		if(HudLayer != null) {
+			HudLayer.ShowScreenText("Move: Arrows\nShoot: Z\nHyper: C", 1.0f, 1.0f, 1.0f, TextAnchor.UpperLeft);
+		}
 	}
 
-	public void Update() {
+	public void LateUpdate() {
+		if(Paused)
+			return;
+
 		if(_currentDistance <= this.MaxDistance) {
-			float delta = ScrollSpeed * Time.fixedDeltaTime;
+			float delta = ScrollSpeed * Time.deltaTime;
 
 			Vector3 pos = ScrollCamera.transform.position;
 			ScrollCamera.transform.position = new Vector3(pos.x, pos.y + delta, pos.z);
 
 			pos = Player.transform.position;
 			Player.transform.position = new Vector3(pos.x, pos.y + delta, pos.z);
+
+			foreach(GameObject obj in this.OtherScrollObjects) {
+				pos = obj.transform.position;
+				obj.transform.position = new Vector3(pos.x, pos.y + delta, pos.z);
+			}
 	
 			_currentDistance += delta;
 		}

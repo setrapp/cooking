@@ -66,7 +66,7 @@ public class ToastScript : MonoBehaviour {
 			if (breads.Count < 1) {
 				breadAcquired = true;
 				GUIManager.Instance.RemoveObjective(grabToast.name);
-				breadPopup.gameObject.SetActive(false);
+				breadPopup.enabled = false;
 			}
 
             
@@ -78,12 +78,14 @@ public class ToastScript : MonoBehaviour {
                     if (Input.GetKeyDown(KeyCode.F))
                     {
                         if (toastTimer.AttemptSuccess(null, null, success, failure)) {
+							ScoreManager.Instance.timerPercent(toastTimer);
+							ScoreManager.Instance.SuccessScore();
                             MainGameEventScheduler.switchTask();
 							foreach(var obj in destroyObjects)
 								Destroy(obj);
 							destroyObjects.Clear();
 							GUIManager.Instance.RemoveObjective(finishToast.name);
-							toasterPopup.gameObject.SetActive(false);
+							toasterPopup.enabled = false;
 						}
                     }
                 }
@@ -123,8 +125,6 @@ public class ToastScript : MonoBehaviour {
 		GUIManager.Instance.AddObjective(grabToast);
 		GUIManager.Instance.AddObjective(toastToast);
 		GUIManager.Instance.AddObjective(finishToast);
-		breadPopup.enabled = true;
-		toasterPopup.enabled = true;
 	}
 	
 	public void TimerUpdate(TimerStep step) {
