@@ -208,7 +208,10 @@ public class TimerUpdate : MonoBehaviour {
 	
 	private void UpdateTimer(float dt) {
 		foreach(MonoBehaviour timee in timees) {
-			timee.gameObject.SendMessage("TimerUpdate", new TimerStep(name, dt), SendMessageOptions.DontRequireReceiver);	
+			if(timee != null)
+			{
+				timee.gameObject.SendMessage("TimerUpdate", new TimerStep(name, dt), SendMessageOptions.DontRequireReceiver);
+			}
 		}
 
     }
@@ -216,7 +219,10 @@ public class TimerUpdate : MonoBehaviour {
 	public void EndTimer() {
 		isActive = false;
 		foreach(MonoBehaviour timee in timees) {
-			timee.gameObject.SendMessage("TimerEnd", name, SendMessageOptions.DontRequireReceiver);	
+			if(timee != null)
+			{
+				timee.gameObject.SendMessage("TimerEnd", name, SendMessageOptions.DontRequireReceiver);	
+			}
 		}
 	}
 
@@ -241,7 +247,10 @@ public class TimerUpdate : MonoBehaviour {
 		curTime = 0f;
 		PauseTimer();
 		foreach(MonoBehaviour timee in timees) {
-			timee.gameObject.SendMessage("TimerReset", name, SendMessageOptions.DontRequireReceiver);	
+			if(timee != null)
+			{
+				timee.gameObject.SendMessage("TimerReset", name, SendMessageOptions.DontRequireReceiver);
+			}
 		}
 	}
 	

@@ -159,6 +159,8 @@ MonoBehaviour:
   eggPopup: {fileID: 0}
   stovePopup: {fileID: 0}
   eggBoilerPopup: {fileID: 0}
+  megaMoles: {fileID: 0}
+  hammer: {fileID: 0}
 --- !u!114 &201449254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,9 +185,6 @@ MonoBehaviour:
   finishToast:
     name: finish toast
     objective: Save the Toast!!! Patience (F)
-  breadPopup: {fileID: 0}
-  toasterPopup: {fileID: 0}
-  breadTrigger: {fileID: 0}
 --- !u!1 &205445357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,6 +1088,46 @@ Prefab:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11400014, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: offsetY
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400020, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: offsetY
+      value: -41
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400018, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: offsetY
+      value: -71
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400016, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: perfectTimeWindow
+      value: -51
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400022, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: offsetY
+      value: -41
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400026, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: offsetY
+      value: -121
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400024, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: offsetY
+      value: -221
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400028, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: offsetY
+      value: -241
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: offsetY
+      value: -71
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400016, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: maxTime
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400012, guid: 6295da44eaeba0144a444589490340cd, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
@@ -1209,7 +1248,7 @@ MonoBehaviour:
   step: 40
   backstep: 20
   offsetX: 100
-  offsetY: 100
+  offsetY: -121
   perfectTimeWindow: 0
   padding: 10
   timees: []
@@ -1243,7 +1282,7 @@ MonoBehaviour:
   step: 40
   backstep: 20
   offsetX: 100
-  offsetY: 70
+  offsetY: -71
   perfectTimeWindow: 0
   padding: 10
   timees: []
@@ -1277,7 +1316,7 @@ MonoBehaviour:
   step: 4
   backstep: 0
   offsetX: -26
-  offsetY: 240
+  offsetY: -241
   perfectTimeWindow: 15
   padding: 10
   timees: []
@@ -1311,7 +1350,7 @@ MonoBehaviour:
   step: 2
   backstep: 0
   offsetX: -26
-  offsetY: 220
+  offsetY: -221
   perfectTimeWindow: 20
   padding: 10
   timees: []
@@ -1345,7 +1384,7 @@ MonoBehaviour:
   step: 5
   backstep: 0
   offsetX: -26
-  offsetY: 120
+  offsetY: -121
   perfectTimeWindow: 20
   padding: 10
   timees: []
@@ -1379,7 +1418,7 @@ MonoBehaviour:
   step: 2
   backstep: 0
   offsetX: -26
-  offsetY: 40
+  offsetY: -41
   perfectTimeWindow: 200
   padding: 10
   timees: []
@@ -1401,7 +1440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Boil
-  maxTime: 200
+  maxTime: 1000
   startTime: 0
   timeBarLength: 0
   GUIWidth: 100
@@ -1414,7 +1453,7 @@ MonoBehaviour:
   backstep: 0
   offsetX: -26
   offsetY: 100
-  perfectTimeWindow: 50
+  perfectTimeWindow: -51
   padding: 10
   timees: []
   hideOnPause: 0
@@ -1447,7 +1486,7 @@ MonoBehaviour:
   step: 10
   backstep: 0
   offsetX: -26
-  offsetY: 70
+  offsetY: -71
   perfectTimeWindow: 40
   padding: 10
   timees: []
@@ -1481,7 +1520,7 @@ MonoBehaviour:
   step: 10
   backstep: 5
   offsetX: -26
-  offsetY: 40
+  offsetY: -41
   perfectTimeWindow: 150
   padding: 10
   timees: []
@@ -1515,7 +1554,7 @@ MonoBehaviour:
   step: 5
   backstep: 0
   offsetX: -26
-  offsetY: 10
+  offsetY: -11
   perfectTimeWindow: 30
   padding: 10
   timees: []

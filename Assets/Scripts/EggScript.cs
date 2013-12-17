@@ -35,6 +35,8 @@ public class EggScript : MonoBehaviour {
 	public InteractionPopup stovePopup = null;
 	public InteractionPopup eggBoilerPopup = null;
 	bool foundPopups = false;
+	public GameObject megaMoles = null;
+	public GameObject hammer = null;
 	
 	// Use this for initialization
 	void Start () {
@@ -52,6 +54,20 @@ public class EggScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{	
+		if (megaMoles == null) {
+			megaMoles = GameObject.FindGameObjectWithTag("MegaMoles");
+			if (megaMoles != null) {
+				megaMoles.SetActive(false);
+			}
+		}
+		
+		if (hammer == null) {
+			hammer = GameObject.FindGameObjectWithTag("Hammer");
+			if (hammer != null) {
+				hammer.SetActive(false);
+			}
+		}
+		
 		if (isActive)
 		{		
 			if (eggTimer == null) {
@@ -68,6 +84,8 @@ public class EggScript : MonoBehaviour {
 				heatTimer = timerManager.FindTimer("Heat");
 				heatTimer.AddTimee(this);
 			}
+			
+			
 			
 			if (!foundPopups) {
 				FindPopups();
@@ -136,6 +154,7 @@ public class EggScript : MonoBehaviour {
 								boilTimer.StartTimer();
 								boiling = true;
 								GUIManager.Instance.RemoveObjective(placeEgg.name);
+								SpawnMegaMoles();
 							}
 							else {
 								heatTimer.EndTimer();
@@ -260,5 +279,10 @@ public class EggScript : MonoBehaviour {
 				}
 			}
 		}
+	}
+	
+	private void SpawnMegaMoles() {
+		megaMoles.SetActive(true);
+		hammer.SetActive(true);
 	}
 }
