@@ -124,7 +124,7 @@ public class ToastScript : MonoBehaviour {
 		GUIManager.Instance.AddObjective(toastToast);
 		GUIManager.Instance.AddObjective(finishToast);
 		breadPopup.enabled = true;
-		toasterPopup.enabled = false;
+		toasterPopup.enabled = true;
 	}
 	
 	public void TimerUpdate(TimerStep step) {

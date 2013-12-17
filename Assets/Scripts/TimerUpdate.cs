@@ -12,8 +12,8 @@ public class TimerUpdate : MonoBehaviour {
 		get { return curTime; }
 	}
 	public float timeBarLength;
-	private float GUIWidth; 
-	private float GUIHeight;
+	public float GUIWidth = 100; 
+	public float GUIHeight = 20;
 	public Texture2D background;  
 	public Texture2D foreground;
 	public Texture2D lion;
@@ -47,8 +47,6 @@ public class TimerUpdate : MonoBehaviour {
 
     void Start () 
     {
-		GUIWidth = maxTime;
-		GUIHeight = 20;
 		GameObject.FindGameObjectWithTag("Globals").GetComponent<TimerManager>().AddTimer(this);
 		gameState = (GameState)GameObject.FindObjectOfType(typeof(GameState));
 		movement = (MovementScripts)GameObject.FindObjectOfType(typeof(MovementScripts));
@@ -63,7 +61,7 @@ public class TimerUpdate : MonoBehaviour {
     }
  
     void Update () 
-    {
+    {	
 		if(isActive)
 		{
 			if (!inverted) {
@@ -135,7 +133,7 @@ public class TimerUpdate : MonoBehaviour {
 		if(isActive && !(hideOnPause && paused))
 		{
 			textRec = new Rect(offsetX, offsetY - 30, 100, GUIHeight);
-	        timeRec = new Rect(offsetX, offsetY, timeBarLength , GUIHeight);
+	        timeRec = new Rect(offsetX, offsetY, timeBarLength, GUIHeight);
 	        pivot = new Rect(offsetX + pivotTime, offsetY, perfectTimeWindow, GUIHeight);
 	        backgroundRect = new Rect(offsetX, offsetY, GUIWidth, GUIHeight);
 			var boxRect = backgroundRect;
