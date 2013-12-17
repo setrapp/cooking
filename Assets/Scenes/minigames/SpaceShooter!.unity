@@ -399,7 +399,8 @@ MonoBehaviour:
   BulletType: 4
   MaxCount: 0
   Scale: 1.5
-  BulletCount: 4
+  SpeedOverride: 3
+  BulletCount: 3
   Radius: 90
   StartDegree: -45
   Accel1: 0
@@ -489,87 +490,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 713585413}
---- !u!1 &334656689
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 334656693}
-  - 212: {fileID: 334656692}
-  - 114: {fileID: 334656691}
-  - 58: {fileID: 334656690}
-  m_Layer: 0
-  m_Name: BTN1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!58 &334656690
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 334656689}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Radius: .400000006
-  m_Center: {x: 0, y: 0}
---- !u!114 &334656691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 334656689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f33341a0850c50408d0e44c05c540f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EventReceiver: {fileID: 0}
-  OnClickEvent: 
-  OnHoverEvent: 
-  IsHover: 0
-  NormalColor: {r: .996078432, g: .996078432, b: .996078432, a: 0}
-  HoverColor: {r: .58431375, g: .717647076, b: .827450991, a: 0}
-  ClickColor: {r: .996078432, g: .996078432, b: .996078432, a: 0}
---- !u!212 &334656692
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 334656689}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: b3867daed110e497db39422cd8d75698, type: 3}
-  m_Color: {r: .996078432, g: .996078432, b: .996078432, a: 1}
---- !u!4 &334656693
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 334656689}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.72634888, z: -.219414711}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1753622417}
 --- !u!1 &443057561
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +569,7 @@ Transform:
   m_GameObject: {fileID: 455204209}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
   m_LocalPosition: {x: -23.8689632, y: -13.5158377, z: -5.06040192}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 18, y: 18, z: 18}
   m_Children:
   - {fileID: 1299004649}
   - {fileID: 992170097}
@@ -999,6 +919,7 @@ MonoBehaviour:
   BulletType: 1
   MaxCount: 3
   Scale: 1.5
+  SpeedOverride: 3
 --- !u!82 &625472334
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3641,6 +3562,7 @@ MonoBehaviour:
   BulletType: 0
   MaxCount: 3
   Scale: 1.5
+  SpeedOverride: 3
 --- !u!1 &776376874
 GameObject:
   m_ObjectHideFlags: 0
@@ -5738,6 +5660,7 @@ MonoBehaviour:
   BulletType: 1
   MaxCount: 0
   Scale: 1.5
+  SpeedOverride: 2
 --- !u!82 &1416488972
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6973,11 +6896,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c203cfa3f3bdb44878b7ada96bcb0500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooldown: 30
+  Cooldown: 45
   BulletManager: {fileID: 926634485}
   BulletType: 4
-  MaxCount: 0
+  MaxCount: 2
   Scale: 1
+  SpeedOverride: 3
   BulletCount: 6
   Radius: 360
   StartDegree: 0
@@ -8476,15 +8400,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: 1a403ea9a249c334cb5d246afee8871f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 20
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: 1a403ea9a249c334cb5d246afee8871f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 20
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: 1a403ea9a249c334cb5d246afee8871f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 20
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 11100000, guid: 1a403ea9a249c334cb5d246afee8871f, type: 3}
       propertyPath: m_Animation
@@ -8503,33 +8427,6 @@ Prefab:
   m_RootGameObject: {fileID: 455204209}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &1753622416
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1753622417}
-  m_Layer: 0
-  m_Name: GUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1753622417
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1753622416}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.8571148, y: -13.5048389, z: -4.93600368}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 334656693}
-  m_Father: {fileID: 0}
 --- !u!1 &1772640818
 GameObject:
   m_ObjectHideFlags: 0
@@ -9798,7 +9695,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -9814,7 +9711,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1954785183}
   m_LocalRotation: {x: 1.06172598e-13, y: -3.2584137e-07, z: -3.2584137e-07, w: 1}
-  m_LocalPosition: {x: -24.0727005, y: -10.1285648, z: -8.82073021}
+  m_LocalPosition: {x: -24.0727005, y: -9.01552391, z: -8.82073021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9919,6 +9816,7 @@ MonoBehaviour:
   BulletType: 0
   MaxCount: 3
   Scale: 1.5
+  SpeedOverride: 3
 --- !u!82 &1990340692
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12468,6 +12366,7 @@ MonoBehaviour:
   BulletType: 1
   MaxCount: 3
   Scale: 1.5
+  SpeedOverride: 3
 --- !u!1 &2094018611
 GameObject:
   m_ObjectHideFlags: 0

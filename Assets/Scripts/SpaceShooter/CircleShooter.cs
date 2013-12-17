@@ -23,7 +23,8 @@ class CircleShooter: BulletShooter {
 				                               this.BulletType,
 				                               Radius / BulletCount * i + start,
 				                               this.Scale,
-			        	                       "EB");
+				                               "EB",
+				                               this.SpeedOverride);
 		}
 	}
 };
