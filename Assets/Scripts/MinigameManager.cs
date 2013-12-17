@@ -23,7 +23,12 @@ public class MinigameManager : MonoBehaviour
 	bool moved = false;
 	
 	void Start() {
-		mainGame.SetActive(true);
+		if (mainGame == null) {
+			mainGame = GameObject.FindGameObjectWithTag("MainGame");	
+		}
+		if (mainGame !=	null) {
+			mainGame.SetActive(true);
+		}
 	}
 	
 	/*void OnTriggerEnter(Collider collider) {
@@ -43,6 +48,10 @@ public class MinigameManager : MonoBehaviour
 	}*/
 	
 	void Update() {
+		if (mainGame == null) {
+			mainGame = GameObject.FindGameObjectWithTag("MainGame");	
+		}
+		
 		if (!inMinigame && GameObject.FindGameObjectWithTag("Minigame") != null) {
 			inMinigame = true;
 			mainGame.SetActive(false);

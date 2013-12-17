@@ -64,6 +64,12 @@ public class TimerUpdate : MonoBehaviour {
     {	
 		if(isActive)
 		{
+			gameState = TimerManager.Instance.GameState;
+			movement = TimerManager.Instance.Movement;
+			if (gameState == null || movement == null) {
+				return;	
+			}
+			
 			if (!inverted) {
 	     	   AdjustCurrentTime(step);        //This can allow you to have differernt time steps for the change. 
 			}

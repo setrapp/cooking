@@ -19,7 +19,10 @@ public class FireHydrant : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (fireTimer == null) {
-			fireTimer = GameObject.Find ("Globals").GetComponent<TimerManager>().FindTimer("On Fire Timer");
+			GameObject globals = GameObject.FindGameObjectWithTag("Globals");
+			if (globals != null) {
+				fireTimer = globals.GetComponent<TimerManager>().FindTimer("On Fire Timer");
+			}
 		}
 		
 		if(Input.GetKey(KeyCode.E) && (transform.position - player.transform.position).sqrMagnitude < hydrantRange * hydrantRange && 

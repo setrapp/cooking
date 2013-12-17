@@ -12,7 +12,7 @@ public class OverheatMeter : MonoBehaviour
 	
 	
 	void Start () {
-		timerManager = GameObject.FindGameObjectWithTag("Globals").GetComponent<TimerManager>();
+		
 		
 	}
 
@@ -25,6 +25,13 @@ public class OverheatMeter : MonoBehaviour
 	
 	void Update ()
 	{
+		if (timerManager == null) {
+			GameObject globals = GameObject.FindGameObjectWithTag("Globals");
+			if (globals != null) {
+				timerManager = globals.GetComponent<TimerManager>();
+			}
+		}
+		
 		if (overheatTimer == null) {
 			overheatTimer = timerManager.FindTimer("RALPH Overheat");
 			overheatTimer.AddTimee(this);

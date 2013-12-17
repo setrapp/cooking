@@ -74,6 +74,408 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!1 &201449250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 201449251}
+  - 114: {fileID: 201449254}
+  - 114: {fileID: 201449253}
+  - 114: {fileID: 201449252}
+  m_Layer: 0
+  m_Name: Objectives
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &201449251
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 201449250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.802866, y: .359876513, z: -27.6361351}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 205445363}
+--- !u!114 &201449252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 201449250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46eca1da5ce4a004ebe9e2c5b986d84c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onionsCollected: 0
+  mushroomsCollected: 0
+  eggsCollected: 0
+  oilHeated: 0
+  oilHeat: {fileID: 0}
+  onionCook: {fileID: 0}
+  mushroomsCook: {fileID: 0}
+  omletteCook: {fileID: 0}
+  timeManager: {fileID: 0}
+  timerActive: 0
+  onionsPickedup: 0
+  mushroomsPickedUp: 0
+--- !u!114 &201449253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 201449250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b469267ead97d0f43b9c0ff54767ff30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heatTimer: {fileID: 0}
+  eggTimer: {fileID: 0}
+  boilTimer: {fileID: 0}
+  success: {fileID: 0}
+  failure: {fileID: 0}
+  grabEgg:
+    name: grab egg
+    objective: Find an Egg (E)
+  heatStove:
+    name: heat stove
+    objective: Set Stove to ON Mode (H)
+  placeEgg:
+    name: place egg
+    objective: Enter Egg in Boiling Water (E)
+  finishEgg:
+    name: finish egg
+    objective: Retrieve the Perfect Egg (E)
+  eggPopup: {fileID: 0}
+  stovePopup: {fileID: 0}
+  eggBoilerPopup: {fileID: 0}
+--- !u!114 &201449254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 201449250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f07609a45012d4fa3e7330a695a071, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breadAcquired: 0
+  success: {fileID: 0}
+  failure: {fileID: 0}
+  grabToast:
+    name: grab toast
+    objective: Grab 100% Toast (F)
+  toastToast:
+    name: toast toast
+    objective: Begin Toasting the Toast in the Toastatron (F)
+  finishToast:
+    name: finish toast
+    objective: Save the Toast!!! Patience (F)
+  breadPopup: {fileID: 0}
+  toasterPopup: {fileID: 0}
+  breadTrigger: {fileID: 0}
+--- !u!1 &205445357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 205445363}
+  - 114: {fileID: 205445362}
+  - 114: {fileID: 205445361}
+  - 114: {fileID: 205445360}
+  - 114: {fileID: 205445359}
+  - 114: {fileID: 205445358}
+  m_Layer: 0
+  m_Name: Globals
+  m_TagString: Globals
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &205445358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 205445357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61217052095bc6e4f97d2ece7cb2fb7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreLetter: 
+  scoreMessage: 
+--- !u!114 &205445359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 205445357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab12d09e120893468fe20e232f8ecca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectives: []
+  objectivesBox:
+    serializedVersion: 2
+    x: 10
+    y: 10
+    width: 500
+    height: 500
+  timer: 0
+  showingScore: 0
+  objectivesStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: .996078432, g: .996078432, b: .996078432, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 15
+    m_FontStyle: 1
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  gradeLetterStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: .996078432, g: .996078432, b: .996078432, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 180
+    m_FontStyle: 1
+    m_Alignment: 7
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  gradeMessageStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: .996078432, g: .996078432, b: .996078432, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 1
+    m_Alignment: 1
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+--- !u!114 &205445360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 205445357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb42af5ab0ace240aef18d230e40213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &205445361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 205445357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31552b1c0d52b6f408ec6ab482889532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torchPrefab: {fileID: 100000, guid: 1e5c742accdc1824fb01f98f446fa63c, type: 2}
+  findFireHydrant:
+    name: find hydrant
+    objective: Find the Fire Hydrant
+  putOutFire:
+    name: on fire
+    objective: STOP BEING ON FIRE (E)
+  maxTime: 0
+  currentTime: 0
+  timer: 0
+--- !u!114 &205445362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 205445357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fac6e0e24b3c4469b1e558c9d4101d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &205445363
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 205445357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.180975, y: .623370647, z: -14.7309914}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1351869971}
+  - {fileID: 201449251}
+  - {fileID: 1593034909}
+  m_Father: {fileID: 0}
 --- !u!1 &237561850
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +681,32 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 800ca1475c352b247a68f513e5de48ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &611359263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100004, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 611359264}
+  m_Layer: 0
+  m_Name: minigame exit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &611359264
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400004, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 611359263}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
+  m_LocalPosition: {x: -1.48452032, y: -.577476978, z: -.275436819}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1351869971}
 --- !u!1 &676226850
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,3 +982,545 @@ Transform:
   m_LocalScale: {x: 1.08099997, y: 1.08099997, z: 1.08099997}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!1001 &1295542982
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -11.180975
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .623370647
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -14.7309914
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: success
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: failure
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: success
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: failure
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400012, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: mainGame
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400012, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: moleGame
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400012, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: flowerGame
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: toastToast.objective
+      value: Begin Toasting the Toast in the Toastatron (F)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: torchPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 1e5c742accdc1824fb01f98f446fa63c, type: 2}
+    - target: {fileID: 11400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: breadPopup
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: timerManager
+      value: 
+      objectReference: {fileID: 205445362}
+    - target: {fileID: 11400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: toasterPopup
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: eggPopup
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: stovePopup
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: eggBoilerPopup
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: maxTime
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: breadTrigger
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11400012, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+  m_RootGameObject: {fileID: 205445357}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
+--- !u!1 &1351869970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100006, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1351869971}
+  - 65: {fileID: 1351869973}
+  - 114: {fileID: 1351869972}
+  m_Layer: 0
+  m_Name: Games
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1351869971
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400006, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 1351869970}
+  m_LocalRotation: {x: 0, y: .99999994, z: 0, w: -.000443999976}
+  m_LocalPosition: {x: -15.6876049, y: .825560331, z: -7.99716187}
+  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_Children:
+  - {fileID: 611359264}
+  m_Father: {fileID: 205445363}
+--- !u!114 &1351869972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1351869970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8763c276f5138488e41a6b2d6cb2c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainGame: {fileID: 0}
+--- !u!65 &1351869973
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500000, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 1351869970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .200000003, y: 1.5, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1593034908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100008, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1593034909}
+  - 114: {fileID: 1593034919}
+  - 114: {fileID: 1593034918}
+  - 114: {fileID: 1593034917}
+  - 114: {fileID: 1593034916}
+  - 114: {fileID: 1593034915}
+  - 114: {fileID: 1593034914}
+  - 114: {fileID: 1593034913}
+  - 114: {fileID: 1593034912}
+  - 114: {fileID: 1593034911}
+  - 114: {fileID: 1593034910}
+  m_Layer: 0
+  m_Name: Timers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1593034909
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400008, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 1593034908}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.392755508, y: 1.68571138, z: 2.56680679}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 205445363}
+--- !u!114 &1593034910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1593034908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bad404cd815cfa4f8c9cf91235fa2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: On Fire Timer
+  maxTime: 100
+  startTime: 0
+  timeBarLength: 0
+  GUIWidth: 100
+  GUIHeight: 20
+  background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
+  foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
+  lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
+  pivotTime: -1
+  step: 40
+  backstep: 20
+  offsetX: 100
+  offsetY: 100
+  perfectTimeWindow: 0
+  padding: 10
+  timees: []
+  hideOnPause: 0
+  ignoreRelativity: 0
+  killOnFailure: 0
+  attemptAtMin: 0
+  attemptAtMax: 0
+--- !u!114 &1593034911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400030, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 1593034908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bad404cd815cfa4f8c9cf91235fa2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: RALPH Overheat
+  maxTime: 200
+  startTime: 0
+  timeBarLength: 0
+  GUIWidth: 100
+  GUIHeight: 20
+  background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
+  foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
+  lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
+  pivotTime: -1
+  step: 40
+  backstep: 20
+  offsetX: 100
+  offsetY: 70
+  perfectTimeWindow: 0
+  padding: 10
+  timees: []
+  hideOnPause: 0
+  ignoreRelativity: 0
+  killOnFailure: 1
+  attemptAtMin: 1
+  attemptAtMax: 1
+--- !u!114 &1593034912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400028, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 1593034908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bad404cd815cfa4f8c9cf91235fa2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Make Omlette
+  maxTime: 100
+  startTime: 0
+  timeBarLength: 0
+  GUIWidth: 100
+  GUIHeight: 20
+  background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
+  foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
+  lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
+  pivotTime: 30
+  step: 4
+  backstep: 0
+  offsetX: -26
+  offsetY: 240
+  perfectTimeWindow: 15
+  padding: 10
+  timees: []
+  hideOnPause: 0
+  ignoreRelativity: 0
+  killOnFailure: 1
+  attemptAtMin: 1
+  attemptAtMax: 1
+--- !u!114 &1593034913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400024, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 1593034908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bad404cd815cfa4f8c9cf91235fa2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Cook Mushrooms
+  maxTime: 60
+  startTime: 0
+  timeBarLength: 0
+  GUIWidth: 100
+  GUIHeight: 20
+  background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
+  foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
+  lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
+  pivotTime: 20
+  step: 2
+  backstep: 0
+  offsetX: -26
+  offsetY: 220
+  perfectTimeWindow: 20
+  padding: 10
+  timees: []
+  hideOnPause: 0
+  ignoreRelativity: 0
+  killOnFailure: 1
+  attemptAtMin: 1
+  attemptAtMax: 1
+--- !u!114 &1593034914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400026, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 1593034908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bad404cd815cfa4f8c9cf91235fa2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Cook Onions
+  maxTime: 60
+  startTime: 0
+  timeBarLength: 0
+  GUIWidth: 100
+  GUIHeight: 20
+  background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
+  foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
+  lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
+  pivotTime: 30
+  step: 5
+  backstep: 0
+  offsetX: -26
+  offsetY: 120
+  perfectTimeWindow: 20
+  padding: 10
+  timees: []
+  hideOnPause: 0
+  ignoreRelativity: 0
+  killOnFailure: 1
+  attemptAtMin: 1
+  attemptAtMax: 1
+--- !u!114 &1593034915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400022, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 1593034908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bad404cd815cfa4f8c9cf91235fa2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Oil Heat
+  maxTime: 300
+  startTime: 0
+  timeBarLength: 0
+  GUIWidth: 100
+  GUIHeight: 20
+  background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
+  foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
+  lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
+  pivotTime: 20
+  step: 2
+  backstep: 0
+  offsetX: -26
+  offsetY: 40
+  perfectTimeWindow: 200
+  padding: 10
+  timees: []
+  hideOnPause: 0
+  ignoreRelativity: 0
+  killOnFailure: 1
+  attemptAtMin: 1
+  attemptAtMax: 1
+--- !u!114 &1593034916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400016, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 1593034908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bad404cd815cfa4f8c9cf91235fa2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Boil
+  maxTime: 200
+  startTime: 0
+  timeBarLength: 0
+  GUIWidth: 100
+  GUIHeight: 20
+  background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
+  foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
+  lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
+  pivotTime: 100
+  step: 10
+  backstep: 0
+  offsetX: -26
+  offsetY: 100
+  perfectTimeWindow: 50
+  padding: 10
+  timees: []
+  hideOnPause: 0
+  ignoreRelativity: 0
+  killOnFailure: 1
+  attemptAtMin: 1
+  attemptAtMax: 1
+--- !u!114 &1593034917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400018, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 1593034908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bad404cd815cfa4f8c9cf91235fa2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Egg
+  maxTime: 200
+  startTime: 0
+  timeBarLength: 0
+  GUIWidth: 100
+  GUIHeight: 20
+  background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
+  foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
+  lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
+  pivotTime: 50
+  step: 10
+  backstep: 0
+  offsetX: -26
+  offsetY: 70
+  perfectTimeWindow: 40
+  padding: 10
+  timees: []
+  hideOnPause: 0
+  ignoreRelativity: 0
+  killOnFailure: 1
+  attemptAtMin: 1
+  attemptAtMax: 1
+--- !u!114 &1593034918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400020, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 1593034908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bad404cd815cfa4f8c9cf91235fa2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Heat
+  maxTime: 200
+  startTime: 0
+  timeBarLength: 0
+  GUIWidth: 100
+  GUIHeight: 20
+  background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
+  foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
+  lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
+  pivotTime: 30
+  step: 10
+  backstep: 5
+  offsetX: -26
+  offsetY: 40
+  perfectTimeWindow: 150
+  padding: 10
+  timees: []
+  hideOnPause: 0
+  ignoreRelativity: 0
+  killOnFailure: 1
+  attemptAtMin: 1
+  attemptAtMax: 1
+--- !u!114 &1593034919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400014, guid: 6295da44eaeba0144a444589490340cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1295542982}
+  m_GameObject: {fileID: 1593034908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bad404cd815cfa4f8c9cf91235fa2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Toaster
+  maxTime: 100
+  startTime: 0
+  timeBarLength: 0
+  GUIWidth: 100
+  GUIHeight: 20
+  background: {fileID: 2800000, guid: 53075cb0a7669364d8083cc11407f117, type: 3}
+  foreground: {fileID: 2800000, guid: 1bf62eb53145a6d48b84e2a2ce407a9b, type: 3}
+  lion: {fileID: 2800000, guid: 3e8d9420bee211543b6c8fb8c5162f71, type: 3}
+  pivotTime: 20
+  step: 5
+  backstep: 0
+  offsetX: -26
+  offsetY: 10
+  perfectTimeWindow: 30
+  padding: 10
+  timees: []
+  hideOnPause: 0
+  ignoreRelativity: 0
+  killOnFailure: 1
+  attemptAtMin: 1
+  attemptAtMax: 1
