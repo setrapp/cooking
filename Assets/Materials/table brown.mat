@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: space_back
-  m_Shader: {fileID: 4800000, guid: a8b469e68b8081c4b8475b25057170bd, type: 3}
+  m_Name: table brown
+  m_Shader: {fileID: 4800000, guid: 7a0e8a44bcacae44a92d0b49b588eb0a, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,7 +17,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 170d107c64d7045b7bc416734c1c4f8d, type: 3}
+          m_Texture: {fileID: 2800000, guid: a1524656136a94476a16497673439a2a, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -41,17 +41,17 @@ Material:
         second: .100000001
       data:
         first:
-          name: _strtTime
-        second: 0
+          name: _InvFade
+        second: 1
       data:
         first:
-          name: _viw
+          name: _strtTime
         second: 0
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .941176474, g: .789690971, b: .46366781, a: 1}
       data:
         first:
           name: _viw
