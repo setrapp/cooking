@@ -14,7 +14,7 @@ public class EnterMinigame : MonoBehaviour
 	
 	void Start() {
 		mainGame.SetActive(true);
-		moleGame.SetActive(false);
+		//moleGame.SetActive(false);
 		flowerGame.SetActive(false);
 	}
 	
@@ -25,13 +25,13 @@ public class EnterMinigame : MonoBehaviour
 			moved = true;
 			if (playFirst) {
 				mainGame.SetActive(false);
-				moleGame.SetActive(true);
+				//moleGame.SetActive(true);
 				flowerGame.SetActive(false);
 				playFirst = false;
 			}
 			else {
 				mainGame.SetActive(false);
-				moleGame.SetActive(false);
+				//moleGame.SetActive(false);
 				flowerGame.SetActive(true);
 				playFirst = true;
 			}
