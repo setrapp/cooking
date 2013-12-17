@@ -40,6 +40,7 @@ public class MovementScripts: MonoBehaviour
     private bool bounce = false;
 	private bool jumpedOutRel = false;
 	public bool relativityAvailable = true;
+	public float minRelativisticSpeed = 2.0f;
 
 	public float speedOfLightIncrement = 1.0f;    
 	public Collider parentCollider = null;
@@ -67,7 +68,7 @@ public class MovementScripts: MonoBehaviour
 		
         frames = 0;
 
-	ToggleSpecialRelativity(true, false);
+		ToggleSpecialRelativity(true, false);
     }
 	//Again, use LateUpdate to solve some collision issues.
     void LateUpdate()
@@ -243,7 +244,6 @@ public class MovementScripts: MonoBehaviour
 					}
 					
 					// Jump to non-relativistic rendering when moving slowly
-					float minRelativisticSpeed = 2.0f;
 					if (rotatedVelocity.sqrMagnitude < minRelativisticSpeed * minRelativisticSpeed && isRelativistic) {
 						ToggleSpecialRelativity(true, false);
 						jumpedOutRel = true;
@@ -383,18 +383,27 @@ public class MovementScripts: MonoBehaviour
     }
 
 	public void ToggleSpecialRelativity(bool forceToggle, bool forceTo) {
+		bool wasRelativistic = isRelativistic;
 		if (!relativityAvailable) {
 			return;
 		}
-		if (state.PlayerVelocityVector.sqrMagnitude > 0.5f) {
-			state.PlayerVelocityVector = state.PlayerVelocityVector * 0.25f;
-		}
+		
+		
 		
 		if (forceToggle) {
 			isRelativistic = forceTo;
 		}
 		else {
 			isRelativistic = !isRelativistic;
+		}
+		
+		if (isRelativistic && !wasRelativistic) {
+			if (state.PlayerVelocityVector.sqrMagnitude > 0.5f) {
+				state.PlayerVelocityVector = state.PlayerVelocityVector * 0.25f;
+			} else {
+				
+				state.PlayerVelocityVector = ((state.PlayerVelocityVector.sqrMagnitude < Mathf.Pow(minRelativisticSpeed, 2)) ? -transform.forward : state.PlayerVelocityVector.normalized) * Mathf.Min(minRelativisticSpeed * 2, (float)state.maxPlayerSpeed);
+			}
 		}
 		state.SpeedOfLight = (isRelativistic ? relativisticC : nonrelativisticC);
 		speedOfLightTarget = (float)state.SpeedOfLight;

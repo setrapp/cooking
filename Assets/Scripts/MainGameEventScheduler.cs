@@ -108,6 +108,12 @@ public class MainGameEventScheduler : MonoBehaviour {
 		EggScript.isActive = false;
 		OmeletteScript.isActive = false;
     }
+	
+	void OnGUI() {
+        if (GUI.Button(new Rect(Screen.width - 160, Screen.height - 40, 150, 30), "Fail!!!")) {
+            FailedObjective();
+        }
+	}
 }
 
 
