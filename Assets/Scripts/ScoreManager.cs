@@ -37,23 +37,28 @@ public class ScoreManager : MonoBehaviour {
 		{
 			score = 'A';
 			scoreMessage = "Acceptable.";
+			BroadcastMessage("PlayAudio",1);
 		}
 		else if(offPerfectPercent > .1 && offPerfectPercent < .5){
 			score = 'B';
 			scoreMessage = "Needs improvement.";
+			BroadcastMessage("PlayAudio",2);
 		}
 		else if(offPerfectPercent > .5 && offPerfectPercent < 1){
 			score = 'C';
 			scoreMessage = "Barely adequate.";
+			BroadcastMessage("PlayAudio",3);
 		}
 		else if(offPerfectPercent > 1 && offPerfectPercent < 1.5){
 			score = 'D';
 			scoreMessage = "Not acceptable. Prepare self destruct sequence.";
+			BroadcastMessage("PlayAudio",4);
 		}
 		else
 		{
 			score = 'F';
 			scoreMessage = "Utter failure. Terminate ASAP.";
+			BroadcastMessage("PlayAudio",5);
 		}
 		scoreLetter = "" + score;
 		
