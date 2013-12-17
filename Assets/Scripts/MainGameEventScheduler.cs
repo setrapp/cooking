@@ -12,7 +12,8 @@ public class MainGameEventScheduler : MonoBehaviour {
 	private TimerUpdate fireTimer;
 	public float currentTime;
 	public float timer;
-	public Camera playerCamera = null;
+	private GameObject mainGame = null;
+	//public Camera playerCamera = null;
 
     public static MainGameEventScheduler Instance
     {
@@ -34,6 +35,10 @@ public class MainGameEventScheduler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (mainGame == null) {
+			mainGame = GameObject.FindGameObjectWithTag("MainGame");	
+		}
+		
 		if (fireTimer == null) {
 			fireTimer = GetComponent<TimerManager>().FindTimer("On Fire Timer");	
 		}
@@ -68,17 +73,20 @@ public class MainGameEventScheduler : MonoBehaviour {
     {
 		ScoreManager.Instance.ResetScore();
 		GUIManager.Instance.RemoveAllObjectives();
-		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		/*GameObject player = GameObject.FindGameObjectWithTag("Player");
 		player.GetComponent<OverheatMeter>().reset();
-		player.GetComponent<MovementScripts>().ToggleSpecialRelativity(true, false);
-		Camera[] cameras = Camera.allCameras;
+		player.GetComponent<MovementScripts>().ToggleSpecialRelativity(true, false);*/
+		/*Camera[] cameras = Camera.allCameras;
 		foreach (Camera camera in cameras) {
 			if (camera != Instance.playerCamera) {
 				camera.gameObject.SetActive(false);
 			}
 		}
-		Instance.playerCamera.gameObject.SetActive(true);
+		Instance.playerCamera.gameObject.SetActive(true);*/
 		switchTask(true);
+		Destroy(Instance.mainGame);
+		Instance.mainGame = null;
+		Application.LoadLevel("main");
     }
     public static void switchTask(bool resetFromFailure = false)
     {

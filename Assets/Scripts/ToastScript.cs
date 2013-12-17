@@ -25,10 +25,9 @@ public class ToastScript : MonoBehaviour {
 	public Objective grabToast = new Objective("grab toast", "Grab 100% Toast (F)");
 	public Objective toastToast = new Objective("toast toast", "Begin Toasting the Toast in the Toastatron (F)");
 	public Objective finishToast = new Objective("finish toast", "Save the Toast!!! Patience (F)");
-	public InteractionPopup breadPopup = null;
-	public InteractionPopup toasterPopup = null;
+	private InteractionPopup breadPopup = null;
+	private InteractionPopup toasterPopup = null;
 	private int haveBreadCount = 0;
-	public CollisionChecker breadTrigger = null;
 	
 	// Use this for initialization
 	void Start () {
@@ -44,19 +43,35 @@ public class ToastScript : MonoBehaviour {
 	
 	// Update is called once per frame
     void Update()
-    {
-		if (toastTimer == null) {
-			toastTimer = timerManager.FindTimer("Toaster");
-			toastTimer.AddTimee(this);
-		}
-		
+    {		
         if (isActive)
         {
+			if (player == null) {
+			player = GameObject.FindGameObjectWithTag("Player");
+				if (player == null) {
+					return;
+				}
+			}
+			
+			if (toaster == null) {
+				toaster = GameObject.FindGameObjectWithTag("Toaster");
+				if (toaster == null) {
+					return;
+				}
+			}
+			
+			if (toastTimer == null) {
+				toastTimer = timerManager.FindTimer("Toaster");
+				toastTimer.AddTimee(this);
+			}
+			
+			FindPopups();
+			
             breads = GameObject.FindGameObjectsWithTag("Bread").ToList();
 			if (haveBreadCount < breads.Count) {
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    if (breadTrigger.Triggering)
+                    if (breadPopup.collisionChecker.Triggering)
                     {
 						breads[haveBreadCount].renderer.enabled = false;
 						haveBreadCount++;
@@ -73,7 +88,7 @@ public class ToastScript : MonoBehaviour {
 
             if (toastTimer.IsActive)
             {
-                if (Vector3.Distance(toaster.transform.position, player.transform.position) < 5)
+                if (toasterPopup.collisionChecker.Triggering)
                 {
                     if (Input.GetKeyDown(KeyCode.F))
                     {
@@ -92,7 +107,7 @@ public class ToastScript : MonoBehaviour {
                 return;
             }
             else
-                if (Vector3.Distance(toaster.transform.position, player.transform.position) < 5)
+                if (toasterPopup.collisionChecker.Triggering)
                 {
                     if (Input.GetKeyDown(KeyCode.F))
                     {
@@ -122,6 +137,9 @@ public class ToastScript : MonoBehaviour {
 		GUIManager.Instance.AddObjective(grabToast);
 		GUIManager.Instance.AddObjective(toastToast);
 		GUIManager.Instance.AddObjective(finishToast);
+		FindPopups();
+		breadAcquired = false;
+		haveBreadCount = 0;
 		breadPopup.enabled = true;
 		toasterPopup.enabled = true;
 		foreach (var bread in breads)
@@ -151,5 +169,20 @@ public class ToastScript : MonoBehaviour {
 			obj.renderer.enabled = true;
 		}
 		destroyObjects.Clear();
+	}
+	
+	private void FindPopups() {
+		if (breadPopup == null || toasterPopup == null) {
+			GameObject[] popups = GameObject.FindGameObjectsWithTag("Popup");
+			for (int i = 0; i < popups.Length; i++) {	
+				InteractionPopup popup = popups[i].GetComponent<InteractionPopup>();
+				if (popup.name.Equals("bread")) {
+					breadPopup = popup;
+				}
+				else if (popup.name.Equals("toaster")) {
+					toasterPopup = popup;
+				}
+			}
+		}
 	}
 }

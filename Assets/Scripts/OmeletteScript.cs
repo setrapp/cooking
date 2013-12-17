@@ -34,7 +34,7 @@ public class OmeletteScript : MonoBehaviour {
 
     public void Initialize()
     {
-		
+		/*
 		GameObject.Find("Cylinder55").SetActive(true);
 		GameObject.Find("Cylinder55").renderer.enabled = true;
 		GameObject.Find("Box59").SetActive(true);
@@ -45,7 +45,7 @@ public class OmeletteScript : MonoBehaviour {
         GameObject.Find("Omlette").particleSystem.renderer.enabled = false;
         //GameObject.Find("Frying pan").renderer.enabled = true;
         GameObject.Find("Omlette").renderer.enabled = false;
-        GameObject.Find("Omlette").particleSystem.enableEmission = false;
+        GameObject.Find("Omlette").particleSystem.enableEmission = false;*/
     }
 	
 	// Update is called once per frame

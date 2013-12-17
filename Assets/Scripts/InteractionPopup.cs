@@ -3,6 +3,7 @@ using System.Collections;
 
 public class InteractionPopup : MonoBehaviour
 {
+	public string name;
 	private GameObject player;	
 	private bool popupOn = false;
 	public GameObject popup = null;

@@ -34,6 +34,7 @@ public class EggScript : MonoBehaviour {
 	public InteractionPopup eggPopup = null;
 	public InteractionPopup stovePopup = null;
 	public InteractionPopup eggBoilerPopup = null;
+	bool foundPopups = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -50,36 +51,54 @@ public class EggScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update()
-	{
-		if (eggTimer == null) {
-			eggTimer = timerManager.FindTimer("Egg");
-			eggTimer.AddTimee(this);
-		}
-
-		if (boilTimer == null) {
-			boilTimer = timerManager.FindTimer("Boil");
-			boilTimer.AddTimee(this);
-		}
-
-		if (heatTimer == null) {
-			heatTimer = timerManager.FindTimer("Heat");
-			heatTimer.AddTimee(this);
-		}
-		
+	{	
 		if (isActive)
-		{			
+		{		
+			if (eggTimer == null) {
+				eggTimer = timerManager.FindTimer("Egg");
+				eggTimer.AddTimee(this);
+			}
+	
+			if (boilTimer == null) {
+				boilTimer = timerManager.FindTimer("Boil");
+				boilTimer.AddTimee(this);
+			}
+	
+			if (heatTimer == null) {
+				heatTimer = timerManager.FindTimer("Heat");
+				heatTimer.AddTimee(this);
+			}
+			
+			if (!foundPopups) {
+				FindPopups();
+				if (eggPopup != null) {
+					eggPopup.enabled = true;
+				}
+				if (stovePopup != null) {
+					stovePopup.enabled = true;
+				}
+				if (eggBoilerPopup != null) {
+					eggBoilerPopup.enabled = true;
+				}
+				foundPopups = true;
+			}
+			
 			if (Input.GetKeyDown(KeyCode.H))
 			{
 				
 				if (!heating) {
-					if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
-						heatTimer.StartTimer();
+					if (stovePopup.collisionChecker.Triggering) {
+						if (heatTimer.CurTime > 0) {
+							heatTimer.InvertTimer();
+						} else {
+							heatTimer.StartTimer();
+						}
 						heating = true;
 						GUIManager.Instance.RemoveObjective(heatStove.name);
 					}
 				}
 				else {
-					if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
+					if (stovePopup.collisionChecker.Triggering) {
 						heatTimer.InvertTimer();
 						heating = false;
 					}
@@ -94,7 +113,7 @@ public class EggScript : MonoBehaviour {
 						eggs = GameObject.FindGameObjectsWithTag("Egg").ToList();
 						foreach (var egg in eggs)
 						{
-							if (Vector3.Distance(egg.transform.position, player.transform.position) < 5)
+							if (eggPopup.collisionChecker.Triggering)
 							{
 								egg.renderer.enabled = false;
 								eggAcquired = true;
@@ -111,7 +130,7 @@ public class EggScript : MonoBehaviour {
 					}
 					else
 					{
-						if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
+						if (stovePopup.collisionChecker.Triggering) {
 							if(eggTimer.AttemptSuccess() && heatTimer.AttemptSuccess(null, null, success, failure, false, false)) {
 								ScoreManager.Instance.timerPercent(eggTimer);
 								boilTimer.StartTimer();
@@ -125,7 +144,7 @@ public class EggScript : MonoBehaviour {
 					}
 				}
 				else {
-					if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
+					if (stovePopup.collisionChecker.Triggering) {
 						if (boilTimer.AttemptSuccess()) {
 							ScoreManager.Instance.timerPercent(boilTimer);
 							ScoreManager.Instance.SuccessScore();
@@ -182,6 +201,11 @@ public class EggScript : MonoBehaviour {
 		GUIManager.Instance.AddObjective(heatStove);
 		GUIManager.Instance.AddObjective(placeEgg);
 		GUIManager.Instance.AddObjective(finishEgg);
+		foundPopups = false;
+		FindPopups();		
+		boiling = false;
+		heating = false;
+		eggAcquired = false;
 		eggPopup.enabled = true;
 		stovePopup.enabled = true;
 		eggBoilerPopup.enabled = false;
@@ -218,5 +242,23 @@ public class EggScript : MonoBehaviour {
 		boiling = false;
 		heating = false;
 		eggAcquired = false;
+	}
+	
+	private void FindPopups() {
+		if (eggPopup == null || stovePopup == null || eggBoilerPopup == null) {
+			GameObject[] popups = GameObject.FindGameObjectsWithTag("Popup");
+			for (int i = 0; i < popups.Length; i++) {	
+				InteractionPopup popup = popups[i].GetComponent<InteractionPopup>();
+				if (popup.name.Equals("egg")) {
+					eggPopup = popup;
+				}
+				else if (popup.name.Equals("heater")) {
+					stovePopup = popup;
+				}
+				else if (popup.name.Equals("boiling")) {
+					eggBoilerPopup = popup;
+				}
+			}
+		}
 	}
 }

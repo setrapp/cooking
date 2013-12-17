@@ -102,12 +102,13 @@ public class GUIManager : MonoBehaviour {
 		for (int i = 0; i < objectives.Count; i++) {
 			if (objectives[i].name.Equals(name)) {
 				objectives.RemoveAt(i);
+				i--;
 			}
 		}
 	}
 	
 	public void RemoveAllObjectives() {
-		for (int i = 0; i < objectives.Count; i++) {
+		for (int i = 0; i < objectives.Count;) {
 			objectives.RemoveAt(i);
 		}
 	}
