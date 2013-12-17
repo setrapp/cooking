@@ -15,9 +15,8 @@ public class ScoreManager : MonoBehaviour {
     }
     public static ScoreManager instance = null;
 	public char score;
+	public string scoreLetter;
 	public string scoreMessage;
-	public TimerUpdate toastTimer;
-	public TimerUpdate boilTimer;
 	private float offPerfectPercent = 0;
 	private int timersCounted = 0;
 	
@@ -37,26 +36,26 @@ public class ScoreManager : MonoBehaviour {
 		if(offPerfectPercent < .1 && offPerfectPercent >= 0)
 		{
 			score = 'A';
-			scoreMessage = "Grade: " + score + ". Acceptable.";
+			scoreMessage = "Acceptable.";
 		}
 		else if(offPerfectPercent > .1 && offPerfectPercent < .5){
 			score = 'B';
-			scoreMessage = "Grade: " + score + ". Needs improvement.";
+			scoreMessage = "Needs improvement.";
 		}
 		else if(offPerfectPercent > .5 && offPerfectPercent < 1){
 			score = 'C';
-			scoreMessage = "Grade: " + score + ". Barely adequate.";
+			scoreMessage = "Barely adequate.";
 		}
 		else if(offPerfectPercent > 1 && offPerfectPercent < 1.5){
 			score = 'D';
-			scoreMessage = "Grade: " + score + ". Not acceptable. Prepare self destruct sequence.";
+			scoreMessage = "Not acceptable. Prepare self destruct sequence.";
 		}
 		else
 		{
 			score = 'F';
-			scoreMessage = "Grade: " + score + ". Utter failure. Terminate ASAP.";
+			scoreMessage = "Utter failure. Terminate ASAP.";
 		}
-		
+		scoreLetter = "" + score;
 		
 		GUIManager.Instance.ShowScore();
 		ResetScore();
