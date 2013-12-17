@@ -8,7 +8,11 @@ public class MainGameEventScheduler : MonoBehaviour {
 	public static bool onFire;
 	public Objective findFireHydrant = new Objective("find hydrant", "Find the Fire Hydrant");
 	public Objective putOutFire = new Objective("on fire", "STOP BEING ON FIRE (E)");
+	public float maxTime;
+	private TimerUpdate fireTimer;
+	public float currentTime;
 	public float timer;
+
     public static MainGameEventScheduler Instance
     {
         get
@@ -25,29 +29,36 @@ public class MainGameEventScheduler : MonoBehaviour {
     // Use this for initialization
 	void Start () {
 		ToastScript.isActive = true;
-        currentTask = task.toaster;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (fireTimer == null) {
+			fireTimer = GetComponent<TimerManager>().FindTimer("On Fire Timer");	
+		}
+		
 		//EggScript.isActive = true;
-		if(onFire == true && timer < Time.time)
+		maxTime = fireTimer.maxTime;
+		currentTime = fireTimer.CurTime;
+		if(onFire == true && currentTime >= maxTime)
 		{
 			LoadAgain();
 			GameObject.FindGameObjectWithTag("Playermesh").transform.position = playerPositions[playerPositions.Count - 1];
 			onFire = false;
 			Torchelight torch = GameObject.FindGameObjectWithTag("Playermesh").GetComponentInChildren<Torchelight>();
+			fireTimer.resetTime();
+			fireTimer.EndTimer();
 			if(torch != null)
 				Destroy(torch.gameObject);
 		}
 	}
-	
+
 	public void FailedObjective()
 	{
         GameObject torch = (GameObject)Instantiate(torchPrefab, GameObject.Find("TorchPlaceHolder").transform.position, Quaternion.identity);
         torch.transform.parent = GameObject.FindGameObjectWithTag("Playermesh").transform;
 		onFire = true;
-		timer = Time.time + 3;
+		fireTimer.StartTimer();
 		GUIManager.Instance.AddObjective(findFireHydrant);
 		GUIManager.Instance.AddObjective(putOutFire);
 	}
@@ -69,25 +80,25 @@ public class MainGameEventScheduler : MonoBehaviour {
            		currentTask++;
 			}
         }
-        switch ((int)currentTask)
+        switch (currentTask)
         {
-            case 0: DisableAllEventScripts();
+            case task.toaster: DisableAllEventScripts();
                 ToastScript.isActive = true;
 				ToastScript.Instance.StartTask();
-				GUIManager.message = "Heat stove and grab egg";
+				//GUIManager.message = "Heat stove and grab egg";
 				return;
                 break;
-            case 1: DisableAllEventScripts();
+            case task.eggs: DisableAllEventScripts();
 				EggScript.isActive = true;
 				EggScript.Instance.StartTask();
 				return;
                 break;
-            case 2: DisableAllEventScripts();
+            /*case task.omlette: DisableAllEventScripts();
                 OmeletteScript oScript = GameObject.Find("Objectives").GetComponent<OmeletteScript>();
                 oScript.Initialize();
                 OmeletteScript.isActive = true;
 				return;
-                break;
+                break;*/
         }
     }
 
@@ -97,14 +108,21 @@ public class MainGameEventScheduler : MonoBehaviour {
 		EggScript.isActive = false;
 		OmeletteScript.isActive = false;
     }
+	
+	void OnGUI() {
+        if (GUI.Button(new Rect(Screen.width - 160, Screen.height - 40, 150, 30), "Fail!!!")) {
+            FailedObjective();
+        }
+	}
 }
 
 
 public enum task
 {
-    toaster = 0, 
-    eggs = 1,
-    omlette = 2,
-    //Quiche = 3,
-    none = 3
+    open = 0,
+	toaster,
+    eggs,
+    omlette,
+    //Quiche,
+    none
 }

@@ -51,13 +51,13 @@ public class Player : MonoBehaviour {
 	}
 
 	public virtual void CameraFadeIn() {
-		iTween.CameraFadeAdd();
-		iTween.CameraFadeTo(iTween.Hash("amount", 1.0, "time", 1.0, "oncomplete", "DoTeleport", "oncompletetarget", this.gameObject));
+		//iTween.CameraFadeAdd();
+		//iTween.CameraFadeTo(iTween.Hash("amount", 1.0, "time", 1.0, "oncomplete", "DoTeleport", "oncompletetarget", this.gameObject));
 	}
 	
 	public virtual void CameraFadeOut() {
 		
-		iTween.CameraFadeTo(iTween.Hash("amount", 0.0, "time", 1.0));	
+		//iTween.CameraFadeTo(iTween.Hash("amount", 0.0, "time", 1.0));	
 	}
 
 }

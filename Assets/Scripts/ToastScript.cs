@@ -27,6 +27,8 @@ public class ToastScript : MonoBehaviour {
 	public Objective finishToast = new Objective("finish toast", "Save the Toast!!! Patience (F)");
 	public InteractionPopup breadPopup = null;
 	public InteractionPopup toasterPopup = null;
+	private int haveBreadCount = 0;
+	public CollisionChecker breadTrigger = null;
 	
 	// Use this for initialization
 	void Start () {
@@ -51,22 +53,20 @@ public class ToastScript : MonoBehaviour {
         if (isActive)
         {
             breads = GameObject.FindGameObjectsWithTag("Bread").ToList();
-            foreach (var bread in breads)
-            {
+			if (haveBreadCount < breads.Count) {
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    if (Vector3.Distance(bread.transform.position, player.transform.position) < 5)
+                    if (breadTrigger.Triggering)
                     {
-						bread.SetActive(false);
-						destroyObjects.Add(bread);
-                        break;
+						breads[haveBreadCount].renderer.enabled = false;
+						haveBreadCount++;
                     }
                 }
-            }
-			if (breads.Count < 1) {
+			}
+			else if (!breadAcquired){
 				breadAcquired = true;
 				GUIManager.Instance.RemoveObjective(grabToast.name);
-				breadPopup.enabled = false;
+				breadPopup.gameObject.SetActive(false);
 			}
 
             
@@ -83,7 +83,7 @@ public class ToastScript : MonoBehaviour {
 								Destroy(obj);
 							destroyObjects.Clear();
 							GUIManager.Instance.RemoveObjective(finishToast.name);
-							toasterPopup.enabled = false;
+							toasterPopup.gameObject.SetActive(false);
 						}
                     }
                 }
@@ -94,15 +94,12 @@ public class ToastScript : MonoBehaviour {
                 {
                     if (Input.GetKeyDown(KeyCode.F))
                     {
-                        if (breads.Count == 0)
+                        if (breadAcquired)
                         {
-                            if (breadAcquired)
-                            {
-								toastTimer.StartTimer();
-								GUIManager.Instance.RemoveObjective(toastToast.name);
-                                //GUIManager.message = "Shut the toaster before the bread burns. Press 'f' to shut the toster. Make sure you shut it at the right time, else the bread wont toast well";
-								return;
-                            }
+							toastTimer.StartTimer();
+							GUIManager.Instance.RemoveObjective(toastToast.name);
+                            //GUIManager.message = "Shut the toaster before the bread burns. Press 'f' to shut the toster. Make sure you shut it at the right time, else the bread wont toast well";
+							return;
                         }
                         else
                         {
@@ -123,6 +120,13 @@ public class ToastScript : MonoBehaviour {
 		GUIManager.Instance.AddObjective(grabToast);
 		GUIManager.Instance.AddObjective(toastToast);
 		GUIManager.Instance.AddObjective(finishToast);
+		breadPopup.enabled = true;
+		toasterPopup.enabled = true;
+		foreach (var bread in breads)
+	    {
+			bread.renderer.enabled = true;	
+		}
+		toastTimer.resetTime();
 	}
 	
 	public void TimerUpdate(TimerStep step) {

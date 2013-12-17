@@ -7,6 +7,7 @@ public class FireHydrant : MonoBehaviour {
 	private GameObject player;
 	private GameObject waterSpout;
 	public float timer;
+	public TimerUpdate fireTimer;
 	
 	
 	// Use this for initialization
@@ -17,11 +18,17 @@ public class FireHydrant : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (fireTimer == null) {
+			fireTimer = GameObject.Find ("Globals").GetComponent<TimerManager>().FindTimer("On Fire Timer");
+		}
+		
 		if(Input.GetKey(KeyCode.E) && (transform.position - player.transform.position).sqrMagnitude < hydrantRange * hydrantRange && 
 			gameObject.GetComponentInChildren<FireHydrantCone>().withinHydrantRange)
 		{
 			waterSpout.particleSystem.Play();
-			timer = Time.time + 5;
+			timer = Time.time + 3;
+			fireTimer.resetTime();
+			fireTimer.EndTimer();
 			MainGameEventScheduler.onFire = false;
 			Torchelight torch = GameObject.FindGameObjectWithTag("Playermesh").GetComponentInChildren<Torchelight>();
 			if(torch != null)

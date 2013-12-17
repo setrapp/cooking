@@ -12,8 +12,8 @@ public class TimerUpdate : MonoBehaviour {
 		get { return curTime; }
 	}
 	public float timeBarLength;
-	private float GUIWidth; 
-	private float GUIHeight;
+	public float GUIWidth = 100; 
+	public float GUIHeight = 20;
 	public Texture2D background;  
 	public Texture2D foreground;
 	public Texture2D lion;
@@ -47,8 +47,6 @@ public class TimerUpdate : MonoBehaviour {
 
     void Start () 
     {
-		GUIWidth = maxTime;
-		GUIHeight = 20;
 		GameObject.FindGameObjectWithTag("Globals").GetComponent<TimerManager>().AddTimer(this);
 		gameState = (GameState)GameObject.FindObjectOfType(typeof(GameState));
 		movement = (MovementScripts)GameObject.FindObjectOfType(typeof(MovementScripts));
@@ -63,14 +61,14 @@ public class TimerUpdate : MonoBehaviour {
     }
  
     void Update () 
-    {
+    {	
 		if(isActive)
 		{
 			if (!inverted) {
-	     	   AddjustCurrentTime(step);        //This can allow you to have differernt time steps for the change. 
+	     	   AdjustCurrentTime(step);        //This can allow you to have differernt time steps for the change. 
 			}
 			else {
-				AddjustCurrentTime(-backstep);
+				AdjustCurrentTime(-backstep);
 			}
 	        //if(Input.GetKeyDown(KeyCode.F))
 	        if(isActive)
@@ -108,10 +106,7 @@ public class TimerUpdate : MonoBehaviour {
 
     private ResponseType Check()
     {
-        //Rect r = pivot;
-        //r.x -= perfectTimeWindow / 2;
-        //r.width = perfectTimeWindow;
-        if (curTime > pivotTime && curTime < pivotTime + pivot.width)//(r.Contains(new Vector2(timeRec.x + timeRec.width, pivot.y + pivot.height / 2)))      //If the current time is in perfect time range
+        if (curTime >= pivotTime && curTime <= pivotTime + pivot.width)
         {
             return ResponseType.perfect;
         }
@@ -134,9 +129,10 @@ public class TimerUpdate : MonoBehaviour {
 		
 		if(isActive && !(hideOnPause && paused))
 		{
+			float widthTimeRatio = (GUIWidth / maxTime);
 			textRec = new Rect(offsetX, offsetY - 30, 100, GUIHeight);
-	        timeRec = new Rect(offsetX, offsetY, timeBarLength , GUIHeight);
-	        pivot = new Rect(offsetX + pivotTime, offsetY, perfectTimeWindow, GUIHeight);
+	        timeRec = new Rect(offsetX, offsetY, timeBarLength * widthTimeRatio, GUIHeight);
+	        pivot = new Rect(offsetX + pivotTime * widthTimeRatio, offsetY, perfectTimeWindow * widthTimeRatio, GUIHeight);
 	        backgroundRect = new Rect(offsetX, offsetY, GUIWidth, GUIHeight);
 			var boxRect = backgroundRect;
 			boxRect.x -= padding/2;
@@ -153,7 +149,7 @@ public class TimerUpdate : MonoBehaviour {
 		}
     }
 
-    public void AddjustCurrentTime(float adj)
+    public void AdjustCurrentTime(float adj)
     {
 		if (paused) {
 			return;
@@ -234,6 +230,10 @@ public class TimerUpdate : MonoBehaviour {
 
 	public void resetTime () {
 		curTime = 0f;
+		PauseTimer();
+		foreach(MonoBehaviour timee in timees) {
+			timee.gameObject.SendMessage("TimerReset", name, SendMessageOptions.DontRequireReceiver);	
+		}
 	}
 	
 	public bool AttemptSuccess(string successString = null, string failureString = null, AudioSource successAudio = null, AudioSource failureAudio = null, bool endTimer = true, bool printSuccess = true, bool printFailure = true) {
@@ -295,7 +295,7 @@ public class TimerUpdate : MonoBehaviour {
 	public void DebugJumpToPerfect(bool pause = true)
 	{
 		curTime = pivotTime;
-		AddjustCurrentTime(0);
+		AdjustCurrentTime(0);
 		if(pause) {
 			PauseTimer();
 		}
