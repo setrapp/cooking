@@ -6,6 +6,7 @@ public class Flowerscript : MonoBehaviour {
 	
 	public bool touched;
 	public bool grabbed;
+	public bool placed;
 	
 	private Vector3 screenPoint;
 	private Vector3 offset;
@@ -14,6 +15,7 @@ public class Flowerscript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
+		placed = false;
 
 	}
 	
@@ -92,6 +94,7 @@ transform.position = curPosition;
 		if(col.gameObject.name == "vaseCollider")
 		{
 			renderer.enabled = false;
+			placed = true;
 		}
 		else
 		{
