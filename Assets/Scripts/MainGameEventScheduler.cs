@@ -66,6 +66,7 @@ public class MainGameEventScheduler : MonoBehaviour {
 	
     public static void LoadAgain()
     {
+		ScoreManager.Instance.ResetScore();
 		GUIManager.Instance.RemoveAllObjectives();
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		player.GetComponent<OverheatMeter>().reset();

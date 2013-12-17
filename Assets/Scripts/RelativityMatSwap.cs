@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class RelativityMatSwap : MonoBehaviour {
-	public MovementScripts mover = null;
+	private MovementScripts mover = null;
 	public int nonrelMatIndex = 0;
 	public int relMatIndex = 1;
 	private int curMatIndex = 0;
@@ -12,6 +12,7 @@ public class RelativityMatSwap : MonoBehaviour {
 	
 	void Start () {
 		nonrelativisticMat = renderer.materials[0];
+		mover = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScripts>();
 	}
 
 	void Update () {

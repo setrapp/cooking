@@ -16,6 +16,13 @@ public class GUIManager : MonoBehaviour {
     public static bool isActive = true;
 	public List<Objective> objectives = null;
 	public Rect objectivesBox;
+	private Rect scoreLetterBox;
+	private Rect scoreBox;
+	public float timer;
+	public bool showingScore = false;
+	public GUIStyle objectivesStyle;
+	public GUIStyle gradeLetterStyle;
+	public GUIStyle gradeMessageStyle;
 	//public bool isObjectivesActive = true;
 	// Use this for initialization
 	void Start () {
@@ -25,6 +32,15 @@ public class GUIManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		objectivesBox = WrapBoxToScreen(objectivesBox);
+		scoreBox = WrapBoxToScreen(scoreBox);
+		scoreLetterBox = new Rect(0, 0, 100, 100);
+		scoreBox = new Rect (0, 0, 300, 100);
+		scoreBox.center = new Vector2 (Screen.width/2, Screen.height/2);
+		scoreLetterBox.center = new Vector2 (Screen.width/2, scoreBox.y - scoreLetterBox.width / 2);
+		if(timer < Time.time)
+		{
+			showingScore = false;
+		}
 	}
 
     void OnGUI()
@@ -33,6 +49,12 @@ public class GUIManager : MonoBehaviour {
         {
             GUI.Label(new Rect((Screen.width * 0.5f) - 75, 75, 150, 100), message);
         }*/
+		//Print objectives
+		if(showingScore == true)
+		{
+			GUI.Label(scoreLetterBox, ScoreManager.Instance.scoreLetter, gradeLetterStyle);
+			GUI.Label(scoreBox, ScoreManager.Instance.scoreMessage, gradeMessageStyle);
+		}
 		if (objectives.Count > 0) {
 			string objectivesString = "Objectives:\n";
 			for (int i = 0; i < objectives.Count; i++) {
@@ -41,7 +63,7 @@ public class GUIManager : MonoBehaviour {
 					objectivesString += "\n";	
 				}
 			}
-			GUI.Label(objectivesBox, objectivesString);	
+			GUI.Label(objectivesBox, objectivesString, objectivesStyle);	
 		}
     }
 	
@@ -88,6 +110,10 @@ public class GUIManager : MonoBehaviour {
 		for (int i = 0; i < objectives.Count; i++) {
 			objectives.RemoveAt(i);
 		}
+	}
+	public void ShowScore() {
+		timer = Time.time + 4;
+		showingScore = true;
 	}
 }
 

@@ -149,7 +149,7 @@ class SpacePlayerController: MonoBehaviour {
 	}
 
 	void OnDied() {
-		HUDLayer.Instance.ShowScreenText("Mission Failed!", 1.0f, 999f, 1.0f, TextAnchor.UpperCenter);
+		HUDLayer.Instance.ShowScreenText("Mission Failed!!! Press X to Exit", 1.0f, 999f, 1.0f, TextAnchor.UpperCenter);
 		Scroller.Paused = true;
 	}
 

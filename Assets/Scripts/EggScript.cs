@@ -101,7 +101,7 @@ public class EggScript : MonoBehaviour {
 								destroyObjects.Add(egg);
 								egg.SetActive(false);
 								GUIManager.Instance.RemoveObjective(grabEgg.name);
-								eggPopup.enabled = false;
+								eggPopup.ForceOffAndDisable();
 								eggBoilerPopup.enabled = true;
 								//Destroy(egg);
 								break;
@@ -113,6 +113,7 @@ public class EggScript : MonoBehaviour {
 					{
 						if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
 							if(eggTimer.AttemptSuccess() && heatTimer.AttemptSuccess(null, null, success, failure, false, false)) {
+								ScoreManager.Instance.timerPercent(eggTimer);
 								boilTimer.StartTimer();
 								boiling = true;
 								GUIManager.Instance.RemoveObjective(placeEgg.name);
@@ -125,14 +126,22 @@ public class EggScript : MonoBehaviour {
 				}
 				else {
 					if (Vector3.Distance(stove.transform.position, player.transform.position) < 5) {
-						boilTimer.AttemptSuccess();
+						if (boilTimer.AttemptSuccess()) {
+							ScoreManager.Instance.timerPercent(boilTimer);
+							ScoreManager.Instance.SuccessScore();
+							GUIManager.Instance.RemoveObjective(finishEgg.name);
+							stovePopup.ForceOffAndDisable();
+							eggBoilerPopup.ForceOffAndDisable();
+							MainGameEventScheduler.switchTask();
+							FinishTask();	
+						}
 						
-						foreach(var obj in destroyObjects)
+						/*foreach(var obj in destroyObjects)
 						{
 							obj.SetActive(true);
 							obj.renderer.enabled = true;
 							obj.transform.position = container.transform.position;
-						}
+						}*/
 					}
 					heatTimer.EndTimer();
 				}
@@ -140,16 +149,18 @@ public class EggScript : MonoBehaviour {
 			
 			
 			
-			if (eggTimer.IsActive)
+			/*if (eggTimer.IsActive)
 			{
 				if (Vector3.Distance(container.transform.position, player.transform.position) < 5)
 				{
 					if (Input.GetKeyDown(KeyCode.Q))
 					{
 						if (eggTimer.AttemptSuccess()) {
+							ScoreManager.Instance.timerPercent(boilTimer);
+							ScoreManager.Instance.SuccessScore();
 							GUIManager.Instance.RemoveObjective(finishEgg.name);
-							stovePopup.enabled = false;
-							eggBoilerPopup.enabled = false;
+							stovePopup.ForceOffAndDisable();
+							eggBoilerPopup.ForceOffAndDisable();
 							MainGameEventScheduler.switchTask();
 							FinishTask();
 						}
@@ -160,7 +171,7 @@ public class EggScript : MonoBehaviour {
 					}
 				}
 				return;
-			}
+			}*/
 		}
 		
 	}
@@ -178,15 +189,16 @@ public class EggScript : MonoBehaviour {
 
 	public void FinishTask()
 	{
-		var container = GameObject.Find ("Container");
-		GameObject.Find("Frying pan").SetActive(true);
-		GameObject.Find("Frying pan").renderer.enabled = true;
-		foreach(var obj in destroyObjects)
+		//ScoreManager.Instance.SuccessScore();
+		//var container = GameObject.Find ("Container");
+		//GameObject.Find("Frying pan").SetActive(true);
+		//GameObject.Find("Frying pan").renderer.enabled = true;
+		/*foreach(var obj in destroyObjects)
 		{
 			obj.SetActive(true);
 			obj.renderer.enabled = true;
 			obj.transform.position = container.transform.position;
-		}
+		}*/
 		boiling = false;
 		heating = false;
 		eggAcquired = false;
