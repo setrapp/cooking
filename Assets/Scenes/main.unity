@@ -3391,7 +3391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &230069034
 Transform:
   m_ObjectHideFlags: 0
@@ -3411,7 +3411,7 @@ TextMesh:
     type: 2}
   m_PrefabInternal: {fileID: 521015162}
   m_GameObject: {fileID: 230069033}
-  m_Text: M for Minigame
+  m_Text: M for Attack Satellite
   m_OffsetZ: 0
   m_CharacterSize: .100000001
   m_LineSpacing: 1
@@ -7748,7 +7748,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 17774f3d6add34847882780d648ae9b2, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 17774f3d6add34847882780d648ae9b2, type: 2}
       propertyPath: m_LocalRotation.y
@@ -7773,6 +7773,10 @@ Prefab:
     - target: {fileID: 10200000, guid: 17774f3d6add34847882780d648ae9b2, type: 2}
       propertyPath: m_CharacterSize
       value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 10200000, guid: 17774f3d6add34847882780d648ae9b2, type: 2}
+      propertyPath: m_Text
+      value: M for Attack Satellite
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 13500000, guid: 17774f3d6add34847882780d648ae9b2, type: 2}
