@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/Scenes/minigames/Bob's mini game.unity
   - enabled: 1
     path: Assets/Scenes/minigames/Wacka_Relativity_Portal_Mole.unity
+  - enabled: 1
+    path: Assets/Scenes/minigames/SpaceShooter!.unity

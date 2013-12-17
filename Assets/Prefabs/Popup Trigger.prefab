@@ -76,6 +76,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!102 &10200000
 TextMesh:
   serializedVersion: 3
@@ -83,7 +86,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Text: Toaster
+  m_Text: Minigame
   m_OffsetZ: 0
   m_CharacterSize: .100000001
   m_LineSpacing: 1
@@ -121,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popup: {fileID: 100002}
-  collisionChecker: {fileID: 0}
+  collisionChecker: {fileID: 11400000}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

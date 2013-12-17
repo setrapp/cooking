@@ -97,8 +97,8 @@ class SpacePlayerController: MonoBehaviour {
 		Vector3 cameraPos = Camera.main.transform.position;
 		float cameraOrthoSize = Camera.main.orthographicSize;
 		
-		float newX = MathUtil.Clamp(cameraPos.x - cameraOrthoSize + PlayerHalfWidth, 
-		                            cameraPos.x + cameraOrthoSize - PlayerHalfWidth, 
+		float newX = MathUtil.Clamp(cameraPos.x - cameraOrthoSize * Camera.main.aspect + PlayerHalfWidth, 
+		                            cameraPos.x + cameraOrthoSize * Camera.main.aspect - PlayerHalfWidth, 
 		                            prevPos.x + deltaX);
 		float newY = MathUtil.Clamp(cameraPos.y - cameraOrthoSize - PlayerHalfHeight, 
 		                            cameraPos.y + cameraOrthoSize - PlayerHalfHeight, 
@@ -117,10 +117,10 @@ class SpacePlayerController: MonoBehaviour {
 				Vector3 pos = this.transform.position;
 				Color color = new Color(1, 1, 1, 0.7f);
 
-				float dx = 0.8f * Mathf.Cos(_rotateY * Mathf.Deg2Rad);
-				float dz = 0.8f * Mathf.Sin(_rotateY * Mathf.Deg2Rad);
-				BulletManager.ShootBullet(new Vector3(pos.x - dx, pos.y + 1.0f, pos.z + dz), color, 0, 90, 1, "PB");
-				BulletManager.ShootBullet(new Vector3(pos.x + dx, pos.y + 1.0f, pos.z + dz), color, 0, 90, 1, "PB");
+				float dx = 0.7f * Mathf.Cos(_rotateY * Mathf.Deg2Rad);
+				float dz = 0.7f * Mathf.Sin(_rotateY * Mathf.Deg2Rad);
+				BulletManager.ShootBullet(new Vector3(pos.x - dx, pos.y + 0.9f, pos.z + dz), color, 0, 90, 1, "PB");
+				BulletManager.ShootBullet(new Vector3(pos.x + dx, pos.y + 0.9f, pos.z + dz), color, 0, 90, 1, "PB");
 				BulletManager.ShootBullet(new Vector3(pos.x, pos.y + 1.5f, pos.z), color, 1, 90, 1, "PB");
 
 				if(ShootingSound != null)
