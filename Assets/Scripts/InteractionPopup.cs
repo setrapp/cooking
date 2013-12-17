@@ -20,9 +20,11 @@ public class InteractionPopup : MonoBehaviour
 		popupOn = false;
 		if (collisionChecker != null && (collisionChecker.Triggering || collisionChecker.Colliding)) {
 			popupOn = true;	
-			Vector3 newForward = (Camera.main.transform.position - popup.transform.position) * - 1;
-			newForward.y = transform.forward.y;
-			popup.transform.forward = newForward;
+			if (Camera.main != null) {
+				Vector3 newForward = (Camera.main.transform.position - popup.transform.position) * - 1;
+				newForward.y = transform.forward.y;
+				popup.transform.forward = newForward;
+			}
 		}
 		popup.SetActive(popupOn);
 	}
