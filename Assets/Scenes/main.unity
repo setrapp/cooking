@@ -791,6 +791,7 @@ MonoBehaviour:
     objective: Save the Toast!!! Patience (F)
   breadPopup: {fileID: 1584675438}
   toasterPopup: {fileID: 206139001}
+  breadTrigger: {fileID: 1584675436}
 --- !u!114 &35570522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16502,7 +16503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: RALPH Overheat
-  maxTime: 1000
+  maxTime: 200
   startTime: 0
   timeBarLength: 0
   GUIWidth: 100
@@ -16547,7 +16548,7 @@ MonoBehaviour:
   step: 40
   backstep: 20
   offsetX: 100
-  offsetY: 70
+  offsetY: 100
   perfectTimeWindow: 0
   padding: 10
   timees: []
@@ -17994,8 +17995,12 @@ Prefab:
       objectReference: {fileID: 1031370810}
     - target: {fileID: 11400030, guid: 6295da44eaeba0144a444589490340cd, type: 2}
       propertyPath: maxTime
-      value: 1000
+      value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6295da44eaeba0144a444589490340cd, type: 2}
+      propertyPath: breadTrigger
+      value: 
+      objectReference: {fileID: 1584675436}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6295da44eaeba0144a444589490340cd, type: 2}
   m_RootGameObject: {fileID: 469652315}
@@ -25678,7 +25683,7 @@ Animation:
   - {fileID: 7400008, guid: 1a403ea9a249c334cb5d246afee8871f, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_CullingType: 1
   m_UserAABB:
     m_Center: {x: 0, y: 0, z: 0}
@@ -25734,6 +25739,10 @@ Prefab:
     - target: {fileID: 11400000, guid: f9bf6cd556c101241b5373d36419dfb5, type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11100000, guid: f9bf6cd556c101241b5373d36419dfb5, type: 2}
+      propertyPath: m_AnimatePhysics
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9bf6cd556c101241b5373d36419dfb5, type: 2}
