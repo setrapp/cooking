@@ -7,10 +7,12 @@ public class Cake: Enemy {
 	}
 
 	public override void OnLogic(int currFrame) {
-		Vector3 diff = this.transform.position - SpacePlayerController.Instance.Player.transform.position;
-		float angle = (float)Math.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90;
-		this.gameObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		if(this.CurrentHealth > 0) {
+			Vector3 diff = this.transform.position - SpacePlayerController.Instance.Player.transform.position;
+			float angle = (float)Math.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90;
+			this.gameObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-		base.OnLogic(currFrame);
+			base.OnLogic(currFrame);
+		}
 	}
 };
